@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) rgba(0, 0, 0, 0.8);
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDelay {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    50% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slowZoom {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes brushStroke {
+    0% {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  @keyframes paintDrip {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .animate-fadeInDelay {
+    animation: fadeInDelay 2s ease-out forwards;
+  }
+
+  .animate-brushStroke {
+    animation: brushStroke 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-paintDrip {
+    animation: paintDrip 1s ease-out forwards;
+  }
+
+  @keyframes scrollIndicator {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(48px);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-scrollIndicator {
+    animation: scrollIndicator 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes paintFloat1 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    33% {
+      transform: translate(20%, -10%) scale(1.1);
+      opacity: 0.8;
+    }
+    66% {
+      transform: translate(-15%, 10%) scale(0.95);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes paintFloat2 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.5;
+    }
+    33% {
+      transform: translate(-25%, 15%) scale(1.05);
+      opacity: 0.7;
+    }
+    66% {
+      transform: translate(10%, -20%) scale(0.9);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes paintFloat3 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate(-20%, 10%) scale(1.15) rotate(5deg);
+      opacity: 0.9;
+    }
+  }
+
+  .animate-paintFloat1 {
+    animation: paintFloat1 20s ease-in-out infinite;
+  }
+
+  .animate-paintFloat2 {
+    animation: paintFloat2 25s ease-in-out infinite;
+  }
+
+  .animate-paintFloat3 {
+    animation: paintFloat3 18s ease-in-out infinite;
+  }
+
+  @keyframes paintingReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  .painting-reveal {
+    animation: paintingReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
