@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 interface NavigationProps {
@@ -51,27 +52,32 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
         style={{ width: '80%', maxWidth: '1200px' }}
       >
         <div className="px-6 md:px-8 flex items-center justify-between">
-          <button
+          <Link
+            to="/"
             onClick={() => onNavigate('home')}
             className="text-white font-bold text-lg md:text-xl tracking-wide hover:opacity-70 transition-opacity"
           >
             Claus Bertermann
-          </button>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
-            {pages.map((page) => (
-              <button
-                key={page.id}
-                onClick={() => onNavigate(page.id)}
-                className={`text-sm tracking-widest transition-all duration-300 ${
-                  currentPage === page.id
-                    ? 'text-white font-bold scale-110'
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                {page.label}
-              </button>
-            ))}
+            {pages.map((page) => {
+              const path = page.id === 'home' ? '/' : `/${page.id}`;
+              return (
+                <Link
+                  key={page.id}
+                  to={path}
+                  onClick={() => onNavigate(page.id)}
+                  className={`text-sm tracking-widest transition-all duration-300 ${
+                    currentPage === page.id
+                      ? 'text-white font-bold scale-110'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  {page.label}
+                </Link>
+              );
+            })}
 
             <div className="flex items-center gap-2 ml-4 border-l border-white/20 pl-4">
               <button
@@ -162,29 +168,33 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
 
           {/* Navigation Links */}
           <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
-            {pages.map((page, index) => (
-              <button
-                key={page.id}
-                onClick={() => {
-                  onNavigate(page.id);
-                  setIsMobileMenuOpen(false);
-                }}
-                className={`text-left text-base tracking-widest transition-all duration-300 py-4 px-4 rounded-xl relative overflow-hidden group ${
-                  currentPage === page.id
-                    ? 'text-white font-bold bg-white/10'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
-                }`}
-                style={{
-                  transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
-                  transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(20px)',
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                }}
-              >
-                {/* Hover Effect */}
-                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-white rounded-r-full transition-all duration-300 group-hover:h-8" />
-                <span className="relative z-10 block pl-2">{page.label}</span>
-              </button>
-            ))}
+            {pages.map((page, index) => {
+              const path = page.id === 'home' ? '/' : `/${page.id}`;
+              return (
+                <Link
+                  key={page.id}
+                  to={path}
+                  onClick={() => {
+                    onNavigate(page.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`text-left text-base tracking-widest transition-all duration-300 py-4 px-4 rounded-xl relative overflow-hidden group ${
+                    currentPage === page.id
+                      ? 'text-white font-bold bg-white/10'
+                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                  }`}
+                  style={{
+                    transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
+                    transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(20px)',
+                    opacity: isMobileMenuOpen ? 1 : 0,
+                  }}
+                >
+                  {/* Hover Effect */}
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-white rounded-r-full transition-all duration-300 group-hover:h-8" />
+                  <span className="relative z-10 block pl-2">{page.label}</span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Language Switcher */}

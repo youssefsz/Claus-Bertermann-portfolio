@@ -128,6 +128,90 @@
     animation: scrollIndicator 2s ease-in-out infinite;
   }
 
+  /* Realistic Mouse Scroll Wheel Styles */
+  .mouse-scroll-wheel {
+    width: 24px;
+    height: 36px;
+    background: linear-gradient(145deg, #f0f0f0, #d0d0d0);
+    border: 2px solid #b0b0b0;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .mouse-scroll-wheel:hover {
+    transform: scale(1.05);
+    box-shadow: 
+      0 6px 12px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .mouse-scroll-wheel::before {
+    content: "";
+    width: 3px;
+    height: 8px;
+    background: linear-gradient(to bottom, #666, #999);
+    border-radius: 1.5px;
+    position: absolute;
+    top: 8px;
+    animation: mouseScroll 2s ease-in-out infinite;
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .mouse-scroll-wheel::after {
+    content: "";
+    width: 1px;
+    height: 2px;
+    background: #999;
+    border-radius: 0.5px;
+    position: absolute;
+    top: 6px;
+    animation: mouseScrollDot 2s ease-in-out infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes mouseScroll {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(12px);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes mouseScrollDot {
+    0% {
+      transform: translateY(0);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(12px);
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0.7;
+    }
+  }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;

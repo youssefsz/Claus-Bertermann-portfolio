@@ -1,4 +1,5 @@
 import { useState, useEffect, startTransition } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
@@ -11,13 +12,23 @@ import Ribbons from './components/Ribbons';
 import PageTransition from './components/PageTransition';
 import BrushTransitionOverlay from './components/BrushTransitionOverlay';
 
-function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+// Component that handles routing logic with transitions
+function AppContent() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Get current page from pathname
+  const getCurrentPage = (pathname: string) => {
+    if (pathname === '/' || pathname === '/home') return 'home';
+    return pathname.slice(1); // Remove leading slash
+  };
+
+  const currentPage = getCurrentPage(location.pathname);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
+  }, [location.pathname]);
 
   const handleNavigate = (page: string) => {
     // Start the brush transition animation
@@ -27,7 +38,8 @@ function App() {
     startTransition(() => {
       // Delay page change to allow the brush to swipe across and cover the screen
       setTimeout(() => {
-        setCurrentPage(page);
+        const path = page === 'home' ? '/' : `/${page}`;
+        navigate(path);
         // Reset transition state after animation completes
         setTimeout(() => {
           setIsTransitioning(false);
@@ -37,46 +49,57 @@ function App() {
   };
 
   return (
+    <div className="min-h-screen bg-black relative">
+      {/* Magenta Orb Grid Background with black base */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "#000000",
+          backgroundImage: `
+            linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+            radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+          `,
+          backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+        }}
+      />
+      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+
+      {/* Brush transition overlay - swipes across the entire screen */}
+      <BrushTransitionOverlay isTransitioning={isTransitioning} />
+
+      {/* Page content with fade transition */}
+      <PageTransition pageKey={currentPage}>
+        <Routes>
+          <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
+          <Route path="/home" element={<HomePage onNavigate={handleNavigate} />} />
+          <Route path="/auctioned" element={<AuctionedWorksPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/press" element={<PressPage />} />
+          <Route path="/charity" element={<CharityPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </PageTransition>
+      
+      <Ribbons
+        colors={['#06b6d4', '#14b8a6', '#f97316', '#fb7185']}
+        baseThickness={28}
+        speedMultiplier={0.55}
+        maxAge={450}
+        enableFade={false}
+        enableShaderEffect={true}
+        effectAmplitude={2}
+      />
+    </div>
+  );
+}
+
+function App() {
+  return (
     <LanguageProvider>
-      <div className="min-h-screen bg-black relative">
-        {/* Magenta Orb Grid Background with black base */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: "#000000",
-            backgroundImage: `
-              linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
-              radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
-            `,
-            backgroundSize: "40px 40px, 40px 40px, 100% 100%",
-          }}
-        />
-        <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
-
-        {/* Brush transition overlay - swipes across the entire screen */}
-        <BrushTransitionOverlay isTransitioning={isTransitioning} />
-
-        {/* Page content with fade transition */}
-        <PageTransition pageKey={currentPage}>
-          {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
-          {currentPage === 'auctioned' && <AuctionedWorksPage />}
-          {currentPage === 'gallery' && <GalleryPage />}
-          {currentPage === 'press' && <PressPage />}
-          {currentPage === 'charity' && <CharityPage />}
-          {currentPage === 'contact' && <ContactPage />}
-        </PageTransition>
-        
-        <Ribbons
-          colors={['#06b6d4', '#14b8a6', '#f97316', '#fb7185']}
-          baseThickness={28}
-          speedMultiplier={0.55}
-          maxAge={450}
-          enableFade={false}
-          enableShaderEffect={true}
-          effectAmplitude={2}
-        />
-      </div>
+      <Router>
+        <AppContent />
+      </Router>
     </LanguageProvider>
   );
 }

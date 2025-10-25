@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Palette, Trophy, Hammer, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import MagicBento from './MagicBento';
 import SplitText from './SplitText';
@@ -57,6 +58,7 @@ const useParallaxAnimation = (sectionRef: React.RefObject<HTMLDivElement>) => {
 
 export default function HomePage({ onNavigate }: HomePageProps) {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [heroScale, setHeroScale] = useState(1);
   const [modalImage, setModalImage] = useState<{ src: string; alt: string } | null>(null);
   const parallaxSectionRef = useRef<HTMLDivElement>(null);
@@ -122,9 +124,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
 
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
-          <div className="relative w-1 h-20 bg-white/20 rounded-full overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-white to-white/40 rounded-full animate-scrollIndicator" />
-          </div>
+          <div className="mouse-scroll-wheel" />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black z-[5]" />
@@ -155,7 +155,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 
                 {/* Gallery navigation button */}
                 <button
-                  onClick={() => onNavigate('gallery')}
+                  onClick={() => {
+                    onNavigate('gallery');
+                    navigate('/gallery');
+                  }}
                   className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-colors duration-300 whitespace-nowrap hover:scale-105 transition-transform duration-300"
                 >
                   {t('viewGallery') || 'View Gallery'}
@@ -206,7 +209,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <button
-            onClick={() => onNavigate('gallery')}
+            onClick={() => {
+              onNavigate('gallery');
+              navigate('/gallery');
+            }}
             className="group relative overflow-hidden rounded-3xl cursor-pointer"
           >
             <img
