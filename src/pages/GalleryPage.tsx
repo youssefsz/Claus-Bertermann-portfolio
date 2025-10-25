@@ -31,7 +31,7 @@ export default function GalleryPage() {
       title: "LPSS#CB – 2018",
       dimensions: "120 × 100 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/LPSSCB-120x100-2018-600x722.jpg",
+      img: "/gallery/1_LPSS-CB_-_2018.jpg",
       url: "#",
     },
     {
@@ -39,7 +39,7 @@ export default function GalleryPage() {
       title: "MQQ1#CB – 2022",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/MQQ1CB-180x150-2022-600x712.jpg",
+      img: "/gallery/2_MQQ1-CB_-_2022.jpg",
       url: "#",
     },
     {
@@ -47,7 +47,7 @@ export default function GalleryPage() {
       title: "MQQ2#CB – 2022",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/02/WhatsApp-Image-2025-04-29-at-08.18.42-1-600x721.jpeg",
+      img: "/gallery/3_MQQ2-CB_-_2022.jpeg",
       url: "#",
     },
     {
@@ -55,7 +55,7 @@ export default function GalleryPage() {
       title: "5TJ3#CB – 2024",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/5TJ3CB-200x200-2024-600x601.jpg",
+      img: "/gallery/4_5TJ3-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -63,7 +63,7 @@ export default function GalleryPage() {
       title: "V2F2#CB – 2024",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/V2F2CB-200x200-2024-600x601.jpg",
+      img: "/gallery/5_V2F2-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -71,7 +71,7 @@ export default function GalleryPage() {
       title: "GCOW#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/GCOWCB-150x150-2024-600x600.jpg",
+      img: "/gallery/6_GCOW-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -79,7 +79,7 @@ export default function GalleryPage() {
       title: "J20F#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/J20FCB-180x150-2023-600x498.jpg",
+      img: "/gallery/7_J20F-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -87,7 +87,7 @@ export default function GalleryPage() {
       title: "456T#CB – 2024",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/456TCB-150x130-2024-600x520.jpg",
+      img: "/gallery/8_456T-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -95,7 +95,7 @@ export default function GalleryPage() {
       title: "IZOP#CB – 2021",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/IZOPCB-150x130-2021-600x520.jpg",
+      img: "/gallery/9_IZOP-CB_-_2021.jpg",
       url: "#",
     },
     {
@@ -103,7 +103,7 @@ export default function GalleryPage() {
       title: "9ENL#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/9ENLCB-150X150-2024-600x600.jpg",
+      img: "/gallery/10_9ENL-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -111,7 +111,7 @@ export default function GalleryPage() {
       title: "34NH#CB – 2025",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/34NHCB-150x150-2025-600x600.jpg",
+      img: "/gallery/11_34NH-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -119,7 +119,7 @@ export default function GalleryPage() {
       title: "G223#CB – 2020",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/G223CB-150x150-2020-600x600.jpg",
+      img: "/gallery/12_G223-CB_-_2020.jpg",
       url: "#",
     },
     {
@@ -127,7 +127,7 @@ export default function GalleryPage() {
       title: "81BJ#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/81BJCB-180x150-2024-600x500.jpg",
+      img: "/gallery/13_81BJ-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -135,7 +135,7 @@ export default function GalleryPage() {
       title: "80BJ#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/80BJCB-180x150-2024-600x501.jpg",
+      img: "/gallery/14_80BJ-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -143,7 +143,7 @@ export default function GalleryPage() {
       title: "K33N#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-08.45.50-600x600.jpeg",
+      img: "/gallery/15_K33N-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -151,7 +151,7 @@ export default function GalleryPage() {
       title: "U322#CB – 2025",
       dimensions: "200 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/U322CB-200x130-2025-600x391.jpg",
+      img: "/gallery/16_U322-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -159,7 +159,7 @@ export default function GalleryPage() {
       title: "9BE4#CB – 2025",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/9BE4CB-130x80-2025-600x370.jpg",
+      img: "/gallery/17_9BE4-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -167,7 +167,7 @@ export default function GalleryPage() {
       title: "33MG#CB – 2023",
       dimensions: "150 × 100 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/33MGCB-150x100-2023-600x398.jpg",
+      img: "/gallery/18_33MG-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -175,7 +175,7 @@ export default function GalleryPage() {
       title: "24GD#CB – 2023",
       dimensions: "240 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/24GDCB-240x130-2023-SIGNED-600x332.jpg",
+      img: "/gallery/19_24GD-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -183,7 +183,7 @@ export default function GalleryPage() {
       title: "9BE3#CB – 2025",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/02/WhatsApp-Image-2025-04-29-at-08.21.44-600x368.jpeg",
+      img: "/gallery/20_9BE3-CB_-_2025.jpeg",
       url: "#",
     },
     {
@@ -191,7 +191,7 @@ export default function GalleryPage() {
       title: "91UI#CB – 2023",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/91UICB-130x80-2023-600x372.jpg",
+      img: "/gallery/21_91UI-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -199,7 +199,7 @@ export default function GalleryPage() {
       title: "S882#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-09.43.40-600x502.jpeg",
+      img: "/gallery/22_S882-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -207,7 +207,7 @@ export default function GalleryPage() {
       title: "YXX9#CB – 2024",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-08.56.16-600x518.jpeg",
+      img: "/gallery/23_YXX9-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -215,7 +215,7 @@ export default function GalleryPage() {
       title: "Z2MF#CB – 2023",
       dimensions: "180 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/Z2MFCB-180x130-2023-600x435.jpg.webp",
+      img: "/gallery/24_Z2MF-CB_-_2023.webp",
       url: "#",
     },
     {
@@ -223,7 +223,7 @@ export default function GalleryPage() {
       title: "9DNL#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/9DNLCB-150X150-2024-600x600.jpg",
+      img: "/gallery/25_9DNL-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -231,7 +231,7 @@ export default function GalleryPage() {
       title: "H5R6#CB – 2024",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/H5R6CB-200x200-2024-600x606.jpg",
+      img: "/gallery/26_H5R6-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -239,7 +239,7 @@ export default function GalleryPage() {
       title: "B211#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/B211CB-150x150-2024-600x600.jpg",
+      img: "/gallery/27_B211-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -247,7 +247,7 @@ export default function GalleryPage() {
       title: "6784#CB – 2024",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-08.57.37-600x692.jpeg",
+      img: "/gallery/28_6784-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -255,7 +255,7 @@ export default function GalleryPage() {
       title: "TGB2#CB – 2024",
       dimensions: "150 × 140 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/TGB2CB-150x140-2024-600x649.jpg",
+      img: "/gallery/29_TGB2-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -263,7 +263,7 @@ export default function GalleryPage() {
       title: "23EB#CB – 2023",
       dimensions: "160 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/23EBCB-160x150-2023-600x642.jpg",
+      img: "/gallery/30_23EB-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -271,7 +271,7 @@ export default function GalleryPage() {
       title: "488K#CB – 2019",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/488KCB-150x150-2019-600x599.jpg",
+      img: "/gallery/31_488K-CB_-_2019.jpg",
       url: "#",
     },
     {
@@ -279,7 +279,7 @@ export default function GalleryPage() {
       title: "Z333#CB – 2023",
       dimensions: "90 × 90 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-10.05.54-600x593.jpeg",
+      img: "/gallery/32_Z333-CB_-_2023.jpeg",
       url: "#",
     },
     {
@@ -287,7 +287,7 @@ export default function GalleryPage() {
       title: "S883#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-09.44.31-600x500.jpeg",
+      img: "/gallery/33_S883-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -295,7 +295,7 @@ export default function GalleryPage() {
       title: "WK10#CB – 2023",
       dimensions: "170 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/WK10CB-170x150-2023-600x678.jpg",
+      img: "/gallery/34_WK10-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -303,7 +303,7 @@ export default function GalleryPage() {
       title: "G318#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/02/WhatsApp-Image-2025-04-29-at-08.23.31-600x721.jpeg",
+      img: "/gallery/35_G318-CB_-_2023.jpeg",
       url: "#",
     },
     {
@@ -311,7 +311,7 @@ export default function GalleryPage() {
       title: "7Z2Q#CB – 2024",
       dimensions: "210 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/7Z2QCB-210x150-2024-600x835.jpg",
+      img: "/gallery/36_7Z2Q-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -319,7 +319,7 @@ export default function GalleryPage() {
       title: "7Z87#CB – 2025",
       dimensions: "300 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/7Z87CB-300x150-2025-600x299.jpg",
+      img: "/gallery/37_7Z87-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -327,7 +327,7 @@ export default function GalleryPage() {
       title: "7Z88#CB – 2025",
       dimensions: "300 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/02/WhatsApp-Image-2025-04-29-at-08.16.55-600x300.jpeg",
+      img: "/gallery/38_7Z88-CB_-_2025.jpeg",
       url: "#",
     },
     {
@@ -335,7 +335,7 @@ export default function GalleryPage() {
       title: "IS33#CB – 2021",
       dimensions: "250 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/IS33CB-250x150-2021-600x360.jpg",
+      img: "/gallery/39_IS33-CB_-_2021.jpg",
       url: "#",
     },
     {
@@ -343,7 +343,7 @@ export default function GalleryPage() {
       title: "7U2N#CB – 2025",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/05/7U2NCB-200x200-2025-600x600.jpg",
+      img: "/gallery/40_7U2N-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -351,7 +351,7 @@ export default function GalleryPage() {
       title: "4F3F#CB – 2023",
       dimensions: "160 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-10.08.27-1-600x642.jpeg",
+      img: "/gallery/41_4F3F-CB_-_2023.jpeg",
       url: "#",
     },
     {
@@ -359,7 +359,7 @@ export default function GalleryPage() {
       title: "QW2W#CB – 2021",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-09.48.00-600x603.jpeg",
+      img: "/gallery/42_QW2W-CB_-_2021.jpeg",
       url: "#",
     },
     {
@@ -367,7 +367,7 @@ export default function GalleryPage() {
       title: "8HXB#CB – 2018",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-09.38.40.jpeg",
+      img: "/gallery/43_8HXB-CB_-_2018.jpeg",
       url: "#",
     },
     {
@@ -375,7 +375,7 @@ export default function GalleryPage() {
       title: "E4RS#CB – 2018",
       dimensions: "130 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-09.34.25-600x597.jpeg",
+      img: "/gallery/44_E4RS-CB_-_2018.jpeg",
       url: "#",
     },
     {
@@ -383,7 +383,7 @@ export default function GalleryPage() {
       title: "9IJ9#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "https://clausbertermann.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-29-at-10.11.01-600x440.jpeg",
+      img: "/gallery/45_9IJ9-CB_-_2023.jpeg",
       url: "#",
     },
   ];
