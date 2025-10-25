@@ -32,7 +32,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
 
   return (
-    <div className="min-h-screen bg-black relative">
+    <div className="min-h-screen relative">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"

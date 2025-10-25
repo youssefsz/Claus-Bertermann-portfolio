@@ -22,7 +22,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black pt-32 pb-24 px-6 md:px-12">
+    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-screen-xl mx-auto">
         <SplitText
           text={t('contact')}
