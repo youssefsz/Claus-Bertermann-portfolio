@@ -91,6 +91,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   };
 
 
+  const splitStatText = (text: string) => {
+    const match = text.match(/([~]?\d+(?:[.,]\d+)?(?:[KM])?\+?)/i);
+    if (match && typeof match.index === 'number') {
+      const numberPart = match[1];
+      const rest = (
+        text.slice(0, match.index) + text.slice(match.index + numberPart.length)
+      )
+        .replace(/\s+/g, ' ')
+        .trim();
+      return { numberPart, rest };
+    }
+    return { numberPart: '', rest: text };
+  };
+
   return (
     <div className="min-h-screen relative">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -231,25 +245,69 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-8 border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105"
-                style={{
-                  animation: `fadeInUp 0.8s ease-out ${index * 0.1}s both`,
-                }}
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
-                <Icon className="w-8 h-8 text-white/60 mb-4 relative z-10" />
-                <p className="text-white/90 text-base font-light leading-relaxed relative z-10">
-                  {t(stat.key)}
-                </p>
-              </div>
-            );
-          })}
+        {/* Enhanced Statistics Section (original layout, colored numbers) */}
+        <div className="relative">
+          {/* Background decorative elements */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl" />
+          <div className="absolute -top-8 -left-8 w-24 h-24 bg-white/5 rounded-full blur-xl" />
+          <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-white/5 rounded-full blur-xl" />
+
+          <div className="relative bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-sm rounded-3xl p-12 border border-white/10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group relative text-center"
+                    style={{
+                      animation: `fadeInUp 0.8s ease-out ${index * 0.15}s both`,
+                    }}
+                  >
+                    {/* Icon container */}
+                    <div className="relative mb-6">
+                      <div className="w-16 h-16 mx-auto bg-gradient-to-br from-white/20 to-white/10 rounded-2xl flex items-center justify-center border border-white/20 group-hover:border-white/40 transition-all duration-500 group-hover:scale-110">
+                        <Icon className="w-7 h-7 text-white/80 group-hover:text-white transition-colors duration-300" />
+                      </div>
+                      <div className="absolute inset-0 w-16 h-16 mx-auto bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+                    </div>
+
+                    {/* Statistics stacked number + label */}
+                    {(() => {
+                      const { numberPart, rest } = splitStatText(t(stat.key));
+                      if (numberPart) {
+                        return (
+                          <div className="space-y-2">
+                            <div
+                              className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text"
+                              style={{
+                                backgroundImage:
+                                  'linear-gradient(90deg, rgba(255,255,255,0.95), rgba(132, 0, 255, 0.9))'
+                              }}
+                            >
+                              {numberPart}
+                            </div>
+                            <p className="text-white/95 text-lg font-medium leading-tight group-hover:text-white transition-colors duration-300">
+                              {rest}
+                            </p>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div className="space-y-2">
+                          <p className="text-white/95 text-lg font-medium leading-tight group-hover:text-white transition-colors duration-300">
+                            {t(stat.key)}
+                          </p>
+                        </div>
+                      );
+                    })()}
+
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
