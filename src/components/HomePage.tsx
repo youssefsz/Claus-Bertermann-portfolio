@@ -14,30 +14,37 @@ interface HomePageProps {
  */
 const useParallaxAnimation = (sectionRef: React.RefObject<HTMLDivElement>) => {
   const [scrollY, setScrollY] = useState(0);
-  const [sectionTop, setSectionTop] = useState(0);
+  const [sectionTop, setSectionTop] = useState<number | null>(null);
 
+  // Calculate section position on mount and window resize
   useEffect(() => {
-    const handleScroll = () => {
+    const calculateSectionTop = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const scrollPosition = window.pageYOffset;
-        
-        // Calculate scroll position relative to section start
-        if (sectionTop === 0 && rect.top <= 0) {
-          setSectionTop(scrollPosition + rect.top);
-        }
-        
-        setScrollY(scrollPosition);
+        const absoluteTop = rect.top + scrollPosition;
+        setSectionTop(absoluteTop);
       }
+    };
+
+    calculateSectionTop();
+    window.addEventListener('resize', calculateSectionTop);
+    return () => window.removeEventListener('resize', calculateSectionTop);
+  }, [sectionRef]);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.pageYOffset);
     };
 
     handleScroll(); // Initial calculation
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sectionRef, sectionTop]);
+  }, []);
 
   const animationDistance = 600;
-  const relativeScroll = Math.max(0, scrollY - sectionTop);
+  const relativeScroll = sectionTop !== null ? Math.max(0, scrollY - sectionTop) : 0;
   const animationProgress = Math.min(relativeScroll / animationDistance, 1);
 
   const curtainTranslate = animationProgress * 50;
