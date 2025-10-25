@@ -131,7 +131,6 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             >
               <div className="flex flex-col items-center gap-8">
                 <MagicBento
-                  textAutoHide={true}
                   enableStars={true}
                   enableSpotlight={true}
                   enableBorderGlow={true}
@@ -147,19 +146,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 {/* Gallery navigation button */}
                 <button
                   onClick={() => onNavigate('gallery')}
-                  className="group relative px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:border-white/40 hover:shadow-2xl hover:shadow-white/10"
+                  className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-colors duration-300 whitespace-nowrap hover:scale-105 transition-transform duration-300"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    {t('viewGallery') || 'View Gallery'}
-                    <svg 
-                      className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
+                  {t('viewGallery') || 'View Gallery'}
                 </button>
               </div>
             </div>
