@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import SplitText from './SplitText';
+import SplitText from '../components/SplitText';
 
 export default function ContactPage() {
   const { t } = useLanguage();

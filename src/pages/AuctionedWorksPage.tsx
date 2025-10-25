@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Artwork } from '../types';
-import Masonry from './Masonry';
-import PixelTransition from './imgPixelTransition';
-import SplitText from './SplitText';
+import Masonry from '../components/Masonry';
+import PixelTransition from '../components/imgPixelTransition';
+import SplitText from '../components/SplitText';
 
 /**
  * Loads an image and returns its natural dimensions

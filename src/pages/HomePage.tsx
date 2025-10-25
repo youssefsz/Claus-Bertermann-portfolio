@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { Palette, Trophy, Hammer, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import MagicBento from './MagicBento';
-import SplitText from './SplitText';
-import ImageModal from './ImageModal';
+import MagicBento from '../components/MagicBento';
+import SplitText from '../components/SplitText';
+import ImageModal from '../components/ImageModal';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
