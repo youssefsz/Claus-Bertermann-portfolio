@@ -3,6 +3,7 @@ import { Palette, Trophy, Hammer, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import MagicBento from './MagicBento';
 import SplitText from './SplitText';
+import ImageModal from './ImageModal';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -57,6 +58,7 @@ const useParallaxAnimation = (sectionRef: React.RefObject<HTMLDivElement>) => {
 export default function HomePage({ onNavigate }: HomePageProps) {
   const { t } = useLanguage();
   const [heroScale, setHeroScale] = useState(1);
+  const [modalImage, setModalImage] = useState<{ src: string; alt: string } | null>(null);
   const parallaxSectionRef = useRef<HTMLDivElement>(null);
   const { curtainTranslate, textOpacity, parallaxOffset } = useParallaxAnimation(parallaxSectionRef);
 
@@ -77,6 +79,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
     { icon: Hammer, key: 'stat3' },
     { icon: Users, key: 'stat4' },
   ];
+
+  const handleImageClick = (imageSrc: string, imageAlt: string) => {
+    setModalImage({ src: imageSrc, alt: imageAlt });
+  };
+
+  const closeModal = () => {
+    setModalImage(null);
+  };
 
 
   return (
@@ -140,7 +150,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   spotlightRadius={300}
                   particleCount={12}
                   glowColor="132, 0, 255"
-                  onNavigate={onNavigate}
+                  onImageClick={handleImageClick}
                 />
                 
                 {/* Gallery navigation button */}
@@ -236,6 +246,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           })}
         </div>
       </section>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={!!modalImage}
+        onClose={closeModal}
+        imageSrc={modalImage?.src || ''}
+        imageAlt={modalImage?.alt || ''}
+      />
     </div>
   );
 }

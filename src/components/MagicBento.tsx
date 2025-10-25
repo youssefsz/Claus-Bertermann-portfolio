@@ -22,7 +22,7 @@ export interface BentoProps {
   glowColor?: string;
   clickEffect?: boolean;
   enableMagnetism?: boolean;
-  onNavigate?: (page: string) => void;
+  onImageClick?: (imageSrc: string, imageAlt: string) => void;
 }
 
 const DEFAULT_PARTICLE_COUNT = 12;
@@ -533,7 +533,7 @@ const MagicBento: React.FC<BentoProps> = ({
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true,
-  onNavigate
+  onImageClick
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
@@ -709,7 +709,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   enableMagnetism={enableMagnetism}
                 >
                   <button
-                    onClick={() => onNavigate?.('gallery')}
+                    onClick={() => onImageClick?.(card.image || '', card.title || '')}
                     className="w-full h-full flex flex-col justify-between relative group cursor-pointer"
                   >
                     {card.image && (
@@ -842,7 +842,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 }}
               >
                 <button
-                  onClick={() => onNavigate?.('gallery')}
+                  onClick={() => onImageClick?.(card.image || '', card.title || '')}
                   className="w-full h-full flex flex-col justify-between relative group cursor-pointer"
                 >
                   {card.image && (
