@@ -311,6 +311,118 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      {/* Techniques Section */}
+      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
+        <SplitText
+          text={t('techniques')}
+          className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
+          delay={100}
+          duration={0.6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="center"
+        />
+
+        <div className="space-y-20">
+          {/* Technique 1: Foreground & Background */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('techniqueForeground')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('techniqueForegroundDesc')}
+              </p>
+            </div>
+            <div className="relative group overflow-hidden rounded-3xl">
+              <img
+                src="/compressed-image (2).jpg"
+                alt="Foreground and background technique"
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+          </div>
+
+          {/* Technique 2: Third Dimension */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
+            <div className="space-y-6 lg:order-2">
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('techniqueDimension')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('techniqueDimensionDesc')}
+              </p>
+            </div>
+            <div className="relative group overflow-hidden rounded-3xl lg:order-1">
+              <img
+                src="/compressed-image (3).jpg"
+                alt="Third dimension illusion technique"
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+          </div>
+
+          {/* Technique 3: Scratching the Paint */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('techniqueScratching')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('techniqueScratchingDesc')}
+              </p>
+            </div>
+            <div className="relative group overflow-hidden rounded-3xl">
+              <img
+                src="/compressed-image (4).jpg"
+                alt="Paint scratching technique"
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+          </div>
+
+          {/* Technique 4: Multiple Layers */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
+            <div className="space-y-6 lg:order-2">
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('techniqueLayers')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('techniqueLayersDesc')}
+              </p>
+            </div>
+            <div className="relative group overflow-hidden rounded-3xl lg:order-1">
+              <img
+                src="/compressed-image (5).jpg"
+                alt="Multiple layers superposition technique"
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-24 text-center">
+          <button
+            onClick={() => {
+              onNavigate('gallery');
+              navigate('/gallery');
+            }}
+            className="inline-block bg-white text-black px-12 py-5 rounded-full font-semibold text-xl hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            {t('viewGallery')}
+          </button>
+        </div>
+      </section>
+
       {/* Image Modal */}
       <ImageModal
         isOpen={!!modalImage}
