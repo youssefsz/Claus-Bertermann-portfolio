@@ -1,0 +1,194 @@
+<div class="elementor-loop-container elementor-grid" role="list">
+			<div data-elementor-type="loop-item" data-elementor-id="925" class="elementor elementor-925 e-loop-item e-loop-item-2117 post-2117 product type-product status-publish has-post-thumbnail product_cat-geveild product_cat-artcurial ast-article-single desktop-align-left tablet-align-left mobile-align-left first instock shipping-taxable product-type-simple" data-elementor-post-type="elementor_library" data-custom-edit-handle="1">
+			<div class="elementor-element elementor-element-e557b55 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="e557b55" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-328b43f elementor-widget elementor-widget-theme-post-featured-image elementor-widget-image" data-id="328b43f" data-element_type="widget" data-widget_type="theme-post-featured-image.default">
+				<div class="elementor-widget-container">
+																<a href="https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC.png" data-elementor-open-lightbox="yes" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MjExOCwidXJsIjoiaHR0cHM6XC9cL2NsYXVzYmVydGVybWFubi5jb21cL3dwLWNvbnRlbnRcL3VwbG9hZHNcLzIwMjVcLzA2XC9jbGF1cy1iZXJ0ZXJtYW5uLXBma3MtY2ItMjAyMC1QSDhFQy5wbmcifQ%3D%3D">
+							<img fetchpriority="high" decoding="async" width="600" height="600" src="https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-600x600.png" class="attachment-woocommerce_single size-woocommerce_single wp-image-2118" alt="" srcset="https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-600x600.png 600w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-300x300.png 300w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-1024x1024.png 1024w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-150x150.png 150w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-768x768.png 768w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-1536x1536.png 1536w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-100x100.png 100w, https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC.png 1566w" sizes="(max-width: 600px) 100vw, 600px">								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-d6bd2c2 elementor-widget elementor-widget-heading" data-id="d6bd2c2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">PFKS#CB</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-9ed7211 elementor-widget elementor-widget-woocommerce-product-short-description" data-id="9ed7211" data-element_type="widget" data-widget_type="woocommerce-product-short-description.default">
+				<div class="elementor-widget-container">
+					<div class="woocommerce-product-details__short-description">
+	<p>Oil on Canvas – 130 x 130cm</p>
+<h4><strong>Sold at Artcurial, Paris<br>
+for €10.160</strong></h4>
+</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-78e5b34 elementor-add-to-cart--align-center elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-woocommerce-product-add-to-cart" data-id="78e5b34" data-element_type="widget" data-widget_type="woocommerce-product-add-to-cart.default">
+				<div class="elementor-widget-container">
+					
+		<div class="elementor-add-to-cart elementor-product-simple">
+					<div class="e-loop-add-to-cart-form-container">
+			<form class="cart e-loop-add-to-cart-form">
+				<a href="https://clausbertermann.com/product/pfkscb/" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_2117" data-quantity="1" class="button product_type_simple" data-product_id="2117" data-product_sku="" aria-label="Read more about “PFKS#CB”" rel="nofollow" data-success_message="">Read more</a>	<span id="woocommerce_loop_add_to_cart_link_describedby_2117" class="screen-reader-text">
+			</span>
+			</form>
+		</div>
+				</div>
+
+						</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				<div data-elementor-type="loop-item" data-elementor-id="925" class="elementor elementor-925 e-loop-item e-loop-item-2090 post-2090 product type-product status-publish has-post-thumbnail product_cat-geveild product_cat-sothebys ast-article-single desktop-align-left tablet-align-left mobile-align-left  instock shipping-taxable product-type-simple" data-elementor-post-type="elementor_library" data-custom-edit-handle="1">
+			<div class="elementor-element elementor-element-e557b55 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="e557b55" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-328b43f elementor-widget elementor-widget-theme-post-featured-image elementor-widget-image" data-id="328b43f" data-element_type="widget" data-widget_type="theme-post-featured-image.default">
+				<div class="elementor-widget-container">
+																<a href="https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-scaled.jpeg.webp" data-elementor-open-lightbox="yes" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MjA2OCwidXJsIjoiaHR0cHM6XC9cL2NsYXVzYmVydGVybWFubi5jb21cL3dwLWNvbnRlbnRcL3VwbG9hZHNcLzIwMjVcLzA2XC9GNVRQQ0Itc2NhbGVkLmpwZWcifQ%3D%3D">
+							<img decoding="async" width="600" height="599" data-src="https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-600x599.jpeg.webp" class="attachment-woocommerce_single size-woocommerce_single wp-image-2068 ls-is-cached lazyloaded" alt="" data-srcset="https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-600x599.jpeg.webp 600w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-300x300.jpeg.webp 300w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-1024x1024.jpeg.webp 1024w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-150x150.jpeg.webp 150w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-768x767.jpeg.webp 768w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-1536x1536.jpeg.webp 1536w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-2048x2046.jpeg.webp 2048w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-100x100.jpeg.webp 100w" data-sizes="(max-width: 600px) 100vw, 600px" src="https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-600x599.jpeg.webp" style="--smush-placeholder-width: 600px; --smush-placeholder-aspect-ratio: 600/599;" sizes="(max-width: 600px) 100vw, 600px" srcset="https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-600x599.jpeg.webp 600w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-300x300.jpeg.webp 300w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-1024x1024.jpeg.webp 1024w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-150x150.jpeg.webp 150w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-768x767.jpeg.webp 768w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-1536x1536.jpeg.webp 1536w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-2048x2046.jpeg.webp 2048w,https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-100x100.jpeg.webp 100w">								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-d6bd2c2 elementor-widget elementor-widget-heading" data-id="d6bd2c2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">F5TP#CB</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-9ed7211 elementor-widget elementor-widget-woocommerce-product-short-description" data-id="9ed7211" data-element_type="widget" data-widget_type="woocommerce-product-short-description.default">
+				<div class="elementor-widget-container">
+					<div class="woocommerce-product-details__short-description">
+	<p>Oil on Canvas – 120 x 120cm</p>
+<h4><strong>Sold at Sotheby’s, Cologne<br>
+for €15.240</strong></h4>
+</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-78e5b34 elementor-add-to-cart--align-center elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-woocommerce-product-add-to-cart" data-id="78e5b34" data-element_type="widget" data-widget_type="woocommerce-product-add-to-cart.default">
+				<div class="elementor-widget-container">
+					
+		<div class="elementor-add-to-cart elementor-product-simple">
+					<div class="e-loop-add-to-cart-form-container">
+			<form class="cart e-loop-add-to-cart-form">
+				<a href="https://clausbertermann.com/product/f5tpcb-2/" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_2090" data-quantity="1" class="button product_type_simple" data-product_id="2090" data-product_sku="" aria-label="Read more about “F5TP#CB”" rel="nofollow" data-success_message="">Read more</a>	<span id="woocommerce_loop_add_to_cart_link_describedby_2090" class="screen-reader-text">
+			</span>
+			</form>
+		</div>
+				</div>
+
+						</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				<div data-elementor-type="loop-item" data-elementor-id="925" class="elementor elementor-925 e-loop-item e-loop-item-2030 post-2030 product type-product status-publish has-post-thumbnail product_cat-van-ham product_cat-available product_cat-geveild ast-article-single desktop-align-left tablet-align-left mobile-align-left  instock shipping-taxable product-type-simple" data-elementor-post-type="elementor_library" data-custom-edit-handle="1">
+			<div class="elementor-element elementor-element-e557b55 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="e557b55" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-328b43f elementor-widget elementor-widget-theme-post-featured-image elementor-widget-image" data-id="328b43f" data-element_type="widget" data-widget_type="theme-post-featured-image.default">
+				<div class="elementor-widget-container">
+																<a href="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1.webp" data-elementor-open-lightbox="yes" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MjAzMSwidXJsIjoiaHR0cHM6XC9cL2NsYXVzYmVydGVybWFubi5jb21cL3dwLWNvbnRlbnRcL3VwbG9hZHNcLzIwMjVcLzA1XC9rcjQ0LWNiLTg3N1ZVLTEud2VicCJ9">
+							<img decoding="async" width="600" height="600" src="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp" class="attachment-woocommerce_single size-woocommerce_single wp-image-2031 entered lazyloaded" alt="" data-lazy-srcset="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp 600w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-300x300.webp 300w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-1024x1024.webp 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-150x150.webp 150w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-768x768.webp 768w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-1536x1536.webp 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-100x100.webp 100w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1.webp 1920w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp" data-ll-status="loaded" sizes="(max-width: 600px) 100vw, 600px" srcset="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp 600w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-300x300.webp 300w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-1024x1024.webp 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-150x150.webp 150w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-768x768.webp 768w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-1536x1536.webp 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-100x100.webp 100w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1.webp 1920w"><noscript><img decoding="async" width="600" height="600" src="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp" class="attachment-woocommerce_single size-woocommerce_single wp-image-2031" alt="" srcset="https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp 600w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-300x300.webp 300w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-1024x1024.webp 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-150x150.webp 150w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-768x768.webp 768w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-1536x1536.webp 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-100x100.webp 100w, https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1.webp 1920w" sizes="(max-width: 600px) 100vw, 600px" /></noscript>								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-d6bd2c2 elementor-widget elementor-widget-heading" data-id="d6bd2c2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">KR44#CB</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-9ed7211 elementor-widget elementor-widget-woocommerce-product-short-description" data-id="9ed7211" data-element_type="widget" data-widget_type="woocommerce-product-short-description.default">
+				<div class="elementor-widget-container">
+					<div class="woocommerce-product-details__short-description">
+	<p>Oil on Canvas – 130 x 130cm</p>
+<h4><strong>Sold at Van Ham, Cologne<br> for €11.200</strong></h4>
+</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-78e5b34 elementor-add-to-cart--align-center elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-woocommerce-product-add-to-cart" data-id="78e5b34" data-element_type="widget" data-widget_type="woocommerce-product-add-to-cart.default">
+				<div class="elementor-widget-container">
+					
+		<div class="elementor-add-to-cart elementor-product-simple">
+					<div class="e-loop-add-to-cart-form-container">
+			<form class="cart e-loop-add-to-cart-form">
+				<a href="https://clausbertermann.com/product/kr44cb/" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_2030" data-quantity="1" class="button product_type_simple" data-product_id="2030" data-product_sku="" aria-label="Read more about “KR44#CB”" rel="nofollow" data-success_message="">Read more</a>	<span id="woocommerce_loop_add_to_cart_link_describedby_2030" class="screen-reader-text">
+			</span>
+			</form>
+		</div>
+				</div>
+
+						</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				<div data-elementor-type="loop-item" data-elementor-id="925" class="elementor elementor-925 e-loop-item e-loop-item-2026 post-2026 product type-product status-publish has-post-thumbnail product_cat-geveild product_cat-christies product_cat-available ast-article-single desktop-align-left tablet-align-left mobile-align-left last instock shipping-taxable product-type-simple" data-elementor-post-type="elementor_library" data-custom-edit-handle="1">
+			<div class="elementor-element elementor-element-e557b55 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="e557b55" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-328b43f elementor-widget elementor-widget-theme-post-featured-image elementor-widget-image" data-id="328b43f" data-element_type="widget" data-widget_type="theme-post-featured-image.default">
+				<div class="elementor-widget-container">
+																<a href="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249.png" data-elementor-open-lightbox="yes" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MjA4NiwidXJsIjoiaHR0cHM6XC9cL2NsYXVzYmVydGVybWFubi5jb21cL3dwLWNvbnRlbnRcL3VwbG9hZHNcLzIwMjVcLzA1XC8yMDI0X1BBUl8yMzEwN18wMzE1XzAwMGNsYXVzX2JlcnRlcm1hbm5fcmV0cm9femVuMDcxMjQ5LnBuZyJ9">
+							<img decoding="async" width="600" height="600" src="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png" class="attachment-woocommerce_single size-woocommerce_single wp-image-2086 entered lazyloaded" alt="" data-lazy-srcset="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png 600w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-300x300.png 300w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-1024x1024.png 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-150x150.png 150w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-768x768.png 768w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-1536x1536.png 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-100x100.png 100w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249.png 1802w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png" data-ll-status="loaded" sizes="(max-width: 600px) 100vw, 600px" srcset="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png 600w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-300x300.png 300w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-1024x1024.png 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-150x150.png 150w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-768x768.png 768w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-1536x1536.png 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-100x100.png 100w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249.png 1802w"><noscript><img loading="lazy" decoding="async" width="600" height="600" src="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png" class="attachment-woocommerce_single size-woocommerce_single wp-image-2086" alt="" srcset="https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png 600w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-300x300.png 300w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-1024x1024.png 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-150x150.png 150w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-768x768.png 768w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-1536x1536.png 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-100x100.png 100w, https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249.png 1802w" sizes="(max-width: 600px) 100vw, 600px" /></noscript>								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-d6bd2c2 elementor-widget elementor-widget-heading" data-id="d6bd2c2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Retro Zen</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-9ed7211 elementor-widget elementor-widget-woocommerce-product-short-description" data-id="9ed7211" data-element_type="widget" data-widget_type="woocommerce-product-short-description.default">
+				<div class="elementor-widget-container">
+					<div class="woocommerce-product-details__short-description">
+	<p>Oil on Canvas – 91.1 x 91.1cm</p>
+<h4><strong>Sold at Christie’s, Paris<br> for €18.900</strong></h4>
+</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-78e5b34 elementor-add-to-cart--align-center elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-woocommerce-product-add-to-cart" data-id="78e5b34" data-element_type="widget" data-widget_type="woocommerce-product-add-to-cart.default">
+				<div class="elementor-widget-container">
+					
+		<div class="elementor-add-to-cart elementor-product-simple">
+					<div class="e-loop-add-to-cart-form-container">
+			<form class="cart e-loop-add-to-cart-form">
+				<a href="https://clausbertermann.com/product/retro-zen/" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_2026" data-quantity="1" class="button product_type_simple" data-product_id="2026" data-product_sku="" aria-label="Read more about “Retro Zen”" rel="nofollow" data-success_message="">Read more</a>	<span id="woocommerce_loop_add_to_cart_link_describedby_2026" class="screen-reader-text">
+			</span>
+			</form>
+		</div>
+				</div>
+
+						</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				<div data-elementor-type="loop-item" data-elementor-id="925" class="elementor elementor-925 e-loop-item e-loop-item-2024 post-2024 product type-product status-publish has-post-thumbnail product_cat-geveild product_cat-christies product_cat-available ast-article-single desktop-align-left tablet-align-left mobile-align-left first instock shipping-taxable product-type-simple" data-elementor-post-type="elementor_library" data-custom-edit-handle="1">
+			<div class="elementor-element elementor-element-e557b55 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="e557b55" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-328b43f elementor-widget elementor-widget-theme-post-featured-image elementor-widget-image" data-id="328b43f" data-element_type="widget" data-widget_type="theme-post-featured-image.default">
+				<div class="elementor-widget-container">
+																<a href="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV.webp" data-elementor-open-lightbox="yes" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MjAyNSwidXJsIjoiaHR0cHM6XC9cL2NsYXVzYmVydGVybWFubi5jb21cL3dwLWNvbnRlbnRcL3VwbG9hZHNcLzIwMjVcLzA1XC93aGlzcGVyc2hhZGUtRjM2SVYud2VicCJ9">
+							<img decoding="async" width="600" height="595" src="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp" class="attachment-woocommerce_single size-woocommerce_single wp-image-2025 entered lazyloaded" alt="" data-lazy-srcset="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp 600w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-300x298.webp 300w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-1024x1015.webp 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-150x150.webp 150w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-768x762.webp 768w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-1536x1523.webp 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-100x100.webp 100w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV.webp 1920w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp" data-ll-status="loaded" sizes="(max-width: 600px) 100vw, 600px" srcset="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp 600w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-300x298.webp 300w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-1024x1015.webp 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-150x150.webp 150w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-768x762.webp 768w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-1536x1523.webp 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-100x100.webp 100w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV.webp 1920w"><noscript><img loading="lazy" decoding="async" width="600" height="595" src="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp" class="attachment-woocommerce_single size-woocommerce_single wp-image-2025" alt="" srcset="https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp 600w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-300x298.webp 300w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-1024x1015.webp 1024w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-150x150.webp 150w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-768x762.webp 768w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-1536x1523.webp 1536w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-100x100.webp 100w, https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV.webp 1920w" sizes="(max-width: 600px) 100vw, 600px" /></noscript>								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-d6bd2c2 elementor-widget elementor-widget-heading" data-id="d6bd2c2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Whispershade</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-9ed7211 elementor-widget elementor-widget-woocommerce-product-short-description" data-id="9ed7211" data-element_type="widget" data-widget_type="woocommerce-product-short-description.default">
+				<div class="elementor-widget-container">
+					<div class="woocommerce-product-details__short-description">
+	<p>Oil on Canvas 130 x 130 cm</p>
+<h4><strong>Sold at Christie’s, Paris<br> for €15.120</strong></h4>
+</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-78e5b34 elementor-add-to-cart--align-center elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-woocommerce-product-add-to-cart" data-id="78e5b34" data-element_type="widget" data-widget_type="woocommerce-product-add-to-cart.default">
+				<div class="elementor-widget-container">
+					
+		<div class="elementor-add-to-cart elementor-product-simple">
+					<div class="e-loop-add-to-cart-form-container">
+			<form class="cart e-loop-add-to-cart-form">
+				<a href="https://clausbertermann.com/product/whispershade/" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_2024" data-quantity="1" class="button product_type_simple" data-product_id="2024" data-product_sku="" aria-label="Read more about “Whispershade”" rel="nofollow" data-success_message="">Read more</a>	<span id="woocommerce_loop_add_to_cart_link_describedby_2024" class="screen-reader-text">
+			</span>
+			</form>
+		</div>
+				</div>
+
+						</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				</div>

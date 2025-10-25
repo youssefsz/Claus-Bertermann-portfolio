@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { Artwork } from '../types';
@@ -6,9 +6,26 @@ import Masonry from './Masonry';
 import PixelTransition from './imgPixelTransition';
 import SplitText from './SplitText';
 
+/**
+ * Loads an image and returns its natural dimensions
+ * @param src - Image source URL
+ * @returns Promise that resolves with the image dimensions
+ */
+const loadImageDimensions = (src: string): Promise<{ width: number; height: number }> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      resolve({ width: img.naturalWidth, height: img.naturalHeight });
+    };
+    img.onerror = reject;
+    img.src = src;
+  });
+};
+
 export default function AuctionedWorksPage() {
   const { t } = useLanguage();
   const [selectedWork, setSelectedWork] = useState<Artwork | null>(null);
+  const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
 
   const auctionedWorks: Artwork[] = [
     {
@@ -16,7 +33,7 @@ export default function AuctionedWorksPage() {
       title: 'PFKS#CB',
       dimensions: '130 × 130 cm',
       medium: t('oilOnCanvas'),
-      image: '/compressed-image (2).jpg',
+      image: 'https://clausbertermann.com/wp-content/uploads/2025/06/claus-bertermann-pfks-cb-2020-PH8EC-600x600.png',
       auctionHouse: 'Artcurial, Paris',
       price: '€10,160',
     },
@@ -25,7 +42,7 @@ export default function AuctionedWorksPage() {
       title: 'F5TP#CB',
       dimensions: '120 × 120 cm',
       medium: t('oilOnCanvas'),
-      image: '/compressed-image (3).jpg',
+      image: 'https://clausbertermann.com/wp-content/uploads/2025/06/F5TPCB-600x599.jpeg.webp',
       auctionHouse: 'Sotheby\'s, Cologne',
       price: '€15,240',
     },
@@ -34,7 +51,7 @@ export default function AuctionedWorksPage() {
       title: 'KR44#CB',
       dimensions: '130 × 130 cm',
       medium: t('oilOnCanvas'),
-      image: '/compressed-image (4).jpg',
+      image: 'https://clausbertermann.com/wp-content/uploads/2025/05/kr44-cb-877VU-1-600x600.webp',
       auctionHouse: 'Van Ham, Cologne',
       price: '€11,200',
     },
@@ -43,7 +60,7 @@ export default function AuctionedWorksPage() {
       title: 'Retro Zen',
       dimensions: '91.1 × 91.1 cm',
       medium: t('oilOnCanvas'),
-      image: '/compressed-image (5).jpg',
+      image: 'https://clausbertermann.com/wp-content/uploads/2025/05/2024_PAR_23107_0315_000claus_bertermann_retro_zen071249-600x600.png',
       auctionHouse: 'Christie\'s, Paris',
       price: '€18,900',
     },
@@ -52,11 +69,35 @@ export default function AuctionedWorksPage() {
       title: 'Whispershade',
       dimensions: '130 × 130 cm',
       medium: t('oilOnCanvas'),
-      image: '/compressed-image (6).jpg',
+      image: 'https://clausbertermann.com/wp-content/uploads/2025/05/whispershade-F36IV-600x595.webp',
       auctionHouse: 'Christie\'s, Paris',
       price: '€15,120',
     },
   ];
+
+  // Load all image dimensions on mount
+  useEffect(() => {
+    const loadAllDimensions = async () => {
+      const dimensionsMap: Record<string, { width: number; height: number }> = {};
+      
+      await Promise.all(
+        auctionedWorks.map(async (work) => {
+          try {
+            const dimensions = await loadImageDimensions(work.image);
+            dimensionsMap[work.id] = dimensions;
+          } catch (error) {
+            console.error(`Failed to load dimensions for ${work.title}:`, error);
+            // Fallback to default aspect ratio if image fails to load
+            dimensionsMap[work.id] = { width: 600, height: 600 };
+          }
+        })
+      );
+      
+      setImageDimensions(dimensionsMap);
+    };
+
+    loadAllDimensions();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Custom component for artwork with pixel transition
   const ArtworkWithTransition = ({ work }: { work: Artwork }) => (
@@ -135,14 +176,26 @@ export default function AuctionedWorksPage() {
   );
 
   // Transform auction works to match Masonry component interface
-  const masonryItems = auctionedWorks.map(work => ({
-    id: work.id,
-    img: work.image,
-    url: '#',
-    height: 400 + Math.random() * 200, // Vary heights for masonry effect
-    artwork: work, // Store the full artwork data for modal display
-    customComponent: <ArtworkWithTransition work={work} />
-  }));
+  // Calculate height based on actual image aspect ratio for a standard base width of 400px
+  const masonryItems = auctionedWorks.map(work => {
+    const dimensions = imageDimensions[work.id];
+    let height = 400; // Default height
+    
+    if (dimensions) {
+      // Calculate height to maintain aspect ratio at base width of 400px
+      const aspectRatio = dimensions.height / dimensions.width;
+      height = 400 * aspectRatio;
+    }
+    
+    return {
+      id: work.id,
+      img: work.image,
+      url: '#',
+      height: height,
+      artwork: work, // Store the full artwork data for modal display
+      customComponent: <ArtworkWithTransition work={work} />
+    };
+  });
 
   return (
     <div className="min-h-screen bg-black pt-32 pb-24 px-6 md:px-12">
@@ -172,6 +225,7 @@ export default function AuctionedWorksPage() {
             hoverScale={0.95}
             blurToFocus={true}
             colorShiftOnHover={false}
+            delayAnimation={700}
             onItemClick={(item) => {
               const artwork = (item as any).artwork;
               if (artwork) {

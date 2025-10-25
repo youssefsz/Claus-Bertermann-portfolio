@@ -45,12 +45,15 @@ const preloadImages = async (urls: string[]): Promise<void> => {
   );
 };
 
-interface Item {
+export interface Item {
   id: string;
   img: string;
   url: string;
   height: number;
   customComponent?: React.ReactNode;
+  title?: string;
+  medium?: string;
+  dimensions?: string;
 }
 
 interface GridItem extends Item {
@@ -71,6 +74,7 @@ interface MasonryProps {
   blurToFocus?: boolean;
   colorShiftOnHover?: boolean;
   onItemClick?: (item: Item) => void;
+  delayAnimation?: number; // Delay in milliseconds before starting the animation
 }
 
 const Masonry: React.FC<MasonryProps> = ({
@@ -83,7 +87,8 @@ const Masonry: React.FC<MasonryProps> = ({
   hoverScale = 0.95,
   blurToFocus = true,
   colorShiftOnHover = false,
-  onItemClick
+  onItemClick,
+  delayAnimation = 0
 }) => {
   const columns = useMedia(
     ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
@@ -94,6 +99,7 @@ const Masonry: React.FC<MasonryProps> = ({
   const [containerRef, { width }] = useMeasure<HTMLDivElement>();
   const [imagesReady, setImagesReady] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
+  const [canAnimate, setCanAnimate] = useState(delayAnimation === 0);
 
   const getInitialPosition = (item: GridItem) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
@@ -132,6 +138,16 @@ const Masonry: React.FC<MasonryProps> = ({
     });
   }, [items]);
 
+  // Handle animation delay
+  useEffect(() => {
+    if (delayAnimation > 0) {
+      const timer = setTimeout(() => {
+        setCanAnimate(true);
+      }, delayAnimation);
+      return () => clearTimeout(timer);
+    }
+  }, [delayAnimation]);
+
   const grid = useMemo<GridItem[]>(() => {
     if (!width) {
       console.log('No width available for grid calculation');
@@ -165,7 +181,7 @@ const Masonry: React.FC<MasonryProps> = ({
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
-    if (!imagesReady) return;
+    if (!imagesReady || !canAnimate) return;
 
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
@@ -177,6 +193,7 @@ const Masonry: React.FC<MasonryProps> = ({
           selector,
           {
             opacity: 0,
+            visibility: 'visible',
             x: start.x,
             y: start.y,
             width: item.w,
@@ -185,6 +202,7 @@ const Masonry: React.FC<MasonryProps> = ({
           },
           {
             opacity: 1,
+            visibility: 'visible',
             ...animProps,
             ...(blurToFocus && { filter: 'blur(0px)' }),
             duration: 0.8,
@@ -195,6 +213,7 @@ const Masonry: React.FC<MasonryProps> = ({
       } else {
         gsap.to(selector, {
           ...animProps,
+          visibility: 'visible',
           duration,
           ease,
           overwrite: 'auto'
@@ -203,7 +222,7 @@ const Masonry: React.FC<MasonryProps> = ({
     });
 
     hasMounted.current = true;
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [grid, imagesReady, canAnimate, stagger, animateFrom, blurToFocus, duration, ease]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
     if (scaleOnHover) {
@@ -244,7 +263,11 @@ const Masonry: React.FC<MasonryProps> = ({
           key={item.id}
           data-key={item.id}
           className="absolute box-content"
-          style={{ willChange: 'transform, width, height, opacity' }}
+          style={{ 
+            willChange: 'transform, width, height, opacity',
+            opacity: 0,
+            visibility: 'hidden'
+          }}
           onClick={() => onItemClick ? onItemClick(item) : window.open(item.url, '_blank', 'noopener')}
           onMouseEnter={e => handleMouseEnter(item.id, e.currentTarget)}
           onMouseLeave={e => handleMouseLeave(item.id, e.currentTarget)}
