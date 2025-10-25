@@ -209,3 +209,97 @@
     animation: paintingReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
+
+/* Parallax Split-Curtain Animation Styles */
+.parallax-section-container {
+  position: relative;
+}
+
+.sticky-animation-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.parallax-revealed-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  will-change: transform;
+  padding: 0 2rem;
+}
+
+.split-curtain {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: #000000;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.split-curtain.top {
+  top: 0;
+  align-items: flex-end;
+}
+
+.split-curtain.bottom {
+  bottom: 0;
+  align-items: flex-start;
+}
+
+.parallax-curtain-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(4rem, 18vw, 12rem);
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+  will-change: opacity;
+  user-select: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.split-curtain.top .parallax-curtain-text {
+  clip-path: inset(0 0 50% 0);
+  transform: translateY(50.5%);
+}
+
+.split-curtain.bottom .parallax-curtain-text {
+  clip-path: inset(50% 0 0 0);
+  transform: translateY(-50.5%);
+}
+
+.parallax-scroll-spacer {
+  height: calc(600px + 50vh);
+}
+
+@media (max-width: 768px) {
+  .parallax-curtain-text {
+    font-size: clamp(2.5rem, 15vw, 8rem);
+  }
+  
+  .parallax-wrapper {
+    padding: 0 1rem;
+  }
+}

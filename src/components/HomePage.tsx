@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Palette, Trophy, Hammer, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import MagicBento from './MagicBento';
@@ -8,9 +8,50 @@ interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
+/**
+ * Custom hook for parallax split-curtain scroll animation
+ * Tracks scroll position and calculates animation values for curtain reveal effect
+ */
+const useParallaxAnimation = (sectionRef: React.RefObject<HTMLDivElement>) => {
+  const [scrollY, setScrollY] = useState(0);
+  const [sectionTop, setSectionTop] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrollPosition = window.pageYOffset;
+        
+        // Calculate scroll position relative to section start
+        if (sectionTop === 0 && rect.top <= 0) {
+          setSectionTop(scrollPosition + rect.top);
+        }
+        
+        setScrollY(scrollPosition);
+      }
+    };
+
+    handleScroll(); // Initial calculation
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sectionRef, sectionTop]);
+
+  const animationDistance = 600;
+  const relativeScroll = Math.max(0, scrollY - sectionTop);
+  const animationProgress = Math.min(relativeScroll / animationDistance, 1);
+
+  const curtainTranslate = animationProgress * 50;
+  const textOpacity = 1 - Math.min(relativeScroll / (animationDistance / 2), 1);
+  const parallaxOffset = (1 - animationProgress) * (typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
+
+  return { curtainTranslate, textOpacity, parallaxOffset };
+};
+
 export default function HomePage({ onNavigate }: HomePageProps) {
   const { t } = useLanguage();
   const [heroScale, setHeroScale] = useState(1);
+  const parallaxSectionRef = useRef<HTMLDivElement>(null);
+  const { curtainTranslate, textOpacity, parallaxOffset } = useParallaxAnimation(parallaxSectionRef);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,39 +113,57 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black z-[5]" />
       </section>
 
-      {/* Background decorative elements - removed problematic absolute positioning */}
+      {/* Parallax Split-Curtain Animation Section */}
+      <div className="parallax-section-container" ref={parallaxSectionRef}>
+        <div className="sticky-animation-container">
+          {/* Revealed content underneath the curtains */}
+          <div className="parallax-revealed-content">
+            <div
+              className="parallax-wrapper"
+              style={{ transform: `translateY(${parallaxOffset}px)` }}
+            >
+              <div className="flex justify-center">
+                <MagicBento
+                  textAutoHide={true}
+                  enableStars={true}
+                  enableSpotlight={true}
+                  enableBorderGlow={true}
+                  enableTilt={true}
+                  enableMagnetism={true}
+                  clickEffect={true}
+                  spotlightRadius={300}
+                  particleCount={12}
+                  glowColor="132, 0, 255"
+                  onNavigate={onNavigate}
+                />
+              </div>
+            </div>
+          </div>
 
-      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <SplitText
-          text={t('paintings')}
-          className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-        />
+          {/* Top curtain */}
+          <div
+            className="split-curtain top"
+            style={{ transform: `translateY(-${curtainTranslate}vh)` }}
+          >
+            <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+              {t('paintings').toUpperCase()}
+            </h1>
+          </div>
 
-        <div className="flex justify-center">
-          <MagicBento 
-            textAutoHide={true}
-            enableStars={true}
-            enableSpotlight={true}
-            enableBorderGlow={true}
-            enableTilt={true}
-            enableMagnetism={true}
-            clickEffect={true}
-            spotlightRadius={300}
-            particleCount={12}
-            glowColor="132, 0, 255"
-            onNavigate={onNavigate}
-          />
+          {/* Bottom curtain */}
+          <div
+            className="split-curtain bottom"
+            style={{ transform: `translateY(${curtainTranslate}vh)` }}
+          >
+            <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+              {t('paintings').toUpperCase()}
+            </h1>
+          </div>
         </div>
-      </section>
+
+        {/* Scroll spacer to control animation duration */}
+        <div className="parallax-scroll-spacer"></div>
+      </div>
 
       <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
         <SplitText
