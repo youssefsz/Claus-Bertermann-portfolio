@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 interface NavigationProps {
@@ -36,7 +36,6 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     { id: 'home', label: t('home') },
     { id: 'auctioned', label: t('auctionedWorks') },
     { id: 'gallery', label: t('gallery') },
-    { id: 'press', label: t('press') },
     { id: 'charity', label: t('charity') },
     { id: 'contact', label: t('contact') },
   ];

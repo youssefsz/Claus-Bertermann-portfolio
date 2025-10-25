@@ -5,7 +5,6 @@ import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import AuctionedWorksPage from './pages/AuctionedWorksPage';
 import GalleryPage from './pages/GalleryPage';
-import PressPage from './pages/PressPage';
 import CharityPage from './pages/CharityPage';
 import ContactPage from './pages/ContactPage';
 import Ribbons from './components/Ribbons';
@@ -75,7 +74,6 @@ function AppContent() {
           <Route path="/home" element={<HomePage onNavigate={handleNavigate} />} />
           <Route path="/auctioned" element={<AuctionedWorksPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/press" element={<PressPage />} />
           <Route path="/charity" element={<CharityPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

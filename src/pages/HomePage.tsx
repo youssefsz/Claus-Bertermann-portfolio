@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import MagicBento from '../components/MagicBento';
 import SplitText from '../components/SplitText';
 import ImageModal from '../components/ImageModal';
+import { motion } from 'framer-motion';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -106,19 +107,32 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <motion.div 
+      className="min-h-screen relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div
+        <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
           style={{
             backgroundImage: `url('/compressed-image (6).jpg')`,
             transform: `scale(${heroScale})`,
           }}
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
-        </div>
+        </motion.div>
 
-        <div className="relative z-10 text-center px-6">
+        <motion.div 
+          className="relative z-10 text-center px-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+        >
           <SplitText
             text="Claus Bertermann"
             className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
@@ -132,14 +146,24 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             rootMargin="-100px"
             textAlign="center"
           />
-          <p className="text-lg md:text-xl lg:text-2xl text-white/90 tracking-[0.3em] font-light animate-fadeInDelay">
+          <motion.p 
+            className="text-lg md:text-xl lg:text-2xl text-white/90 tracking-[0.3em] font-light"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+          >
             {t('subtitle')}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+        >
           <div className="mouse-scroll-wheel" />
-        </div>
+        </motion.div>
 
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black z-[5]" />
       </section>
@@ -168,15 +192,21 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 />
                 
                 {/* Gallery navigation button */}
-                <button
+                <motion.button
                   onClick={() => {
                     onNavigate('gallery');
                     navigate('/gallery');
                   }}
-                  className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-colors duration-300 whitespace-nowrap hover:scale-105 transition-transform duration-300"
+                  className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-colors duration-300 whitespace-nowrap"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                 >
                   {t('viewGallery') || 'View Gallery'}
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>
@@ -207,27 +237,42 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       </div>
 
       <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <SplitText
-          text={t('biography')}
-          className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <SplitText
+            text={t('biography')}
+            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-          <button
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.button
             onClick={() => {
               onNavigate('gallery');
               navigate('/gallery');
             }}
             className="group relative overflow-hidden rounded-3xl cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <img
               src="/compressed-image (6).jpg"
@@ -235,18 +280,44 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </button>
+          </motion.button>
 
-          <div className="flex flex-col justify-center">
+          <motion.div 
+            className="flex flex-col justify-center"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <div className="space-y-6 text-white/80 text-lg leading-relaxed font-light">
-              <p>{t('bioParagraph1')}</p>
-              <p>{t('bioParagraph2')}</p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                {t('bioParagraph1')}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                {t('bioParagraph2')}
+              </motion.p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Enhanced Statistics Section (original layout, colored numbers) */}
-        <div className="relative">
+        <motion.div 
+          className="relative"
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {/* Background decorative elements */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl" />
           <div className="absolute -top-8 -left-8 w-24 h-24 bg-white/5 rounded-full blur-xl" />
@@ -257,11 +328,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
                     className="group relative text-center"
-                    style={{
-                      animation: `fadeInUp 0.8s ease-out ${index * 0.15}s both`,
+                    initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: index * 0.1, 
+                      ease: "easeOut" 
+                    }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.3, ease: "easeOut" }
                     }}
                   >
                     {/* Icon container */}
@@ -278,149 +358,282 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                       if (numberPart) {
                         return (
                           <div className="space-y-2">
-                            <div
+                            <motion.div
                               className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text"
                               style={{
                                 backgroundImage:
                                   'linear-gradient(90deg, rgba(255,255,255,0.95), rgba(132, 0, 255, 0.9))'
                               }}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              transition={{ 
+                                duration: 0.5, 
+                                delay: index * 0.1 + 0.3, 
+                                ease: "easeOut" 
+                              }}
+                              viewport={{ once: true }}
                             >
                               {numberPart}
-                            </div>
-                            <p className="text-white/95 text-lg font-medium leading-tight group-hover:text-white transition-colors duration-300">
+                            </motion.div>
+                            <motion.p 
+                              className="text-white/95 text-lg font-medium leading-tight group-hover:text-white transition-colors duration-300"
+                              initial={{ opacity: 0, y: 10 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ 
+                                duration: 0.4, 
+                                delay: index * 0.1 + 0.5, 
+                                ease: "easeOut" 
+                              }}
+                              viewport={{ once: true }}
+                            >
                               {rest}
-                            </p>
+                            </motion.p>
                           </div>
                         );
                       }
                       return (
                         <div className="space-y-2">
-                          <p className="text-white/95 text-lg font-medium leading-tight group-hover:text-white transition-colors duration-300">
+                          <motion.p 
+                            className="text-white/95 text-lg font-medium leading-tight group-hover:text-white transition-colors duration-300"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ 
+                              duration: 0.4, 
+                              delay: index * 0.1 + 0.3, 
+                              ease: "easeOut" 
+                            }}
+                            viewport={{ once: true }}
+                          >
                             {t(stat.key)}
-                          </p>
+                          </motion.p>
                         </div>
                       );
                     })()}
 
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
+                    <motion.div 
+                      className="w-12 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: index * 0.1 + 0.7, 
+                        ease: "easeOut" 
+                      }}
+                      viewport={{ once: true }}
+                    />
+                  </motion.div>
                 );
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Techniques Section */}
       <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <SplitText
-          text={t('techniques')}
-          className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <SplitText
+            text={t('techniques')}
+            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </motion.div>
 
         <div className="space-y-20">
           {/* Technique 1: Foreground & Background */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-4xl md:text-5xl font-bold text-white">
                 {t('techniqueForeground')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
                 {t('techniqueForegroundDesc')}
               </p>
-            </div>
-            <div className="relative group overflow-hidden rounded-3xl">
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
               <img
                 src="/compressed-image (2).jpg"
                 alt="Foreground and background technique"
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Technique 2: Third Dimension */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
-            <div className="space-y-6 lg:order-2">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="space-y-6 lg:order-2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-4xl md:text-5xl font-bold text-white">
                 {t('techniqueDimension')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
                 {t('techniqueDimensionDesc')}
               </p>
-            </div>
-            <div className="relative group overflow-hidden rounded-3xl lg:order-1">
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl lg:order-1"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
               <img
                 src="/compressed-image (3).jpg"
                 alt="Third dimension illusion technique"
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Technique 3: Scratching the Paint */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-4xl md:text-5xl font-bold text-white">
                 {t('techniqueScratching')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
                 {t('techniqueScratchingDesc')}
               </p>
-            </div>
-            <div className="relative group overflow-hidden rounded-3xl">
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
               <img
                 src="/compressed-image (4).jpg"
                 alt="Paint scratching technique"
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Technique 4: Multiple Layers */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
-            <div className="space-y-6 lg:order-2">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="space-y-6 lg:order-2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-4xl md:text-5xl font-bold text-white">
                 {t('techniqueLayers')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
                 {t('techniqueLayersDesc')}
               </p>
-            </div>
-            <div className="relative group overflow-hidden rounded-3xl lg:order-1">
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl lg:order-1"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
               <img
                 src="/compressed-image (5).jpg"
                 alt="Multiple layers superposition technique"
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Call to Action */}
-        <div className="mt-24 text-center">
-          <button
+        <motion.div 
+          className="mt-24 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.button
             onClick={() => {
               onNavigate('gallery');
               navigate('/gallery');
             }}
             className="inline-block bg-white text-black px-12 py-5 rounded-full font-semibold text-xl hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             {t('viewGallery')}
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </section>
 
       {/* Image Modal */}
@@ -430,7 +643,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         imageSrc={modalImage?.src || ''}
         imageAlt={modalImage?.alt || ''}
       />
-    </div>
+    </motion.div>
   );
 }
 
