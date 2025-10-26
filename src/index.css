@@ -302,9 +302,9 @@
 .sticky-animation-container {
   position: sticky;
   top: 0;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   z-index: 10;
 }
 
@@ -312,13 +312,35 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
   background: transparent;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  padding: 4rem 0;
+}
+
+/* New styles for separated revealed content */
+.parallax-revealed-content-separated {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.parallax-animation-only {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
 }
 
 .parallax-wrapper {

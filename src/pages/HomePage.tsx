@@ -205,44 +205,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       {/* Parallax Split-Curtain Animation Section */}
       <div className="parallax-section-container" ref={parallaxSectionRef}>
         <div className="sticky-animation-container">
-          {/* Revealed content underneath the curtains */}
-          <div className="parallax-revealed-content">
-            <div
-              className="parallax-wrapper"
-              style={{ transform: `translateY(${parallaxOffset}px)` }}
-            >
-              <div className="flex flex-col items-center gap-8">
-                <MagicBento
-                  enableStars={true}
-                  enableSpotlight={true}
-                  enableBorderGlow={true}
-                  enableTilt={true}
-                  enableMagnetism={true}
-                  clickEffect={true}
-                  spotlightRadius={300}
-                  particleCount={12}
-                  glowColor="132, 0, 255"
-                  onImageClick={handleImageClick}
-                />
-                
-                {/* Gallery navigation button */}
-                <InteractiveHoverButton
-                  onClick={() => {
-                    onNavigate('gallery');
-                    navigate('/gallery');
-                  }}
-                  className="px-8 py-4 text-lg whitespace-nowrap"
-                >
-                  {t('viewGallery') || 'View Gallery'}
-                </InteractiveHoverButton>
-              </div>
-            </div>
-          </div>
-
           {/* Top curtain */}
           <div
             className="split-curtain top"
-            style={{ transform: `translateY(-${curtainTranslate}vh)` }}
+            style={{ 
+              transform: `translateY(-${curtainTranslate}vh)`,
+              opacity: curtainTranslate >= 50 ? 0 : 1,
+              pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
+              zIndex: 2
+            }}
           >
             <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
               {t('paintings').toUpperCase()}
@@ -252,7 +223,12 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           {/* Bottom curtain */}
           <div
             className="split-curtain bottom"
-            style={{ transform: `translateY(${curtainTranslate}vh)` }}
+            style={{ 
+              transform: `translateY(${curtainTranslate}vh)`,
+              opacity: curtainTranslate >= 50 ? 0 : 1,
+              pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
+              zIndex: 2
+            }}
           >
             <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
               {t('paintings').toUpperCase()}
@@ -262,6 +238,45 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
         {/* Scroll spacer to control animation duration */}
         <div className="parallax-scroll-spacer"></div>
+      </div>
+
+      {/* Separate revealed content section that moves up during scroll */}
+      <div 
+        className="parallax-revealed-content-separated"
+        style={{ 
+          transform: `translateY(${parallaxOffset * 0.5}px)`,
+          marginTop: '-120vh',
+          position: 'relative',
+          zIndex: curtainTranslate >= 50 ? 15 : 5
+        }}
+      >
+        <div className="parallax-wrapper">
+          <div className="flex flex-col items-center gap-8">
+            <MagicBento
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={true}
+              enableMagnetism={true}
+              clickEffect={true}
+              spotlightRadius={300}
+              particleCount={12}
+              glowColor="132, 0, 255"
+              onImageClick={handleImageClick}
+            />
+            
+            {/* Gallery navigation button */}
+            <InteractiveHoverButton
+              onClick={() => {
+                onNavigate('gallery');
+                navigate('/gallery');
+              }}
+              className="px-8 py-4 text-lg whitespace-nowrap"
+            >
+              {t('viewGallery') || 'View Gallery'}
+            </InteractiveHoverButton>
+          </div>
+        </div>
       </div>
 
       <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
