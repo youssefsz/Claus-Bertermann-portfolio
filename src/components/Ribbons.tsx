@@ -51,6 +51,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
     gl.canvas.style.height = '100vh';
     gl.canvas.style.pointerEvents = 'none';
     gl.canvas.style.zIndex = '10';
+    gl.canvas.style.overflow = 'hidden';
     document.body.appendChild(gl.canvas);
 
     const scene = new Transform();
@@ -287,7 +288,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
     backgroundColor
   ]);
 
-  return <div ref={containerRef} className="fixed inset-0 pointer-events-none" style={{ zIndex: 10 }} />;
+  return <div ref={containerRef} className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 10 }} />;
 };
 
 export default Ribbons;

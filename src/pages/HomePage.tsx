@@ -264,7 +264,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="parallax-scroll-spacer"></div>
       </div>
 
-      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
+      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -287,7 +287,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           />
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-20 overflow-hidden">
           {/* Biography 1: Artistic Journey & Influences */}
           <motion.div 
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
@@ -538,7 +538,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Techniques Section */}
-      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto">
+      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -561,7 +561,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           />
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-20 overflow-hidden">
           {/* Technique 1: Foreground & Background */}
           <motion.div 
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
