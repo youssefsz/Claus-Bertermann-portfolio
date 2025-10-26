@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import AuctionedWorksPage from './pages/AuctionedWorksPage';
 import GalleryPage from './pages/GalleryPage';
@@ -95,6 +96,9 @@ function AppContent() {
       <div className="relative z-10 mt-20">
         <Footer onNavigate={handleNavigate} />
       </div>
+
+      {/* Scroll to Top Button - appears on all pages */}
+      <ScrollToTop />
     </div>
   );
 }
