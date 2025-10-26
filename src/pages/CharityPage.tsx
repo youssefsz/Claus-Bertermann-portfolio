@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import SplitText from '../components/SplitText';
+import { InteractiveHoverButton } from '../components/InteractiveHoverButton';
 import { motion } from 'framer-motion';
 
 export default function CharityPage() {
@@ -118,16 +119,12 @@ export default function CharityPage() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="pt-4"
               >
-                <motion.a
-                  href="https://art4kidsbykdb.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-all duration-300 hover:scale-105"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <InteractiveHoverButton
+                  onClick={() => window.open('https://art4kidsbykdb.com', '_blank', 'noopener,noreferrer')}
+                  className="px-8 py-4 text-lg"
                 >
                   {t('learnMoreAboutProject')}
-                </motion.a>
+                </InteractiveHoverButton>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -257,18 +254,24 @@ export default function CharityPage() {
                 rootMargin="-50px"
                 tag="h3"
               />
-              <motion.a 
-                href="#contact" 
-                className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-colors duration-300 whitespace-nowrap"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                {t('contact')}
-              </motion.a>
+                <InteractiveHoverButton
+                  onClick={() => {
+                    const contactElement = document.getElementById('contact');
+                    if (contactElement) {
+                      contactElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="px-8 py-4 text-lg whitespace-nowrap"
+                >
+                  {t('contact')}
+                </InteractiveHoverButton>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>

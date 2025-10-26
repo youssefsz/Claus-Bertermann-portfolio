@@ -7,6 +7,7 @@ import MagicBento from '../components/MagicBento';
 import SplitText from '../components/SplitText';
 import ImageModal from '../components/ImageModal';
 import ImageMagnifier from '../components/ImageMagnifier';
+import { InteractiveHoverButton } from '../components/InteractiveHoverButton';
 import { motion } from 'framer-motion';
 
 interface HomePageProps {
@@ -225,21 +226,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 />
                 
                 {/* Gallery navigation button */}
-                <motion.button
+                <InteractiveHoverButton
                   onClick={() => {
                     onNavigate('gallery');
                     navigate('/gallery');
                   }}
-                  className="inline-block bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-colors duration-300 whitespace-nowrap"
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="px-8 py-4 text-lg whitespace-nowrap"
                 >
                   {t('viewGallery') || 'View Gallery'}
-                </motion.button>
+                </InteractiveHoverButton>
               </div>
             </div>
           </div>
@@ -748,21 +743,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          <motion.button
+          <InteractiveHoverButton
             onClick={() => {
               onNavigate('gallery');
               navigate('/gallery');
             }}
-            className="inline-block bg-white text-black px-12 py-5 rounded-full font-semibold text-xl hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="px-12 py-5 text-xl shadow-lg hover:shadow-xl"
           >
             {t('viewGallery')}
-          </motion.button>
+          </InteractiveHoverButton>
         </motion.div>
       </section>
 

@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import SplitText from '../components/SplitText';
-import { motion } from 'framer-motion';
+import { InteractiveHoverButton } from '../components/InteractiveHoverButton';
 
 export default function ContactPage() {
   const { t, remountKey } = useLanguage();
@@ -208,15 +208,13 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <motion.button
+                <InteractiveHoverButton
                   type="submit"
                   disabled={isSubmitted}
-                  className="px-8 py-4 bg-white text-black font-semibold text-lg rounded-full hover:bg-white/90 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {t('send')}
-                </motion.button>
+                </InteractiveHoverButton>
               </div>
             </form>
           </div>
