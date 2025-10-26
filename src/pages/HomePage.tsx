@@ -8,7 +8,6 @@ import SplitText from '../components/SplitText';
 import ImageModal from '../components/ImageModal';
 import ImageMagnifier from '../components/ImageMagnifier';
 import { InteractiveHoverButton } from '../components/InteractiveHoverButton';
-import { SparklesText } from '../components/SparklesText';
 import { motion } from 'framer-motion';
 
 interface HomePageProps {
@@ -167,34 +166,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
         >
-          <div className="relative">
-            <SplitText
-              key={`hero-${remountKey}`}
-              text="Claus Bertermann"
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
-              delay={100}
-              duration={0.8}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 60 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />
-            <div className="absolute inset-0 pointer-events-none">
-              <SparklesText
-                className="text-6xl md:text-8xl lg:text-9xl font-bold text-transparent mb-6 tracking-tight"
-                sparklesCount={15}
-                colors={{
-                  first: "#9E7AFF",
-                  second: "#FE8BBB"
-                }}
-              >
-                Claus Bertermann
-              </SparklesText>
-            </div>
-          </div>
+          <SplitText
+            key={`hero-${remountKey}`}
+            text="Claus Bertermann"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
+            delay={100}
+            duration={0.8}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 60 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
           <motion.p 
             className="text-lg md:text-xl lg:text-2xl text-white/90 tracking-[0.3em] font-light"
             initial={{ opacity: 0, y: 30 }}
