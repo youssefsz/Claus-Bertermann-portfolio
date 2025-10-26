@@ -230,7 +230,7 @@ export default function AuctionedWorksPage() {
         <SplitText
           key={`auctioned-${remountKey}`}
           text={t('auctionedWorks')}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight font-mono-title"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight"
           delay={100}
           duration={0.6}
           ease="power3.out"
@@ -285,7 +285,7 @@ export default function AuctionedWorksPage() {
               />
               <div className="text-white space-y-6">
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4 font-mono-title">{selectedWork.title}</h2>
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4">{selectedWork.title}</h2>
                   <p className="text-xl text-white/90 mb-2">{selectedWork.medium}</p>
                   <p className="text-lg text-white/80 mb-6">{selectedWork.dimensions}</p>
                 </div>
@@ -297,7 +297,7 @@ export default function AuctionedWorksPage() {
                     <p className="text-white/80 text-sm mb-1">
                       {t('soldAt')} {selectedWork.auctionHouse}
                     </p>
-                    <p className="text-3xl font-bold text-white font-mono-title">{selectedWork.price}</p>
+                    <p className="text-3xl font-bold text-white">{selectedWork.price}</p>
                   </div>
                 </div>
               </div>

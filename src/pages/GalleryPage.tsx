@@ -462,7 +462,7 @@ export default function GalleryPage() {
         <SplitText
           key={`gallery-${remountKey}`}
           text={t('gallery')}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight font-mono-title"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight"
           delay={100}
           duration={0.6}
           ease="power3.out"
@@ -543,7 +543,7 @@ export default function GalleryPage() {
               </div>
             </div>
             <div className="flex-1 max-w-md text-white space-y-4">
-              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight font-mono-title">
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
                 {selectedImage.title}
               </h2>
               <div className="space-y-2 text-lg">

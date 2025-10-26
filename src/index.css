@@ -35,12 +35,6 @@
 }
 
 @layer utilities {
-  /* Monospace font utility for titles */
-  .font-mono-title {
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: 0.05em;
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -359,7 +353,6 @@
 }
 
 .parallax-curtain-text {
-  font-family: 'Courier New', Courier, monospace;
   font-size: clamp(4rem, 18vw, 12rem);
   font-weight: bold;
   margin: 0;
