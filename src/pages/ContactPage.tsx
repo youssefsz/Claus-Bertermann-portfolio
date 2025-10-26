@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Mail, Phone, MapPin, Globe, Send } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import SplitText from '../components/SplitText';
+import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   const { t } = useLanguage();
@@ -64,7 +65,7 @@ export default function ContactPage() {
             </div>
             <div className="text-white">
               <p>
-                <span className="font-semibold">Phone:</span>{' '}
+                <span className="font-semibold">{t('phone')}:</span>{' '}
                 <a href="tel:+32477528191" className="hover:text-white/80 transition-colors">
                   {t('phoneText')}
                 </a>
@@ -80,7 +81,7 @@ export default function ContactPage() {
             </div>
             <div className="text-white">
               <p>
-                <span className="font-semibold">Email:</span>{' '}
+                <span className="font-semibold">{t('email')}:</span>{' '}
                 <a href="mailto:mail@clausbertermann.com" className="hover:text-white/80 transition-colors">
                   mail@clausbertermann.com
                 </a>
@@ -96,7 +97,7 @@ export default function ContactPage() {
             </div>
             <div className="text-white">
               <p>
-                <span className="font-semibold">Website</span>{' '}
+                <span className="font-semibold">{t('website')}</span>{' '}
                 <a href="#" className="hover:text-white/80 transition-colors">
                   {t('websiteText')}
                 </a>
@@ -181,13 +182,15 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitted}
-                  className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-8 py-4 bg-white text-black font-semibold text-lg rounded-full hover:bg-white/90 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {t('send')}
-                </button>
+                </motion.button>
               </div>
             </form>
           </div>
