@@ -5,6 +5,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  remountKey: number;
 }
 
 const translations = {
@@ -53,6 +54,7 @@ const translations = {
     typesCausesImpactText: 'There are over 800 different types of inherited metabolic diseases, each caused by the malfunction of a specific enzyme. Because different enzymes process different substances, each disease has its own unique effects on the body. The underlying genetic mutation is typically inherited from both parents.\n\nThe symptoms of metabolic diseases can vary widely, even among individuals with the same condition. Some people experience mild symptoms, while others face severe complications affecting multiple organs. Diagnosis and treatment require a team of specialists, including pediatricians, neurologists, geneticists, and researchers. Centers like UZ Ghent play a vital role in advancing research and providing expert care for these rare but serious conditions.',
     interestedInArt: 'Interested in my unique art?',
     contactForm: 'GET IN TOUCH',
+    contactUs: 'Contact Us',
     name: 'Name',
     email: 'Email',
     subject: 'Subject',
@@ -62,7 +64,7 @@ const translations = {
     address: 'Agent',
     phone: 'Phone',
     website: 'Website',
-    addressText: 'Jos De Troyer – Belgium',
+    addressText: 'Jos De Troyer - Belgium',
     phoneText: '+32 477 52 81 91',
     websiteText: 'clausbertermann.com',
     subtitle: 'CONTEMPORARY ABSTRACT ART - OIL ON CANVAS',
@@ -122,6 +124,7 @@ const translations = {
     typesCausesImpactText: 'Er zijn meer dan 800 verschillende soorten erfelijke metabole ziekten, elk veroorzaakt door het disfunctioneren van een specifiek enzym. Omdat verschillende enzymen verschillende stoffen verwerken, heeft elke ziekte zijn eigen unieke effecten op het lichaam. De onderliggende genetische mutatie wordt meestal geërfd van beide ouders.\n\nDe symptomen van metabole ziekten kunnen sterk variëren, zelfs onder individuen met dezelfde aandoening. Sommige mensen ervaren milde symptomen, terwijl anderen ernstige complicaties ondervinden die meerdere organen aantasten. Diagnose en behandeling vereisen een team van specialisten, waaronder kinderartsen, neurologen, genetici en onderzoekers. Centra zoals UZ Gent spelen een vitale rol in het bevorderen van onderzoek en het bieden van expert zorg voor deze zeldzame maar ernstige aandoeningen.',
     interestedInArt: 'Geïnteresseerd in mijn unieke kunst?',
     contactForm: 'NEEM CONTACT OP',
+    contactUs: 'Neem Contact Op',
     name: 'Naam',
     email: 'E-mailadres',
     subject: 'Onderwerp',
@@ -131,7 +134,7 @@ const translations = {
     address: 'Agent',
     phone: 'Telefoon',
     website: 'Website',
-    addressText: 'Jos De Troyer – Belgium',
+    addressText: 'Jos De Troyer - België',
     phoneText: '+32 477 52 81 91',
     websiteText: 'clausbertermann.com',
     subtitle: 'HEDENDAAGSE ABSTRACTE KUNST - OLIE OP DOEK',
@@ -152,13 +155,19 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
+  const [key, setKey] = useState(0);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.en] || key;
   };
 
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang);
+    setKey(prev => prev + 1); // Force remount of SplitText components
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, remountKey: key }}>
       {children}
     </LanguageContext.Provider>
   );

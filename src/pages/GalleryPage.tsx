@@ -22,7 +22,7 @@ const loadImageDimensions = (src: string): Promise<{ width: number; height: numb
 };
 
 export default function GalleryPage() {
-  const { t } = useLanguage();
+  const { t, remountKey } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<{img: string, title: string, medium: string, dimensions: string} | null>(null);
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
 
@@ -458,6 +458,7 @@ export default function GalleryPage() {
       <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-screen-2xl mx-auto">
         <SplitText
+          key={`gallery-${remountKey}`}
           text={t('gallery')}
           className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight"
           delay={100}

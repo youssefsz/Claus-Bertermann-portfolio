@@ -4,7 +4,7 @@ import SplitText from '../components/SplitText';
 import { motion } from 'framer-motion';
 
 export default function CharityPage() {
-  const { t } = useLanguage();
+  const { t, remountKey } = useLanguage();
 
   return (
     <>
@@ -34,6 +34,7 @@ export default function CharityPage() {
       <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-screen-2xl mx-auto">
         <SplitText
+          key={`charity-${remountKey}`}
           text={t('charity')}
           className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight"
           delay={100}
@@ -77,6 +78,7 @@ export default function CharityPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <SplitText
+              key={`artWithPurpose-${remountKey}`}
               text={t('artWithPurpose')}
               className="text-3xl md:text-4xl font-bold text-white mb-8"
               delay={50}
@@ -140,6 +142,7 @@ export default function CharityPage() {
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SplitText
+            key={`press-${remountKey}`}
             text={t('press')}
             className="text-4xl md:text-5xl font-bold text-white mb-12"
             delay={100}
@@ -241,6 +244,7 @@ export default function CharityPage() {
           >
             <div className="flex items-center gap-6">
               <SplitText
+                key={`interestedInArt-${remountKey}`}
                 text={t('interestedInArt')}
                 className="text-3xl md:text-4xl font-bold text-white"
                 delay={100}

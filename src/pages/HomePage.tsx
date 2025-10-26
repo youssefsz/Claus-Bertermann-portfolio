@@ -59,7 +59,7 @@ const useParallaxAnimation = (sectionRef: React.RefObject<HTMLDivElement>) => {
 };
 
 export default function HomePage({ onNavigate }: HomePageProps) {
-  const { t } = useLanguage();
+  const { t, remountKey } = useLanguage();
   const navigate = useNavigate();
   const [heroScale, setHeroScale] = useState(1);
   const [modalImage, setModalImage] = useState<{ src: string; alt: string } | null>(null);
@@ -165,6 +165,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
         >
           <SplitText
+            key={`hero-${remountKey}`}
             text="Claus Bertermann"
             className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
             delay={100}
@@ -275,6 +276,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           viewport={{ once: true, margin: "-100px" }}
         >
           <SplitText
+            key={`biography-${remountKey}`}
             text={t('biography')}
             className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
             delay={100}
@@ -536,6 +538,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           viewport={{ once: true, margin: "-100px" }}
         >
           <SplitText
+            key={`techniques-${remountKey}`}
             text={t('techniques')}
             className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
             delay={100}
