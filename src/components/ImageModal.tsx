@@ -39,24 +39,25 @@ export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }: Imag
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        onClick={onClose}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
+        <div 
+          className="absolute inset-0 bg-black/90 backdrop-blur-sm" 
+          onClick={onClose}
+        />
         
         {/* Modal Content */}
         <motion.div
-          className="relative max-w-[95vw] max-h-[95vh] w-full h-full flex items-center justify-center p-4"
+          className="relative max-w-[95vw] max-h-[95vh] w-full h-full flex items-center justify-center p-4 pointer-events-none"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
           transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+            className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300 pointer-events-auto"
             aria-label="Close image"
           >
             <svg
@@ -78,7 +79,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }: Imag
           <motion.img
             src={imageSrc}
             alt={imageAlt}
-            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl pointer-events-auto"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
