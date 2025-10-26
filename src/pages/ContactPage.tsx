@@ -52,7 +52,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="text-white">
-              <p><span className="font-semibold">Address:</span> {t('addressText')}</p>
+              <p><span className="font-semibold">{t('agent')}:</span> {t('addressText')}</p>
             </div>
           </div>
 
