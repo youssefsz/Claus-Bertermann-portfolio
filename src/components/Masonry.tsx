@@ -275,7 +275,7 @@ const Masonry: React.FC<MasonryProps> = ({
           onMouseLeave={e => handleMouseLeave(item.id, e.currentTarget)}
         >
           {item.customComponent ? (
-            <div className="relative w-full h-full" style={{ boxShadow: '0px 10px 50px -10px rgba(0,0,0,0.2)' }}>
+            <div className="relative w-full h-full rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] overflow-hidden">
               {item.customComponent}
             </div>
           ) : (

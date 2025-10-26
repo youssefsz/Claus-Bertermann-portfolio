@@ -69,10 +69,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const newScale = 1 + scrollY / 2000;
-      setHeroScale(Math.min(newScale, 1.3));
+      const finalScale = Math.min(newScale, 1.3);
+      setHeroScale(finalScale);
+      console.log('Scroll Y:', scrollY, 'Scale:', finalScale); // Debug log
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Initial call to set correct scale on mount
+    handleScroll();
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -119,9 +124,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           style={{
             backgroundImage: `url('/gallery/39_IS33-CB_-_2021.jpg')`,
             transform: `scale(${heroScale})`,
+            transformOrigin: 'center center',
           }}
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />

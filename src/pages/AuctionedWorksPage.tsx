@@ -107,7 +107,7 @@ export default function AuctionedWorksPage() {
           <img
             src={work.image}
             alt={work.title}
-            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         }
         secondContent={
