@@ -162,6 +162,8 @@ const Masonry: React.FC<MasonryProps> = ({
     const result = items.map(child => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
+      
+      // Use the height directly as it should already be calculated from natural dimensions
       const height = child.height;
       const y = colHeights[col];
 
@@ -278,13 +280,13 @@ const Masonry: React.FC<MasonryProps> = ({
             </div>
           ) : (
             <div
-              className="relative w-full h-full bg-cover bg-center rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] uppercase text-[10px] leading-[10px]"
+              className="relative w-full h-full bg-contain bg-center bg-no-repeat rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] uppercase text-[10px] leading-[10px]"
               style={{ backgroundImage: `url(${item.img})` }}
             >
               <img 
                 src={item.img} 
                 alt={`Gallery image ${item.id}`}
-                className="w-full h-full object-cover rounded-[10px] opacity-0"
+                className="w-full h-full object-contain rounded-[10px] opacity-0"
                 onLoad={(e) => {
                   console.log('Image loaded:', item.img);
                   e.currentTarget.style.opacity = '1';

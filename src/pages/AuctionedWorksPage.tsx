@@ -101,78 +101,80 @@ export default function AuctionedWorksPage() {
 
   // Custom component for artwork with pixel transition
   const ArtworkWithTransition = ({ work }: { work: Artwork }) => (
-    <PixelTransition
-      firstContent={
-        <img
-          src={work.image}
-          alt={work.title}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      }
-      secondContent={
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            padding: "20px",
-            textAlign: "center"
-          }}
-        >
-          <h3 style={{ 
-            fontWeight: 900, 
-            fontSize: "1.5rem", 
-            color: "#ffffff",
-            marginBottom: "10px"
-          }}>
-            {work.title}
-          </h3>
-          <p style={{ 
-            fontSize: "1rem", 
-            color: "#ffffff",
-            marginBottom: "8px"
-          }}>
-            {work.medium}
-          </p>
-          <p style={{ 
-            fontSize: "0.9rem", 
-            color: "#ffffff",
-            marginBottom: "8px"
-          }}>
-            {work.dimensions}
-          </p>
-          <div style={{ 
-            height: "1px", 
-            backgroundColor: "#ffffff30", 
-            width: "100%", 
-            margin: "10px 0" 
-          }} />
-          <p style={{ 
-            fontSize: "0.8rem", 
-            color: "#ffffff80",
-            marginBottom: "5px"
-          }}>
-            {t('soldAt')} {work.auctionHouse}
-          </p>
-          <p style={{ 
-            fontSize: "1.8rem", 
-            fontWeight: "bold", 
-            color: "#ffffff" 
-          }}>
-            {work.price}
-          </p>
-        </div>
-      }
-      gridSize={8}
-      pixelColor='#ffffff'
-      animationStepDuration={0.3}
-      className="artwork-pixel-transition"
-      style={{ width: "100%", height: "100%" }}
-    />
+    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+      <PixelTransition
+        firstContent={
+          <img
+            src={work.image}
+            alt={work.title}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        }
+        secondContent={
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              padding: "20px",
+              textAlign: "center"
+            }}
+          >
+            <h3 style={{ 
+              fontWeight: 900, 
+              fontSize: "1.5rem", 
+              color: "#ffffff",
+              marginBottom: "10px"
+            }}>
+              {work.title}
+            </h3>
+            <p style={{ 
+              fontSize: "1rem", 
+              color: "#ffffff",
+              marginBottom: "8px"
+            }}>
+              {work.medium}
+            </p>
+            <p style={{ 
+              fontSize: "0.9rem", 
+              color: "#ffffff",
+              marginBottom: "8px"
+            }}>
+              {work.dimensions}
+            </p>
+            <div style={{ 
+              height: "1px", 
+              backgroundColor: "#ffffff30", 
+              width: "100%", 
+              margin: "10px 0" 
+            }} />
+            <p style={{ 
+              fontSize: "0.8rem", 
+              color: "#ffffff80",
+              marginBottom: "5px"
+            }}>
+              {t('soldAt')} {work.auctionHouse}
+            </p>
+            <p style={{ 
+              fontSize: "1.8rem", 
+              fontWeight: "bold", 
+              color: "#ffffff" 
+            }}>
+              {work.price}
+            </p>
+          </div>
+        }
+        gridSize={8}
+        pixelColor='#ffffff'
+        animationStepDuration={0.3}
+        className="artwork-pixel-transition"
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
   );
 
   // Transform auction works to match Masonry component interface

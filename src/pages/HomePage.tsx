@@ -117,7 +117,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
           style={{
-            backgroundImage: `url('/compressed-image (6).jpg')`,
+            backgroundImage: `url('/gallery/39_IS33-CB_-_2021.jpg')`,
             transform: `scale(${heroScale})`,
           }}
           initial={{ scale: 1.1, opacity: 0 }}
@@ -258,61 +258,128 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           />
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          <motion.button
-            onClick={() => {
-              onNavigate('gallery');
-              navigate('/gallery');
-            }}
-            className="group relative overflow-hidden rounded-3xl cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-          >
-            <img
-              src="/compressed-image (6).jpg"
-              alt="Claus Bertermann artwork"
-              className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </motion.button>
-
+        <div className="space-y-20">
+          {/* Biography 1: Artistic Journey & Influences */}
           <motion.div 
-            className="flex flex-col justify-center"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            <div className="space-y-6 text-white/80 text-lg leading-relaxed font-light">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-                viewport={{ once: true }}
-              >
-                {t('bioParagraph1')}
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
-              >
-                {t('bioParagraph2')}
-              </motion.p>
-            </div>
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('bioSection1Title')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('bioSection1Text')}
+              </p>
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <img
+                src="/biography/B-I-O-G-R-A-P-H-I-E-1.webp"
+                alt="Claus Bertermann artistic journey"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Biography 2: Architectural Background & Creative Freedom */}
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="space-y-6 lg:order-2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('bioSection2Title')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('bioSection2Text')}
+              </p>
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl lg:order-1"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <img
+                src="/biography/B-I-O-G-R-A-P-H-I-E-2.webp"
+                alt="Claus Bertermann architectural background"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
+          </motion.div>
+
+          {/* Biography 3: Success & Recognition */}
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-4xl md:text-5xl font-bold text-white">
+                {t('bioSection3Title')}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed font-light">
+                {t('bioSection3Text')}
+              </p>
+            </motion.div>
+            <motion.div 
+              className="relative group overflow-hidden rounded-3xl"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <img
+                src="/biography/B-I-O-G-R-A-P-H-I-E-3.webp"
+                alt="Claus Bertermann success and recognition"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
+          </motion.div>
+        </div>
 
         {/* Enhanced Statistics Section (original layout, colored numbers) */}
         <motion.div 
-          className="relative"
+          className="relative mt-32"
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -484,9 +551,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <img
-                src="/compressed-image (2).jpg"
+                src="/gallery/11_34NH-CB_-_2025.jpg"
                 alt="Foreground and background technique"
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
@@ -523,9 +590,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <img
-                src="/compressed-image (3).jpg"
+                src="/gallery/4_5TJ3-CB_-_2024.jpg"
                 alt="Third dimension illusion technique"
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
@@ -562,9 +629,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <img
-                src="/compressed-image (4).jpg"
+                src="/gallery/3_MQQ2-CB_-_2022.jpeg"
                 alt="Paint scratching technique"
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
@@ -601,9 +668,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <img
-                src="/compressed-image (5).jpg"
+                src="/gallery/IZOPCB-150x130-2021-2048x1774.jpg"
                 alt="Multiple layers superposition technique"
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
