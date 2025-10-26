@@ -54,7 +54,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
           <Link
             to="/"
             onClick={() => onNavigate('home')}
-            className="text-white font-bold text-lg md:text-xl tracking-wide hover:opacity-70 transition-opacity"
+            className="text-white font-bold text-lg md:text-xl tracking-wide hover:opacity-70 transition-opacity font-mono-title"
           >
             Claus Bertermann
           </Link>
@@ -152,7 +152,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
         <div className="flex flex-col h-full p-8">
           {/* Drawer Header */}
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-white font-bold text-xl tracking-wide">Menu</h2>
+            <h2 className="text-white font-bold text-xl tracking-wide font-mono-title">Menu</h2>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-10 h-10 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors duration-200"

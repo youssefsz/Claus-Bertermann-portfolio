@@ -169,7 +169,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <SplitText
             key={`hero-${remountKey}`}
             text="Claus Bertermann"
-            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight font-mono-title"
             delay={100}
             duration={0.8}
             ease="power3.out"
@@ -274,7 +274,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <SplitText
             key={`biography-${remountKey}`}
             text={t('biography')}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight font-mono-title"
             delay={100}
             duration={0.6}
             ease="power3.out"
@@ -303,7 +303,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('bioSection1Title')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
@@ -346,7 +346,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('bioSection2Title')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
@@ -389,7 +389,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('bioSection3Title')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
@@ -548,7 +548,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <SplitText
             key={`techniques-${remountKey}`}
             text={t('techniques')}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center mb-24 tracking-tight font-mono-title"
             delay={100}
             duration={0.6}
             ease="power3.out"
@@ -577,7 +577,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('techniqueForeground')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
@@ -620,7 +620,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('techniqueDimension')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
@@ -663,7 +663,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('techniqueScratching')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">
@@ -706,7 +706,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-white">
+              <h3 className="text-4xl md:text-5xl font-bold text-white font-mono-title">
                 {t('techniqueLayers')}
               </h3>
               <p className="text-white/80 text-lg leading-relaxed font-light">

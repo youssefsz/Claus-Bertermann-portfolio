@@ -37,7 +37,7 @@ export default function CharityPage() {
         <SplitText
           key={`charity-${remountKey}`}
           text={t('charity')}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-20 tracking-tight font-mono-title"
           delay={100}
           duration={0.6}
           ease="power3.out"
@@ -81,7 +81,7 @@ export default function CharityPage() {
             <SplitText
               key={`artWithPurpose-${remountKey}`}
               text={t('artWithPurpose')}
-              className="text-3xl md:text-4xl font-bold text-white mb-8"
+              className="text-3xl md:text-4xl font-bold text-white mb-8 font-mono-title"
               delay={50}
               duration={0.5}
               ease="power3.out"
@@ -141,7 +141,7 @@ export default function CharityPage() {
           <SplitText
             key={`press-${remountKey}`}
             text={t('press')}
-            className="text-4xl md:text-5xl font-bold text-white mb-12"
+            className="text-4xl md:text-5xl font-bold text-white mb-12 font-mono-title"
             delay={100}
             duration={0.6}
             ease="power3.out"
@@ -172,7 +172,7 @@ export default function CharityPage() {
             <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
               <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">{t('pressItem1Title')}</h3>
+            <h3 className="text-xl font-bold text-white mb-3 font-mono-title">{t('pressItem1Title')}</h3>
             <p className="text-white/60 text-sm mb-4">{t('pressItem1Source')}</p>
             <p className="text-white/80 font-light">
               {t('pressItem1Description')}
@@ -189,7 +189,7 @@ export default function CharityPage() {
             <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
               <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">{t('pressItem2Title')}</h3>
+            <h3 className="text-xl font-bold text-white mb-3 font-mono-title">{t('pressItem2Title')}</h3>
             <p className="text-white/60 text-sm mb-4">{t('pressItem2Source')}</p>
             <p className="text-white/80 font-light">
               {t('pressItem2Description')}
@@ -206,7 +206,7 @@ export default function CharityPage() {
             <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
               <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">{t('pressItem3Title')}</h3>
+            <h3 className="text-xl font-bold text-white mb-3 font-mono-title">{t('pressItem3Title')}</h3>
             <p className="text-white/60 text-sm mb-4">{t('pressItem3Source')}</p>
             <p className="text-white/80 font-light">
               {t('pressItem3Description')}
@@ -243,7 +243,7 @@ export default function CharityPage() {
               <SplitText
                 key={`interestedInArt-${remountKey}`}
                 text={t('interestedInArt')}
-                className="text-3xl md:text-4xl font-bold text-white"
+                className="text-3xl md:text-4xl font-bold text-white font-mono-title"
                 delay={100}
                 duration={0.6}
                 ease="power3.out"

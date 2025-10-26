@@ -57,7 +57,7 @@ export default function ContactPage() {
           <SplitText
             key={`contact-${remountKey}`}
             text={t('contact')}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight font-mono-title"
             delay={100}
             duration={0.6}
             ease="power3.out"
@@ -136,7 +136,7 @@ export default function ContactPage() {
         <div className="flex flex-col lg:flex-row gap-0">
           {/* Left Side - Form (7 columns equivalent) */}
           <div className="lg:w-[58.33%] bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-12 lg:p-16">
-            <h3 className="text-3xl font-bold text-white mb-8">{t('contactUs')}</h3>
+            <h3 className="text-3xl font-bold text-white mb-8 font-mono-title">{t('contactUs')}</h3>
             
             {isSubmitted && (
               <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-200">

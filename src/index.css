@@ -35,6 +35,12 @@
 }
 
 @layer utilities {
+  /* Monospace font utility for titles */
+  .font-mono-title {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.05em;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
