@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, ZoomIn } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import Masonry from '../components/Masonry';
 import SplitText from '../components/SplitText';
+import ImageMagnifier from '../components/ImageMagnifier';
 
 /**
  * Loads an image and returns its natural dimensions
@@ -25,6 +26,7 @@ export default function GalleryPage() {
   const { t, remountKey } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<{img: string, title: string, medium: string, dimensions: string} | null>(null);
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
+  const [showMagnifier, setShowMagnifier] = useState(false);
 
   const galleryImagesList = [
     {
@@ -497,22 +499,48 @@ export default function GalleryPage() {
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-6"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => {
+            setSelectedImage(null);
+            setShowMagnifier(false);
+          }}
         >
+          {/* Close Button */}
           <button
-            className="absolute top-6 right-6 text-white hover:scale-110 transition-transform p-2"
-            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 text-white hover:scale-110 transition-transform p-2 z-10"
+            onClick={() => {
+              setSelectedImage(null);
+              setShowMagnifier(false);
+            }}
           >
             <X size={32} />
           </button>
+
+          {/* Magnifier Toggle Button */}
+          <button
+            className="absolute top-6 left-6 text-white hover:scale-110 transition-transform p-2 z-10 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowMagnifier(!showMagnifier);
+            }}
+            title={showMagnifier ? "Disable magnifier" : "Enable magnifier"}
+          >
+            <ZoomIn size={24} />
+          </button>
+
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-7xl w-full">
             <div className="flex-1 flex justify-center">
-              <img
-                src={selectedImage.img}
-                alt="Zoomed painting"
-                className="max-w-full max-h-[80vh] object-contain rounded-2xl animate-fadeIn"
-                onClick={(e) => e.stopPropagation()}
-              />
+              <div onClick={(e) => e.stopPropagation()}>
+                <ImageMagnifier
+                  src={selectedImage.img}
+                  alt="Zoomed painting"
+                  className="max-w-full max-h-[80vh] object-contain rounded-2xl animate-fadeIn"
+                  magnifierHeight={250}
+                  magnifierWidth={250}
+                  zoomLevel={3}
+                  showMagnifier={showMagnifier}
+                  onImageClick={() => setShowMagnifier(!showMagnifier)}
+                />
+              </div>
             </div>
             <div className="flex-1 max-w-md text-white space-y-4">
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">

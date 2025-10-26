@@ -6,6 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 import MagicBento from '../components/MagicBento';
 import SplitText from '../components/SplitText';
 import ImageModal from '../components/ImageModal';
+import ImageMagnifier from '../components/ImageMagnifier';
 import { motion } from 'framer-motion';
 
 interface HomePageProps {
@@ -322,12 +323,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/biography/B-I-O-G-R-A-P-H-I-E-1.webp"
                 alt="Claus Bertermann artistic journey"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
 
@@ -361,12 +366,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/biography/B-I-O-G-R-A-P-H-I-E-2.webp"
                 alt="Claus Bertermann architectural background"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
 
@@ -400,12 +409,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/biography/B-I-O-G-R-A-P-H-I-E-3.webp"
                 alt="Claus Bertermann success and recognition"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
         </div>
@@ -584,12 +597,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/gallery/11_34NH-CB_-_2025.jpg"
                 alt="Foreground and background technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
 
@@ -623,12 +640,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/gallery/4_5TJ3-CB_-_2024.jpg"
                 alt="Third dimension illusion technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
 
@@ -662,12 +683,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/gallery/3_MQQ2-CB_-_2022.jpeg"
                 alt="Paint scratching technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
 
@@ -701,12 +726,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <img
+              <ImageMagnifier
                 src="/gallery/IZOPCB-150x130-2021-2048x1774.jpg"
                 alt="Multiple layers superposition technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                magnifierHeight={200}
+                magnifierWidth={200}
+                zoomLevel={2.5}
+                onImageClick={handleImageClick}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           </motion.div>
         </div>

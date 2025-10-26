@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import ImageMagnifier from './ImageMagnifier';
 
 export interface BentoCardProps {
   color?: string;
@@ -714,10 +715,14 @@ const MagicBento: React.FC<BentoProps> = ({
                   >
                     {card.image && (
                       <div className="absolute inset-0 overflow-hidden rounded-[20px]">
-                        <img
+                        <ImageMagnifier
                           src={card.image}
-                          alt={card.title}
+                          alt={card.title || 'Artwork'}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          magnifierHeight={150}
+                          magnifierWidth={150}
+                          zoomLevel={2.5}
+                          onImageClick={onImageClick}
                         />
                       </div>
                     )}
@@ -847,10 +852,14 @@ const MagicBento: React.FC<BentoProps> = ({
                 >
                   {card.image && (
                     <div className="absolute inset-0 overflow-hidden rounded-[20px]">
-                      <img
+                      <ImageMagnifier
                         src={card.image}
-                        alt={card.title}
+                        alt={card.title || 'Artwork'}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        magnifierHeight={150}
+                        magnifierWidth={150}
+                        zoomLevel={2.5}
+                        onImageClick={onImageClick}
                       />
                     </div>
                   )}

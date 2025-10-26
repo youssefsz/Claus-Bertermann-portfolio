@@ -387,3 +387,116 @@
     padding: 0 1rem;
   }
 }
+
+/* Image Magnifier Styles */
+.image-magnifier-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.image-magnifier-container:hover {
+  cursor: zoom-in;
+}
+
+.image-magnifier-lens {
+  position: absolute;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: white;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+  pointer-events: none;
+  z-index: 10;
+  transition: all 0.2s ease-out;
+}
+
+.image-magnifier-lens::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(132, 0, 255, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.image-magnifier-lens:hover::before {
+  opacity: 1;
+}
+
+.image-magnifier-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(132, 0, 255, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9;
+  transition: all 0.2s ease-out;
+}
+
+/* Magnifier toggle button styles */
+.magnifier-toggle-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.magnifier-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.magnifier-toggle-btn:active {
+  transform: scale(0.9);
+}
+
+.magnifier-toggle-btn.active {
+  background: rgba(132, 0, 255, 0.3);
+  border-color: rgba(132, 0, 255, 0.6);
+}
+
+/* Responsive magnifier sizes */
+@media (max-width: 768px) {
+  .image-magnifier-lens {
+    border-width: 2px;
+  }
+  
+  .magnifier-toggle-btn {
+    width: 2rem;
+    height: 2rem;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-magnifier-lens {
+    border-width: 1px;
+  }
+  
+  .magnifier-toggle-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
