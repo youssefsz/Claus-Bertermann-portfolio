@@ -1,5 +1,6 @@
 import { useState, useEffect, startTransition } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
@@ -94,11 +95,13 @@ function AppContent() {
 
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </LanguageProvider>
+    <HelmetProvider>
+      <LanguageProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </LanguageProvider>
+    </HelmetProvider>
   );
 }
 

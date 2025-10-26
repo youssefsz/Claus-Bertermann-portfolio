@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Palette, Trophy, Hammer, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import MagicBento from '../components/MagicBento';
 import SplitText from '../components/SplitText';
@@ -112,12 +113,36 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   };
 
   return (
-    <motion.div 
-      className="min-h-screen relative"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+    <>
+      <Helmet>
+        <title>{t('home')} | Claus Bertermann Digital Canvas Portfolio</title>
+        <meta name="description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
+        <meta name="keywords" content="digital art, contemporary art, Claus Bertermann, portfolio, digital canvas, modern art, creative works" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://clausbertermann.com/" />
+        <meta property="og:title" content={`${t('home')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="og:description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
+        <meta property="og:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://clausbertermann.com/" />
+        <meta property="twitter:title" content={`${t('home')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="twitter:description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
+        <meta property="twitter:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://clausbertermann.com/" />
+      </Helmet>
+      
+      <motion.div 
+        className="min-h-screen relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
@@ -717,6 +742,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         imageAlt={modalImage?.alt || ''}
       />
     </motion.div>
+    </>
   );
 }
 

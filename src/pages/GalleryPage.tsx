@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import Masonry from '../components/Masonry';
 import SplitText from '../components/SplitText';
@@ -430,7 +431,31 @@ export default function GalleryPage() {
   });
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
+    <>
+      <Helmet>
+        <title>{t('gallery')} | Claus Bertermann Digital Canvas Portfolio</title>
+        <meta name="description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
+        <meta name="keywords" content="digital art gallery, Claus Bertermann, contemporary art, digital canvas, art portfolio, modern art, creative works" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://clausbertermann.com/gallery" />
+        <meta property="og:title" content={`${t('gallery')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="og:description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
+        <meta property="og:image" content="/gallery/1_LPSS-CB_-_2018.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://clausbertermann.com/gallery" />
+        <meta property="twitter:title" content={`${t('gallery')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="twitter:description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
+        <meta property="twitter:image" content="/gallery/1_LPSS-CB_-_2018.jpg" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://clausbertermann.com/gallery" />
+      </Helmet>
+      
+      <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-screen-2xl mx-auto">
         <SplitText
           text={t('gallery')}
@@ -505,5 +530,6 @@ export default function GalleryPage() {
         </div>
       )}
     </div>
+    </>
   );
 }

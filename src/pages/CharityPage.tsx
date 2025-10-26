@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import SplitText from '../components/SplitText';
 import { motion } from 'framer-motion';
@@ -6,7 +7,31 @@ export default function CharityPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
+    <>
+      <Helmet>
+        <title>{t('charity')} | Claus Bertermann Digital Canvas Portfolio</title>
+        <meta name="description" content="Learn about Claus Bertermann's charitable work with Art4kidsbyKDB, supporting children with metabolic diseases through art. Discover how art can make a difference in children's lives." />
+        <meta name="keywords" content="charity, art for kids, Claus Bertermann, Kevin De Bruyne, Art4kidsbyKDB, metabolic diseases, children's health, art philanthropy" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://clausbertermann.com/charity" />
+        <meta property="og:title" content={`${t('charity')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="og:description" content="Learn about Claus Bertermann's charitable work with Art4kidsbyKDB, supporting children with metabolic diseases through art. Discover how art can make a difference in children's lives." />
+        <meta property="og:image" content="/charity/kdb-3-hd.jpeg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://clausbertermann.com/charity" />
+        <meta property="twitter:title" content={`${t('charity')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="twitter:description" content="Learn about Claus Bertermann's charitable work with Art4kidsbyKDB, supporting children with metabolic diseases through art. Discover how art can make a difference in children's lives." />
+        <meta property="twitter:image" content="/charity/kdb-3-hd.jpeg" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://clausbertermann.com/charity" />
+      </Helmet>
+      
+      <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-screen-2xl mx-auto">
         <SplitText
           text={t('charity')}
@@ -245,5 +270,6 @@ export default function CharityPage() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }

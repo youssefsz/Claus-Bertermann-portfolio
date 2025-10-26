@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import { Artwork } from '../types';
 import Masonry from '../components/Masonry';
@@ -200,7 +201,31 @@ export default function AuctionedWorksPage() {
   });
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
+    <>
+      <Helmet>
+        <title>{t('auctionedWorks')} | Claus Bertermann Digital Canvas Portfolio</title>
+        <meta name="description" content="Explore Claus Bertermann's auctioned artworks that have been sold at prestigious auction houses including Artcurial Paris and Sotheby's Cologne." />
+        <meta name="keywords" content="auctioned art, sold artworks, Claus Bertermann, art auctions, contemporary art, digital art, art market" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://clausbertermann.com/auctioned" />
+        <meta property="og:title" content={`${t('auctionedWorks')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="og:description" content="Explore Claus Bertermann's auctioned artworks that have been sold at prestigious auction houses including Artcurial Paris and Sotheby's Cologne." />
+        <meta property="og:image" content="/auction/1_PFKS-CB.png" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://clausbertermann.com/auctioned" />
+        <meta property="twitter:title" content={`${t('auctionedWorks')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="twitter:description" content="Explore Claus Bertermann's auctioned artworks that have been sold at prestigious auction houses including Artcurial Paris and Sotheby's Cologne." />
+        <meta property="twitter:image" content="/auction/1_PFKS-CB.png" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://clausbertermann.com/auctioned" />
+      </Helmet>
+      
+      <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-screen-2xl mx-auto">
         <SplitText
           text={t('auctionedWorks')}
@@ -280,5 +305,6 @@ export default function AuctionedWorksPage() {
         </div>
       )}
     </div>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Globe, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import SplitText from '../components/SplitText';
 import { motion } from 'framer-motion';
@@ -25,7 +26,31 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+    <>
+      <Helmet>
+        <title>{t('contact')} | Claus Bertermann Digital Canvas Portfolio</title>
+        <meta name="description" content="Contact Claus Bertermann for art inquiries, commissions, and collaborations. Get in touch with the contemporary digital artist through our contact form or agent information." />
+        <meta name="keywords" content="contact Claus Bertermann, digital artist, art commission, collaboration, art inquiry, contemporary art" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://clausbertermann.com/contact" />
+        <meta property="og:title" content={`${t('contact')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="og:description" content="Contact Claus Bertermann for art inquiries, commissions, and collaborations. Get in touch with the contemporary digital artist through our contact form or agent information." />
+        <meta property="og:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://clausbertermann.com/contact" />
+        <meta property="twitter:title" content={`${t('contact')} | Claus Bertermann Digital Canvas Portfolio`} />
+        <meta property="twitter:description" content="Contact Claus Bertermann for art inquiries, commissions, and collaborations. Get in touch with the contemporary digital artist through our contact form or agent information." />
+        <meta property="twitter:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://clausbertermann.com/contact" />
+      </Helmet>
+      
+      <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-center mb-16">
@@ -208,5 +233,6 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
