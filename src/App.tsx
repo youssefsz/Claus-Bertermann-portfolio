@@ -93,7 +93,7 @@ function AppContent() {
       
       {/* Floating Footer Container */}
       <div className="relative z-10 mt-20">
-        <Footer />
+        <Footer onNavigate={handleNavigate} />
       </div>
     </div>
   );

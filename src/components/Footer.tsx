@@ -1,7 +1,12 @@
 import { useLanguage } from '../context/LanguageContext';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Globe } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate?: (page: string) => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   const { t, language } = useLanguage();
 
   const currentYear = new Date().getFullYear();
@@ -114,31 +119,35 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-lg mb-6 tracking-wide">
               {language === 'en' ? 'Quick Links' : 'Snelle Links'}
             </h4>
-            <nav className="space-y-3">
-              <a 
-                href="/gallery" 
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
+            <nav className="space-y-4">
+              <Link 
+                to="/gallery"
+                onClick={() => onNavigate?.('gallery')}
+                className="block text-sm tracking-widest text-white/70 hover:text-white transition-all duration-300 hover:scale-105"
               >
                 {t('gallery')}
-              </a>
-              <a 
-                href="/auctioned" 
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
+              </Link>
+              <Link 
+                to="/auctioned"
+                onClick={() => onNavigate?.('auctioned')}
+                className="block text-sm tracking-widest text-white/70 hover:text-white transition-all duration-300 hover:scale-105"
               >
                 {t('auctionedWorks')}
-              </a>
-              <a 
-                href="/charity" 
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
+              </Link>
+              <Link 
+                to="/charity"
+                onClick={() => onNavigate?.('charity')}
+                className="block text-sm tracking-widest text-white/70 hover:text-white transition-all duration-300 hover:scale-105"
               >
                 {t('charity')}
-              </a>
-              <a 
-                href="/contact" 
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
+              </Link>
+              <Link 
+                to="/contact"
+                onClick={() => onNavigate?.('contact')}
+                className="block text-sm tracking-widest text-white/70 hover:text-white transition-all duration-300 hover:scale-105"
               >
                 {t('contact')}
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
