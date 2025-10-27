@@ -65,8 +65,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   const navigate = useNavigate();
   const [heroScale, setHeroScale] = useState(1);
   const [modalImage, setModalImage] = useState<{ src: string; alt: string } | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const parallaxSectionRef = useRef<HTMLDivElement>(null);
   const { curtainTranslate, textOpacity, parallaxOffset } = useParallaxAnimation(parallaxSectionRef);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -204,80 +216,161 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Parallax Split-Curtain Animation Section */}
       <div className="parallax-section-container" ref={parallaxSectionRef}>
-        <div className="sticky-animation-container">
-          {/* Top curtain */}
-          <div
-            className="split-curtain top"
-            style={{ 
-              transform: `translateY(-${curtainTranslate}vh)`,
-              opacity: curtainTranslate >= 50 ? 0 : 1,
-              pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
-              zIndex: 2
-            }}
-          >
-            <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
-              {t('paintings').toUpperCase()}
-            </h1>
-          </div>
+        {isMobile ? (
+          // Mobile: Current implementation with separated content
+          <>
+            <div className="sticky-animation-container">
+              {/* Top curtain */}
+              <div
+                className="split-curtain top"
+                style={{ 
+                  transform: `translateY(-${curtainTranslate}vh)`,
+                  opacity: curtainTranslate >= 50 ? 0 : 1,
+                  pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
+                  zIndex: 2
+                }}
+              >
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                  {t('paintings').toUpperCase()}
+                </h1>
+              </div>
 
-          {/* Bottom curtain */}
-          <div
-            className="split-curtain bottom"
-            style={{ 
-              transform: `translateY(${curtainTranslate}vh)`,
-              opacity: curtainTranslate >= 50 ? 0 : 1,
-              pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
-              zIndex: 2
-            }}
-          >
-            <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
-              {t('paintings').toUpperCase()}
-            </h1>
-          </div>
-        </div>
+              {/* Bottom curtain */}
+              <div
+                className="split-curtain bottom"
+                style={{ 
+                  transform: `translateY(${curtainTranslate}vh)`,
+                  opacity: curtainTranslate >= 50 ? 0 : 1,
+                  pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
+                  zIndex: 2
+                }}
+              >
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                  {t('paintings').toUpperCase()}
+                </h1>
+              </div>
+            </div>
 
-        {/* Scroll spacer to control animation duration */}
-        <div className="parallax-scroll-spacer"></div>
+            {/* Scroll spacer to control animation duration */}
+            <div className="parallax-scroll-spacer"></div>
+          </>
+        ) : (
+          // Desktop: Revealed content as layer beneath curtains
+          <>
+            <div className="parallax-animation-only-desktop">
+              {/* Revealed content layer beneath curtains */}
+              <div 
+                className="parallax-revealed-content-desktop"
+                style={{ 
+                  transform: `translateY(${parallaxOffset * 0.5}px)`,
+                }}
+              >
+                <div className="parallax-wrapper">
+                  <div className="flex flex-col items-center gap-8">
+                    <MagicBento
+                      enableStars={true}
+                      enableSpotlight={true}
+                      enableBorderGlow={true}
+                      enableTilt={true}
+                      enableMagnetism={true}
+                      clickEffect={true}
+                      spotlightRadius={300}
+                      particleCount={12}
+                      glowColor="132, 0, 255"
+                      onImageClick={handleImageClick}
+                    />
+                    
+                    {/* Gallery navigation button */}
+                    <InteractiveHoverButton
+                      onClick={() => {
+                        onNavigate('gallery');
+                        navigate('/gallery');
+                      }}
+                      className="px-8 py-4 text-lg whitespace-nowrap"
+                    >
+                      {t('viewGallery') || 'View Gallery'}
+                    </InteractiveHoverButton>
+                  </div>
+                </div>
+              </div>
+
+              {/* Top curtain */}
+              <div
+                className="split-curtain top"
+                style={{ 
+                  transform: `translateY(-${curtainTranslate}vh)`,
+                  opacity: curtainTranslate >= 50 ? 0 : 1,
+                  pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
+                  zIndex: 2
+                }}
+              >
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                  {t('paintings').toUpperCase()}
+                </h1>
+              </div>
+
+              {/* Bottom curtain */}
+              <div
+                className="split-curtain bottom"
+                style={{ 
+                  transform: `translateY(${curtainTranslate}vh)`,
+                  opacity: curtainTranslate >= 50 ? 0 : 1,
+                  pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
+                  zIndex: 2
+                }}
+              >
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                  {t('paintings').toUpperCase()}
+                </h1>
+              </div>
+            </div>
+
+            {/* Scroll spacer to control animation duration */}
+            <div className="parallax-scroll-spacer"></div>
+          </>
+        )}
       </div>
 
-      {/* Separate revealed content section that moves up during scroll */}
-      <div 
-        className="parallax-revealed-content-separated"
-        style={{ 
-          transform: `translateY(${parallaxOffset * 0.5}px)`,
-          marginTop: '-160vh',
-          position: 'relative',
-          zIndex: curtainTranslate >= 50 ? 15 : 5
-        }}
-      >
-        <div className="parallax-wrapper">
-          <div className="flex flex-col items-center gap-8">
-            <MagicBento
-              enableStars={true}
-              enableSpotlight={true}
-              enableBorderGlow={true}
-              enableTilt={true}
-              enableMagnetism={true}
-              clickEffect={true}
-              spotlightRadius={300}
-              particleCount={12}
-              glowColor="132, 0, 255"
-              onImageClick={handleImageClick}
-            />
-            
-            {/* Gallery navigation button */}
-            <InteractiveHoverButton
-              onClick={() => {
-                onNavigate('gallery');
-                navigate('/gallery');
-              }}
-              className="px-8 py-4 text-lg whitespace-nowrap"
-            >
-              {t('viewGallery') || 'View Gallery'}
-            </InteractiveHoverButton>
+      {/* Mobile: Separate revealed content section that moves up during scroll */}
+      {isMobile && (
+        <div 
+          className="parallax-revealed-content-separated"
+          style={{ 
+            transform: `translateY(${parallaxOffset * 0.5}px)`,
+            marginTop: '-160vh',
+            position: 'relative',
+            zIndex: curtainTranslate >= 50 ? 15 : 5
+          }}
+        >
+          <div className="parallax-wrapper">
+            <div className="flex flex-col items-center gap-8">
+              <MagicBento
+                enableStars={true}
+                enableSpotlight={true}
+                enableBorderGlow={true}
+                enableTilt={true}
+                enableMagnetism={true}
+                clickEffect={true}
+                spotlightRadius={300}
+                particleCount={12}
+                glowColor="132, 0, 255"
+                onImageClick={handleImageClick}
+              />
+              
+              {/* Gallery navigation button */}
+              <InteractiveHoverButton
+                onClick={() => {
+                  onNavigate('gallery');
+                  navigate('/gallery');
+                }}
+                className="px-8 py-4 text-lg whitespace-nowrap"
+              >
+                {t('viewGallery') || 'View Gallery'}
+              </InteractiveHoverButton>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
         <motion.div
