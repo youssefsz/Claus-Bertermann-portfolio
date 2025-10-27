@@ -245,7 +245,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         className="parallax-revealed-content-separated"
         style={{ 
           transform: `translateY(${parallaxOffset * 0.5}px)`,
-          marginTop: '-120vh',
+          marginTop: '-160vh',
           position: 'relative',
           zIndex: curtainTranslate >= 50 ? 15 : 5
         }}
