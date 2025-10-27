@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface ImageMagnifierProps {
@@ -31,12 +31,14 @@ export default function ImageMagnifier({
   const [internalShowMagnifier, setInternalShowMagnifier] = useState(false);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [[x, y], setXY] = useState([0, 0]);
+  const [isScrolling, setIsScrolling] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
-  // Use controlled or internal state
-  const isMagnifierVisible = controlledShowMagnifier !== undefined 
+  // Use controlled or internal state, but disable during scrolling
+  const isMagnifierVisible = (controlledShowMagnifier !== undefined 
     ? controlledShowMagnifier 
-    : internalShowMagnifier;
+    : internalShowMagnifier) && !isScrolling;
 
   const mouseEnter = (e: React.MouseEvent<HTMLImageElement>) => {
     const el = e.currentTarget;
@@ -69,6 +71,34 @@ export default function ImageMagnifier({
       onImageClick(src, alt);
     }
   };
+
+  // Handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(true);
+      
+      // Clear existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // Set timeout to detect when scrolling stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150); // 150ms delay after scroll stops
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Calculate magnifier position to keep it within bounds
   const magnifierX = Math.max(
