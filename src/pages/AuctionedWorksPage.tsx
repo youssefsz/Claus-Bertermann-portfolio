@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import { Artwork } from '../types';
 import Masonry from '../components/Masonry';
-import PixelTransition from '../components/imgPixelTransition';
+import FadeTransition from '../components/FadeTransition';
 import SplitText from '../components/SplitText';
 
 /**
@@ -100,15 +100,15 @@ export default function AuctionedWorksPage() {
     loadAllDimensions();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Custom component for artwork with pixel transition
+  // Custom component for artwork with fade transition
   const ArtworkWithTransition = ({ work }: { work: Artwork }) => (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
-      <PixelTransition
+      <FadeTransition
         firstContent={
           <img
             src={work.image}
             alt={work.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
           />
         }
         secondContent={
@@ -169,10 +169,8 @@ export default function AuctionedWorksPage() {
             </p>
           </div>
         }
-        gridSize={8}
-        pixelColor='#ffffff'
-        animationStepDuration={0.3}
-        className="artwork-pixel-transition"
+        fadeDuration={0.3}
+        className="artwork-fade-transition"
         style={{ width: "100%", height: "100%" }}
       />
     </div>
