@@ -10,7 +10,6 @@ import AuctionedWorksPage from './pages/AuctionedWorksPage';
 import GalleryPage from './pages/GalleryPage';
 import CharityPage from './pages/CharityPage';
 import ContactPage from './pages/ContactPage';
-import Ribbons from './components/Ribbons';
 import PageTransition from './components/PageTransition';
 import BrushTransitionOverlay from './components/BrushTransitionOverlay';
 
@@ -81,16 +80,6 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </PageTransition>
-      
-      <Ribbons
-        colors={['#06b6d4', '#14b8a6', '#f97316', '#fb7185']}
-        baseThickness={28}
-        speedMultiplier={0.55}
-        maxAge={450}
-        enableFade={false}
-        enableShaderEffect={true}
-        effectAmplitude={2}
-      />
       
       {/* Floating Footer Container */}
       <div className="relative z-10 mt-20">
