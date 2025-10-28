@@ -138,14 +138,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <meta property="og:url" content="https://clausbertermann.com/" />
         <meta property="og:title" content={`${t('home')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="og:description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
-        <meta property="og:image" content="/gallery/low-res/39_IS33-CB_-_2021.jpg" />
+        <meta property="og:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://clausbertermann.com/" />
         <meta property="twitter:title" content={`${t('home')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="twitter:description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
-        <meta property="twitter:image" content="/gallery/low-res/39_IS33-CB_-_2021.jpg" />
+        <meta property="twitter:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://clausbertermann.com/" />
@@ -161,7 +161,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
           style={{
-            backgroundImage: `url('/gallery/low-res/39_IS33-CB_-_2021.jpg')`,
+            backgroundImage: `url('/gallery/39_IS33-CB_-_2021.jpg')`,
             transform: `scale(${heroScale})`,
             transformOrigin: 'center center',
           }}
@@ -701,7 +701,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/low-res/11_34NH-CB_-_2025.jpg"
+                src="/gallery/11_34NH-CB_-_2025.jpg"
                 alt="Foreground and background technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
@@ -744,7 +744,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/low-res/4_5TJ3-CB_-_2024.jpg"
+                src="/gallery/4_5TJ3-CB_-_2024.jpg"
                 alt="Third dimension illusion technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
@@ -787,7 +787,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/low-res/3_MQQ2-CB_-_2022.jpeg"
+                src="/gallery/3_MQQ2-CB_-_2022.jpeg"
                 alt="Paint scratching technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
@@ -830,7 +830,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/low-res/IZOPCB-150x130-2021-2048x1774.jpg"
+                src="/gallery/IZOPCB-150x130-2021-2048x1774.jpg"
                 alt="Multiple layers superposition technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
