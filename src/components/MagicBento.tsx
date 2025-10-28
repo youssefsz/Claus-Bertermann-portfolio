@@ -37,42 +37,42 @@ const cardData: BentoCardProps[] = [
     title: 'Abstract Composition 1',
     description: 'Contemporary abstract expression',
     label: 'Featured',
-    image: '/gallery/6_GCOW-CB_-_2024.jpg'
+    image: '/gallery/low-res/GCOW-CB.jpg'
   },
   {
     color: 'transparent',
     title: 'Abstract Composition 2',
     description: 'Modern artistic vision',
     label: 'Gallery',
-    image: '/gallery/7_J20F-CB_-_2023.jpg'
+    image: '/gallery/low-res/J20F-CB.jpg'
   },
   {
     color: 'transparent',
     title: 'Abstract Composition 3',
     description: 'Bold creative expression',
     label: 'Artwork',
-    image: '/gallery/8_456T-CB_-_2024.jpg'
+    image: '/gallery/not-used/456T-CB.jpg'
   },
   {
     color: 'transparent',
     title: 'Abstract Composition 4',
     description: 'Innovative artistic approach',
     label: 'Collection',
-    image: '/gallery/9_IZOP-CB_-_2021.jpg'
+    image: '/gallery/not-used/IZOP-CB.jpg'
   },
   {
     color: 'transparent',
     title: 'Abstract Composition 5',
     description: 'Unique creative perspective',
     label: 'Portfolio',
-    image: '/gallery/10_9ENL-CB_-_2024.jpg'
+    image: '/gallery/low-res/9ENL-CB.jpg'
   },
   {
     color: 'transparent',
     title: 'Abstract Composition 6',
     description: 'Contemporary art collection',
     label: 'Exhibition',
-    image: '/gallery/11_34NH-CB_-_2025.jpg'
+    image: '/gallery/low-res/34NH-CB.jpg'
   }
 ];
 

@@ -48,6 +48,7 @@ const preloadImages = async (urls: string[]): Promise<void> => {
 export interface Item {
   id: string;
   img: string;
+  popupImg?: string;
   url: string;
   height: number;
   customComponent?: React.ReactNode;
@@ -181,16 +182,37 @@ const Masonry: React.FC<MasonryProps> = ({
   }, [columns, items, width]);
 
   const hasMounted = useRef(false);
+  const previousItemIds = useRef<Set<string>>(new Set());
 
   useLayoutEffect(() => {
     if (!imagesReady || !canAnimate) return;
 
-    grid.forEach((item, index) => {
+    const currentItemIds = new Set(grid.map(item => item.id));
+    const newItems = grid.filter(item => !previousItemIds.current.has(item.id));
+    const existingItems = grid.filter(item => previousItemIds.current.has(item.id));
+
+    // Animate existing items to their new positions
+    existingItems.forEach((item) => {
       const selector = `[data-key="${item.id}"]`;
       const animProps = { x: item.x, y: item.y, width: item.w, height: item.h };
+      
+      gsap.to(selector, {
+        ...animProps,
+        visibility: 'visible',
+        duration,
+        ease,
+        overwrite: 'auto'
+      });
+    });
 
-      if (!hasMounted.current) {
+    // Handle new items differently based on whether it's initial load or load more
+    if (!hasMounted.current) {
+      // Initial load - use full GSAP animation
+      newItems.forEach((item, index) => {
+        const selector = `[data-key="${item.id}"]`;
+        const animProps = { x: item.x, y: item.y, width: item.w, height: item.h };
         const start = getInitialPosition(item);
+        
         gsap.fromTo(
           selector,
           {
@@ -212,17 +234,36 @@ const Masonry: React.FC<MasonryProps> = ({
             delay: index * stagger
           }
         );
-      } else {
-        gsap.to(selector, {
+      });
+    } else {
+      // Load more - use custom CSS animation
+      newItems.forEach((item, index) => {
+        const selector = `[data-key="${item.id}"]`;
+        const animProps = { x: item.x, y: item.y, width: item.w, height: item.h };
+        
+        // Set initial position and make visible
+        gsap.set(selector, {
           ...animProps,
+          opacity: 0,
           visibility: 'visible',
-          duration,
-          ease,
-          overwrite: 'auto'
+          scale: 0.8,
+          y: item.y + 30
         });
-      }
-    });
+        
+        // Custom load more animation
+        gsap.to(selector, {
+          opacity: 1,
+          scale: 1,
+          y: item.y,
+          duration: 0.6,
+          ease: 'back.out(1.2)',
+          delay: index * 0.1
+        });
+      });
+    }
 
+    // Update the previous item IDs for next comparison
+    previousItemIds.current = currentItemIds;
     hasMounted.current = true;
   }, [grid, imagesReady, canAnimate, stagger, animateFrom, blurToFocus, duration, ease]);
 

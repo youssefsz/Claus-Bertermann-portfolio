@@ -13,6 +13,8 @@ interface ImageMagnifierProps {
   showMagnifier?: boolean;
   magnifierStyle?: React.CSSProperties;
   onImageClick?: (src: string, alt: string) => void;
+  onError?: () => void;
+  onLoad?: () => void;
 }
 
 export default function ImageMagnifier({
@@ -26,12 +28,15 @@ export default function ImageMagnifier({
   zoomLevel = 2.5,
   showMagnifier: controlledShowMagnifier,
   magnifierStyle = {},
-  onImageClick
+  onImageClick,
+  onError,
+  onLoad
 }: ImageMagnifierProps) {
   const [internalShowMagnifier, setInternalShowMagnifier] = useState(false);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [[x, y], setXY] = useState([0, 0]);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
@@ -69,6 +74,13 @@ export default function ImageMagnifier({
   const handleImageClick = () => {
     if (onImageClick) {
       onImageClick(src, alt);
+    }
+  };
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+    if (onLoad) {
+      onLoad();
     }
   };
 
@@ -115,7 +127,9 @@ export default function ImageMagnifier({
       <motion.img
         ref={imageRef}
         src={src}
-        className={`${className} cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]`}
+        className={`${className} cursor-zoom-in transition-all duration-300 group-hover:scale-[1.02] image-optimized ${
+          isImageLoaded ? 'image-loaded' : 'image-loading'
+        }`}
         width={width}
         height={height}
         alt={alt}
@@ -123,8 +137,12 @@ export default function ImageMagnifier({
         onMouseLeave={mouseLeave}
         onMouseMove={mouseMove}
         onClick={handleImageClick}
+        onError={onError}
+        onLoad={handleImageLoad}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
+        loading="eager"
+        decoding="async"
       />
       
       {/* Magnifier */}
