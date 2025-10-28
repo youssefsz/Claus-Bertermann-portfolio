@@ -34,7 +34,7 @@ export default function GalleryPage() {
       title: "LPSS#CB – 2018",
       dimensions: "120 × 100 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/1_LPSS-CB_-_2018.jpg",
+      img: "/gallery/low-res/1_LPSS-CB_-_2018.jpg",
       url: "#",
     },
     {
@@ -42,7 +42,7 @@ export default function GalleryPage() {
       title: "MQQ1#CB – 2022",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/2_MQQ1-CB_-_2022.jpg",
+      img: "/gallery/low-res/2_MQQ1-CB_-_2022.jpg",
       url: "#",
     },
     {
@@ -50,7 +50,7 @@ export default function GalleryPage() {
       title: "MQQ2#CB – 2022",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/3_MQQ2-CB_-_2022.jpeg",
+      img: "/gallery/low-res/3_MQQ2-CB_-_2022.jpeg",
       url: "#",
     },
     {
@@ -58,7 +58,7 @@ export default function GalleryPage() {
       title: "5TJ3#CB – 2024",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/4_5TJ3-CB_-_2024.jpg",
+      img: "/gallery/low-res/4_5TJ3-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -66,7 +66,7 @@ export default function GalleryPage() {
       title: "V2F2#CB – 2024",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/5_V2F2-CB_-_2024.jpg",
+      img: "/gallery/low-res/5_V2F2-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -74,7 +74,7 @@ export default function GalleryPage() {
       title: "GCOW#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/6_GCOW-CB_-_2024.jpg",
+      img: "/gallery/low-res/6_GCOW-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -82,7 +82,7 @@ export default function GalleryPage() {
       title: "J20F#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/7_J20F-CB_-_2023.jpg",
+      img: "/gallery/low-res/7_J20F-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -90,7 +90,7 @@ export default function GalleryPage() {
       title: "456T#CB – 2024",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/8_456T-CB_-_2024.jpg",
+      img: "/gallery/low-res/8_456T-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -98,7 +98,7 @@ export default function GalleryPage() {
       title: "IZOP#CB – 2021",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/9_IZOP-CB_-_2021.jpg",
+      img: "/gallery/low-res/9_IZOP-CB_-_2021.jpg",
       url: "#",
     },
     {
@@ -106,7 +106,7 @@ export default function GalleryPage() {
       title: "9ENL#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/10_9ENL-CB_-_2024.jpg",
+      img: "/gallery/low-res/10_9ENL-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -114,7 +114,7 @@ export default function GalleryPage() {
       title: "34NH#CB – 2025",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/11_34NH-CB_-_2025.jpg",
+      img: "/gallery/low-res/11_34NH-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -122,7 +122,7 @@ export default function GalleryPage() {
       title: "G223#CB – 2020",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/12_G223-CB_-_2020.jpg",
+      img: "/gallery/low-res/12_G223-CB_-_2020.jpg",
       url: "#",
     },
     {
@@ -130,7 +130,7 @@ export default function GalleryPage() {
       title: "81BJ#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/13_81BJ-CB_-_2024.jpg",
+      img: "/gallery/low-res/13_81BJ-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -138,7 +138,7 @@ export default function GalleryPage() {
       title: "80BJ#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/14_80BJ-CB_-_2024.jpg",
+      img: "/gallery/low-res/14_80BJ-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -146,7 +146,7 @@ export default function GalleryPage() {
       title: "K33N#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/15_K33N-CB_-_2024.jpeg",
+      img: "/gallery/low-res/15_K33N-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -154,7 +154,7 @@ export default function GalleryPage() {
       title: "U322#CB – 2025",
       dimensions: "200 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/16_U322-CB_-_2025.jpg",
+      img: "/gallery/low-res/16_U322-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -162,7 +162,7 @@ export default function GalleryPage() {
       title: "9BE4#CB – 2025",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/17_9BE4-CB_-_2025.jpg",
+      img: "/gallery/low-res/17_9BE4-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -170,7 +170,7 @@ export default function GalleryPage() {
       title: "33MG#CB – 2023",
       dimensions: "150 × 100 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/18_33MG-CB_-_2023.jpg",
+      img: "/gallery/low-res/18_33MG-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -178,7 +178,7 @@ export default function GalleryPage() {
       title: "24GD#CB – 2023",
       dimensions: "240 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/19_24GD-CB_-_2023.jpg",
+      img: "/gallery/low-res/19_24GD-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -186,7 +186,7 @@ export default function GalleryPage() {
       title: "9BE3#CB – 2025",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/20_9BE3-CB_-_2025.jpeg",
+      img: "/gallery/low-res/20_9BE3-CB_-_2025.jpeg",
       url: "#",
     },
     {
@@ -194,7 +194,7 @@ export default function GalleryPage() {
       title: "91UI#CB – 2023",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/21_91UI-CB_-_2023.jpg",
+      img: "/gallery/low-res/21_91UI-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -202,7 +202,7 @@ export default function GalleryPage() {
       title: "S882#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/22_S882-CB_-_2024.jpeg",
+      img: "/gallery/low-res/22_S882-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -210,7 +210,7 @@ export default function GalleryPage() {
       title: "YXX9#CB – 2024",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/23_YXX9-CB_-_2024.jpeg",
+      img: "/gallery/low-res/23_YXX9-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -218,7 +218,7 @@ export default function GalleryPage() {
       title: "Z2MF#CB – 2023",
       dimensions: "180 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/24_Z2MF-CB_-_2023.webp",
+      img: "/gallery/low-res/24_Z2MF-CB_-_2023.webp",
       url: "#",
     },
     {
@@ -226,7 +226,7 @@ export default function GalleryPage() {
       title: "9DNL#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/25_9DNL-CB_-_2024.jpg",
+      img: "/gallery/low-res/25_9DNL-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -234,7 +234,7 @@ export default function GalleryPage() {
       title: "H5R6#CB – 2024",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/26_H5R6-CB_-_2024.jpg",
+      img: "/gallery/low-res/26_H5R6-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -242,7 +242,7 @@ export default function GalleryPage() {
       title: "B211#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/27_B211-CB_-_2024.jpg",
+      img: "/gallery/low-res/27_B211-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -250,7 +250,7 @@ export default function GalleryPage() {
       title: "6784#CB – 2024",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/28_6784-CB_-_2024.jpeg",
+      img: "/gallery/low-res/28_6784-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -258,7 +258,7 @@ export default function GalleryPage() {
       title: "TGB2#CB – 2024",
       dimensions: "150 × 140 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/29_TGB2-CB_-_2024.jpg",
+      img: "/gallery/low-res/29_TGB2-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -266,7 +266,7 @@ export default function GalleryPage() {
       title: "23EB#CB – 2023",
       dimensions: "160 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/30_23EB-CB_-_2023.jpg",
+      img: "/gallery/low-res/30_23EB-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -274,7 +274,7 @@ export default function GalleryPage() {
       title: "488K#CB – 2019",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/31_488K-CB_-_2019.jpg",
+      img: "/gallery/low-res/31_488K-CB_-_2019.jpg",
       url: "#",
     },
     {
@@ -282,7 +282,7 @@ export default function GalleryPage() {
       title: "Z333#CB – 2023",
       dimensions: "90 × 90 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/32_Z333-CB_-_2023.jpeg",
+      img: "/gallery/low-res/32_Z333-CB_-_2023.jpeg",
       url: "#",
     },
     {
@@ -290,7 +290,7 @@ export default function GalleryPage() {
       title: "S883#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/33_S883-CB_-_2024.jpeg",
+      img: "/gallery/low-res/33_S883-CB_-_2024.jpeg",
       url: "#",
     },
     {
@@ -298,7 +298,7 @@ export default function GalleryPage() {
       title: "WK10#CB – 2023",
       dimensions: "170 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/34_WK10-CB_-_2023.jpg",
+      img: "/gallery/low-res/34_WK10-CB_-_2023.jpg",
       url: "#",
     },
     {
@@ -306,7 +306,7 @@ export default function GalleryPage() {
       title: "G318#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/35_G318-CB_-_2023.jpeg",
+      img: "/gallery/low-res/35_G318-CB_-_2023.jpeg",
       url: "#",
     },
     {
@@ -314,7 +314,7 @@ export default function GalleryPage() {
       title: "7Z2Q#CB – 2024",
       dimensions: "210 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/36_7Z2Q-CB_-_2024.jpg",
+      img: "/gallery/low-res/36_7Z2Q-CB_-_2024.jpg",
       url: "#",
     },
     {
@@ -322,7 +322,7 @@ export default function GalleryPage() {
       title: "7Z87#CB – 2025",
       dimensions: "300 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/37_7Z87-CB_-_2025.jpg",
+      img: "/gallery/low-res/37_7Z87-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -330,7 +330,7 @@ export default function GalleryPage() {
       title: "7Z88#CB – 2025",
       dimensions: "300 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/38_7Z88-CB_-_2025.jpeg",
+      img: "/gallery/low-res/38_7Z88-CB_-_2025.jpeg",
       url: "#",
     },
     {
@@ -338,7 +338,7 @@ export default function GalleryPage() {
       title: "IS33#CB – 2021",
       dimensions: "250 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/39_IS33-CB_-_2021.jpg",
+      img: "/gallery/low-res/39_IS33-CB_-_2021.jpg",
       url: "#",
     },
     {
@@ -346,7 +346,7 @@ export default function GalleryPage() {
       title: "7U2N#CB – 2025",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/40_7U2N-CB_-_2025.jpg",
+      img: "/gallery/low-res/40_7U2N-CB_-_2025.jpg",
       url: "#",
     },
     {
@@ -354,7 +354,7 @@ export default function GalleryPage() {
       title: "4F3F#CB – 2023",
       dimensions: "160 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/41_4F3F-CB_-_2023.jpeg",
+      img: "/gallery/low-res/41_4F3F-CB_-_2023.jpeg",
       url: "#",
     },
     {
@@ -362,7 +362,7 @@ export default function GalleryPage() {
       title: "QW2W#CB – 2021",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/42_QW2W-CB_-_2021.jpeg",
+      img: "/gallery/low-res/42_QW2W-CB_-_2021.jpeg",
       url: "#",
     },
     {
@@ -370,7 +370,7 @@ export default function GalleryPage() {
       title: "8HXB#CB – 2018",
       dimensions: "150 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/43_8HXB-CB_-_2018.jpeg",
+      img: "/gallery/low-res/43_8HXB-CB_-_2018.jpeg",
       url: "#",
     },
     {
@@ -378,7 +378,7 @@ export default function GalleryPage() {
       title: "E4RS#CB – 2018",
       dimensions: "130 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/44_E4RS-CB_-_2018.jpeg",
+      img: "/gallery/low-res/44_E4RS-CB_-_2018.jpeg",
       url: "#",
     },
     {
@@ -386,7 +386,7 @@ export default function GalleryPage() {
       title: "9IJ9#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/45_9IJ9-CB_-_2023.jpeg",
+      img: "/gallery/low-res/45_9IJ9-CB_-_2023.jpeg",
       url: "#",
     },
   ];
@@ -444,14 +444,14 @@ export default function GalleryPage() {
         <meta property="og:url" content="https://clausbertermann.com/gallery" />
         <meta property="og:title" content={`${t('gallery')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="og:description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
-        <meta property="og:image" content="/gallery/1_LPSS-CB_-_2018.jpg" />
+        <meta property="og:image" content="/gallery/low-res/1_LPSS-CB_-_2018.jpg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://clausbertermann.com/gallery" />
         <meta property="twitter:title" content={`${t('gallery')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="twitter:description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
-        <meta property="twitter:image" content="/gallery/1_LPSS-CB_-_2018.jpg" />
+        <meta property="twitter:image" content="/gallery/low-res/1_LPSS-CB_-_2018.jpg" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://clausbertermann.com/gallery" />

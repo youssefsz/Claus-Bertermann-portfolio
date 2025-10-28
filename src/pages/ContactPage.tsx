@@ -37,14 +37,14 @@ export default function ContactPage() {
         <meta property="og:url" content="https://clausbertermann.com/contact" />
         <meta property="og:title" content={`${t('contact')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="og:description" content="Contact Claus Bertermann for art inquiries, commissions, and collaborations. Get in touch with the contemporary digital artist through our contact form or agent information." />
-        <meta property="og:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
+        <meta property="og:image" content="/gallery/low-res/39_IS33-CB_-_2021.jpg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://clausbertermann.com/contact" />
         <meta property="twitter:title" content={`${t('contact')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="twitter:description" content="Contact Claus Bertermann for art inquiries, commissions, and collaborations. Get in touch with the contemporary digital artist through our contact form or agent information." />
-        <meta property="twitter:image" content="/gallery/39_IS33-CB_-_2021.jpg" />
+        <meta property="twitter:image" content="/gallery/low-res/39_IS33-CB_-_2021.jpg" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://clausbertermann.com/contact" />
@@ -224,7 +224,7 @@ export default function ContactPage() {
             <div 
               className="w-full bg-cover bg-center bg-no-repeat min-h-[600px]"
               style={{
-                backgroundImage: 'url(/gallery/1_LPSS-CB_-_2018.jpg)'
+                backgroundImage: 'url(/gallery/low-res/1_LPSS-CB_-_2018.jpg)'
               }}
             >
             </div>
