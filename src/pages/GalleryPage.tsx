@@ -505,12 +505,40 @@ export default function GalleryPage() {
   const handleLoadMore = async () => {
     setIsLoadingMore(true);
     
-    // Simulate loading delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
     const newCount = Math.min(visibleImagesCount + 6, galleryImagesList.length);
     console.log('Loading more images. Current count:', visibleImagesCount, 'New count:', newCount);
+    
+    // Get the new images that will be loaded
+    const newImages = galleryImagesList.slice(visibleImagesCount, newCount);
+    
+    // Load dimensions for the new images
+    const loadNewImageDimensions = async () => {
+      const dimensionsMap: Record<string, { width: number; height: number }> = {};
+      
+      await Promise.all(
+        newImages.map(async (image) => {
+          try {
+            const dimensions = await loadImageDimensions(image.img);
+            dimensionsMap[image.id] = dimensions;
+          } catch (error) {
+            console.error(`Failed to load dimensions for image ${image.id}:`, error);
+            // Fallback to default aspect ratio if image fails to load
+            dimensionsMap[image.id] = { width: 600, height: 600 };
+          }
+        })
+      );
+      
+      return dimensionsMap;
+    };
+    
+    // Wait for all new image dimensions to load
+    const newDimensions = await loadNewImageDimensions();
+    
+    // Update the visible count and dimensions
+    setImageDimensions(prev => ({ ...prev, ...newDimensions }));
     setVisibleImagesCount(newCount);
+    
+    // Stop loading animation after images are fully loaded
     setIsLoadingMore(false);
   };
 

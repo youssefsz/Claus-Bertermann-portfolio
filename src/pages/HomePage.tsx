@@ -161,7 +161,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
           style={{
-            backgroundImage: `url('/hero.png')`,
+            backgroundImage: `url('/gallery/low-res/IS33-CB.jpg')`,
             transform: `scale(${heroScale})`,
             transformOrigin: 'center center',
           }}
@@ -227,10 +227,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   transform: `translateY(-${curtainTranslate}vh)`,
                   opacity: curtainTranslate >= 50 ? 0 : 1,
                   pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
-                  zIndex: 2
+                  zIndex: 1500
                 }}
               >
-                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity, zIndex: 2000 }}>
                   {t('paintings').toUpperCase()}
                 </h1>
               </div>
@@ -242,10 +242,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   transform: `translateY(${curtainTranslate}vh)`,
                   opacity: curtainTranslate >= 50 ? 0 : 1,
                   pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
-                  zIndex: 2
+                  zIndex: 1500
                 }}
               >
-                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity, zIndex: 2000 }}>
                   {t('paintings').toUpperCase()}
                 </h1>
               </div>
@@ -263,34 +263,22 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 className="parallax-revealed-content-desktop"
                 style={{ 
                   transform: `translateY(${parallaxOffset * 0.5}px)`,
+                  zIndex: 10
                 }}
               >
                 <div className="parallax-wrapper">
-                  <div className="flex flex-col items-center gap-8">
-                    <MagicBento
-                      enableStars={true}
-                      enableSpotlight={true}
-                      enableBorderGlow={true}
-                      enableTilt={true}
-                      enableMagnetism={true}
-                      clickEffect={true}
-                      spotlightRadius={300}
-                      particleCount={12}
-                      glowColor="132, 0, 255"
-                      onImageClick={handleImageClick}
-                    />
-                    
-                    {/* Gallery navigation button */}
-                    <InteractiveHoverButton
-                      onClick={() => {
-                        onNavigate('gallery');
-                        navigate('/gallery');
-                      }}
-                      className="px-8 py-4 text-lg whitespace-nowrap"
-                    >
-                      {t('viewGallery') || 'View Gallery'}
-                    </InteractiveHoverButton>
-                  </div>
+                  <MagicBento
+                    enableStars={true}
+                    enableSpotlight={true}
+                    enableBorderGlow={true}
+                    enableTilt={true}
+                    enableMagnetism={true}
+                    clickEffect={true}
+                    spotlightRadius={300}
+                    particleCount={12}
+                    glowColor="132, 0, 255"
+                    onImageClick={handleImageClick}
+                  />
                 </div>
               </div>
 
@@ -301,10 +289,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   transform: `translateY(-${curtainTranslate}vh)`,
                   opacity: curtainTranslate >= 50 ? 0 : 1,
                   pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
-                  zIndex: 2
+                  zIndex: 1500
                 }}
               >
-                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity, zIndex: 2000 }}>
                   {t('paintings').toUpperCase()}
                 </h1>
               </div>
@@ -316,10 +304,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   transform: `translateY(${curtainTranslate}vh)`,
                   opacity: curtainTranslate >= 50 ? 0 : 1,
                   pointerEvents: curtainTranslate >= 50 ? 'none' : 'auto',
-                  zIndex: 2
+                  zIndex: 1500
                 }}
               >
-                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity }}>
+                <h1 className="parallax-curtain-text" style={{ opacity: textOpacity, zIndex: 2000 }}>
                   {t('paintings').toUpperCase()}
                 </h1>
               </div>
@@ -343,36 +331,42 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           }}
         >
           <div className="parallax-wrapper">
-            <div className="flex flex-col items-center gap-8">
-              <MagicBento
-                enableStars={true}
-                enableSpotlight={true}
-                enableBorderGlow={true}
-                enableTilt={true}
-                enableMagnetism={true}
-                clickEffect={true}
-                spotlightRadius={300}
-                particleCount={12}
-                glowColor="132, 0, 255"
-                onImageClick={handleImageClick}
-              />
-              
-              {/* Gallery navigation button */}
-              <InteractiveHoverButton
-                onClick={() => {
-                  onNavigate('gallery');
-                  navigate('/gallery');
-                }}
-                className="px-8 py-4 text-lg whitespace-nowrap"
-              >
-                {t('viewGallery') || 'View Gallery'}
-              </InteractiveHoverButton>
-            </div>
+            <MagicBento
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={true}
+              enableMagnetism={true}
+              clickEffect={true}
+              spotlightRadius={300}
+              particleCount={12}
+              glowColor="132, 0, 255"
+              onImageClick={handleImageClick}
+            />
           </div>
         </div>
       )}
 
       <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
+        {/* Gallery navigation button - at top of Biography section */}
+        <motion.div 
+          className="flex justify-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <InteractiveHoverButton
+            onClick={() => {
+              onNavigate('gallery');
+              navigate('/gallery');
+            }}
+            className="px-8 py-4 text-lg whitespace-nowrap"
+          >
+            {t('viewGallery') || 'View Gallery'}
+          </InteractiveHoverButton>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

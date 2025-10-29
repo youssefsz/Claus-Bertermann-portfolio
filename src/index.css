@@ -461,6 +461,222 @@
   .parallax-wrapper {
     padding: 0 1rem;
   }
+  
+  /* Ensure proper spacing for mobile header */
+  .parallax-section-container {
+    padding-top: 120px;
+  }
+  
+  .parallax-revealed-content-separated {
+    padding-top: 120px;
+  }
+  
+  /* Ensure button is never buried on mobile */
+  .parallax-wrapper .relative {
+    z-index: 300 !important;
+    position: relative;
+  }
+  
+  .parallax-wrapper .flex.flex-col.items-center.gap-8 {
+    gap: 4rem;
+  }
+}
+
+/* Additional responsive spacing for different screen sizes */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .parallax-section-container {
+    padding-top: 140px;
+  }
+  
+  .parallax-revealed-content-desktop {
+    padding-top: 140px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .parallax-section-container {
+    padding-top: 160px;
+  }
+  
+  .parallax-revealed-content-desktop {
+    padding-top: 160px;
+  }
+}
+
+/* Ensure proper z-index layering for buttons and text */
+.parallax-revealed-content-desktop,
+.parallax-revealed-content-separated {
+  position: relative;
+  z-index: 10;
+}
+
+.parallax-revealed-content-desktop .relative,
+.parallax-revealed-content-separated .relative {
+  z-index: 30;
+}
+
+
+.split-curtain {
+  z-index: 1500;
+}
+
+.parallax-curtain-text {
+  z-index: 2000;
+  position: relative;
+}
+
+
+
+
+/* QHD / 2K Resolution (2560x1440) - Scale entire bento for higher resolution */
+@media (min-width: 2560px) and (max-width: 3839px) {
+  .parallax-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80vh;
+  }
+  
+  .parallax-wrapper > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 2000px;
+  }
+  
+  /* Scale up entire bento section for QHD/2K */
+  .bento-section {
+    transform: scale(1.8);
+    transform-origin: center;
+  }
+}
+
+/* 4K UHD Resolution (3840x2160) - Scale entire bento for 4K displays */
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .parallax-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 85vh;
+  }
+  
+  .parallax-wrapper > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 2400px;
+  }
+  
+  /* Scale up entire bento section for 4K UHD */
+  .bento-section {
+    transform: scale(2);
+    transform-origin: center;
+  }
+}
+
+/* 8K UHD Resolution (7680x4320) - Scale entire bento for 8K displays */
+@media (min-width: 7680px) {
+  .parallax-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 90vh;
+  }
+  
+  .parallax-wrapper > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 3000px;
+  }
+  
+  /* Scale up entire bento section for 8K UHD */
+  .bento-section {
+    transform: scale(2.4);
+    transform-origin: center;
+  }
+}
+
+/* Ensure proper spacing between paintings bento and View Gallery button on all screen sizes */
+/* Mobile screens */
+@media (max-width: 768px) {
+  .parallax-section-container + section {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Tablet screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .parallax-section-container + section {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Small PC screens */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .parallax-section-container + section {
+    margin-top: 15.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Large PC screens */
+@media (min-width: 1441px) and (max-width: 1919px) {
+  .parallax-section-container + section {
+    margin-top: -1.5rem ;
+    padding-top: 0.5rem ;
+  }
+}
+
+/* Specific fix for 1914x942 resolution */
+@media (min-width: 1910px) and (max-width: 1920px) {
+  .parallax-section-container + section {
+    margin-top: -2.5rem ;
+    padding-top: 0.5rem ;
+  }
+}
+
+/* QHD/2K screens - account for larger bento scaling */
+@media (min-width: 2560px) and (max-width: 3839px) {
+  .parallax-section-container + section {
+    margin-top: -1rem;
+    padding-top: 0.5rem;
+  }
+}
+
+/* 4K screens - account for much larger bento scaling */
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .parallax-section-container + section {
+    margin-top: -17.5rem;
+    padding-top: 0.25rem;
+  }
+}
+
+/* 8K screens - account for massive bento scaling */
+@media (min-width: 7680px) {
+  .parallax-section-container + section {
+    margin-top: -20.5rem;
+    padding-top: 0.5rem;
+  }
+}
+
+/* Legacy support for high resolution screens (2500x2000) */
+@media (min-width: 2500px) and (max-width: 2559px) {
+  .parallax-section-container + section {
+    margin-top: -0.5rem;
+    padding-top: 0.5rem;
+  }
 }
 
 /* Image Magnifier Styles */
