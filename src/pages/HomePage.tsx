@@ -161,7 +161,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
           style={{
-            backgroundImage: `url('/gallery/low-res/IS33-CB.jpg')`,
+            backgroundImage: `url('/hero.png')`,
             transform: `scale(${heroScale})`,
             transformOrigin: 'center center',
           }}
@@ -215,7 +215,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Parallax Split-Curtain Animation Section */}
-      <div className="parallax-section-container" ref={parallaxSectionRef}>
+      <div className="parallax-section-container -mt-40" ref={parallaxSectionRef}>
         {isMobile ? (
           // Mobile: Current implementation with separated content
           <>

@@ -464,11 +464,11 @@
   
   /* Ensure proper spacing for mobile header */
   .parallax-section-container {
-    padding-top: 120px;
+    padding-top: 0;
   }
   
   .parallax-revealed-content-separated {
-    padding-top: 120px;
+    padding-top: 0;
   }
   
   /* Ensure button is never buried on mobile */
