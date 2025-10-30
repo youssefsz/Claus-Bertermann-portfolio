@@ -161,7 +161,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
           style={{
-            backgroundImage: `url('/hero.png')`,
+            backgroundImage: `url('/hero.jpg')`,
             transform: `scale(${heroScale})`,
             transformOrigin: 'center center',
           }}
