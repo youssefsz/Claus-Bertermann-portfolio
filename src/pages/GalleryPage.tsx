@@ -6,6 +6,17 @@ import Masonry from '../components/Masonry';
 import SplitText from '../components/SplitText';
 import ImageMagnifier from '../components/ImageMagnifier';
 
+interface GalleryImage {
+  id: string;
+  title: string;
+  dimensions: string;
+  medium: string;
+  year: string;
+  thumbnailPath: string;
+  originalPath: string;
+  order: number;
+}
+
 /**
  * Loads an image and returns its natural dimensions
  * @param src - Image source URL
@@ -46,11 +57,38 @@ export default function GalleryPage() {
   const [preloadedImages, setPreloadedImages] = useState<Set<string>>(new Set());
   const [visibleImagesCount, setVisibleImagesCount] = useState(6);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [galleryImagesList, setGalleryImagesList] = useState<GalleryImage[]>([]);
+  const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+  const [galleryError, setGalleryError] = useState<string | null>(null);
 
-  // First: list images where img and popupImg are different (low-res -> high-res)
-  // Then: list images where both img and popupImg are the same (high-res only)
+  // Fetch gallery data from API
+  useEffect(() => {
+    const fetchGalleryData = async () => {
+      try {
+        setIsLoadingGallery(true);
+        const response = await fetch('/API/Gallery.php');
+        const data = await response.json();
+        
+        if (data.success && Array.isArray(data.data)) {
+          // Sort by order
+          const sortedImages = data.data.sort((a: GalleryImage, b: GalleryImage) => a.order - b.order);
+          setGalleryImagesList(sortedImages);
+        } else {
+          setGalleryError('Failed to load gallery data');
+        }
+      } catch (error) {
+        console.error('Error fetching gallery:', error);
+        setGalleryError('Error loading gallery');
+      } finally {
+        setIsLoadingGallery(false);
+      }
+    };
 
-  const galleryImagesList = [
+    fetchGalleryData();
+  }, []);
+
+  // Fallback hardcoded list for development/fallback
+  const fallbackGalleryImagesList = [
     {
       id: "23EB",
       title: "23EB#CB – 2023",
@@ -426,6 +464,8 @@ export default function GalleryPage() {
 
   // Load image dimensions for visible images only
   useEffect(() => {
+    if (galleryImagesList.length === 0) return;
+    
     const loadVisibleDimensions = async () => {
       const dimensionsMap: Record<string, { width: number; height: number }> = {};
       const visibleImages = galleryImagesList.slice(0, visibleImagesCount);
@@ -433,7 +473,7 @@ export default function GalleryPage() {
       await Promise.all(
         visibleImages.map(async (image) => {
           try {
-            const dimensions = await loadImageDimensions(image.img);
+            const dimensions = await loadImageDimensions(image.thumbnailPath);
             dimensionsMap[image.id] = dimensions;
           } catch (error) {
             console.error(`Failed to load dimensions for image ${image.id}:`, error);
@@ -447,15 +487,17 @@ export default function GalleryPage() {
     };
 
     loadVisibleDimensions();
-  }, [visibleImagesCount]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [visibleImagesCount, galleryImagesList]);
 
   // Preload HQ images for visible images only
   useEffect(() => {
+    if (galleryImagesList.length === 0) return;
+    
     const preloadVisibleHQImages = async () => {
       const visibleImages = galleryImagesList.slice(0, visibleImagesCount);
       const hqImages = visibleImages
-        .filter(image => image.popupImg && image.popupImg !== image.img)
-        .map(image => image.popupImg!);
+        .filter(image => image.originalPath && image.originalPath !== image.thumbnailPath)
+        .map(image => image.originalPath);
 
       // Preload images in batches to avoid overwhelming the browser
       const batchSize = 3;
@@ -481,7 +523,7 @@ export default function GalleryPage() {
     };
 
     preloadVisibleHQImages();
-  }, [visibleImagesCount]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [visibleImagesCount, galleryImagesList]);
 
   // Calculate heights based on actual image dimensions for visible images only
   const visibleImages = galleryImagesList.slice(0, visibleImagesCount);
@@ -496,8 +538,14 @@ export default function GalleryPage() {
     }
     
     return {
-      ...image,
+      id: image.id,
+      title: image.title,
+      dimensions: image.dimensions,
+      medium: image.medium,
+      img: image.thumbnailPath,
+      popupImg: image.originalPath,
       height: height,
+      url: "#"
     };
   });
 
@@ -518,7 +566,7 @@ export default function GalleryPage() {
       await Promise.all(
         newImages.map(async (image) => {
           try {
-            const dimensions = await loadImageDimensions(image.img);
+            const dimensions = await loadImageDimensions(image.thumbnailPath);
             dimensionsMap[image.id] = dimensions;
           } catch (error) {
             console.error(`Failed to load dimensions for image ${image.id}:`, error);
@@ -552,6 +600,45 @@ export default function GalleryPage() {
     galleryImagesLength: galleryImages.length,
     hasMoreImages
   });
+
+  // Show loading state
+  if (isLoadingGallery) {
+    return (
+      <>
+        <Helmet>
+          <title>{t('gallery')} | Claus Bertermann Digital Canvas Portfolio</title>
+        </Helmet>
+        <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-white text-lg">Loading gallery...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // Show error state
+  if (galleryError) {
+    return (
+      <>
+        <Helmet>
+          <title>{t('gallery')} | Claus Bertermann Digital Canvas Portfolio</title>
+        </Helmet>
+        <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-400 text-lg mb-4">{galleryError}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

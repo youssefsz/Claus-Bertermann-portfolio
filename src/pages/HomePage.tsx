@@ -781,7 +781,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/not-used/MQQ2-CB.jpg"
+                src="/gallery/not-used/81BJ-CB.jpg"
                 alt="Paint scratching technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}

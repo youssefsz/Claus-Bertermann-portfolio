@@ -7,6 +7,17 @@ import Masonry from '../components/Masonry';
 import FadeTransition from '../components/FadeTransition';
 import SplitText from '../components/SplitText';
 
+interface AuctionWork {
+  id: string;
+  title: string;
+  dimensions: string;
+  medium: string;
+  price: string;
+  auctionHouse: string;
+  image: string;
+  order: number;
+}
+
 /**
  * Loads an image and returns its natural dimensions
  * @param src - Image source URL
@@ -27,57 +38,40 @@ export default function AuctionedWorksPage() {
   const { t, remountKey } = useLanguage();
   const [selectedWork, setSelectedWork] = useState<Artwork | null>(null);
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
+  const [auctionedWorks, setAuctionedWorks] = useState<AuctionWork[]>([]);
+  const [isLoadingAuction, setIsLoadingAuction] = useState(true);
+  const [auctionError, setAuctionError] = useState<string | null>(null);
 
-  const auctionedWorks: Artwork[] = [
-    {
-      id: '1',
-      title: 'PFKS#CB',
-      dimensions: '130 × 130 cm',
-      medium: t('oilOnCanvas'),
-      image: '/auction/1_PFKS-CB.png',
-      auctionHouse: 'Artcurial, Paris',
-      price: '€10,160',
-    },
-    {
-      id: '2',
-      title: 'F5TP#CB',
-      dimensions: '120 × 120 cm',
-      medium: t('oilOnCanvas'),
-      image: '/auction/2_F5TP-CB.webp',
-      auctionHouse: 'Sotheby\'s, Cologne',
-      price: '€15,240',
-    },
-    {
-      id: '3',
-      title: 'KR44#CB',
-      dimensions: '130 × 130 cm',
-      medium: t('oilOnCanvas'),
-      image: '/auction/3_KR44-CB.webp',
-      auctionHouse: 'Van Ham, Cologne',
-      price: '€11,200',
-    },
-    {
-      id: '4',
-      title: 'Retro Zen',
-      dimensions: '91.1 × 91.1 cm',
-      medium: t('oilOnCanvas'),
-      image: '/auction/4_Retro_Zen.png',
-      auctionHouse: 'Christie\'s, Paris',
-      price: '€18,900',
-    },
-    {
-      id: '5',
-      title: 'Whispershade',
-      dimensions: '130 × 130 cm',
-      medium: t('oilOnCanvas'),
-      image: '/auction/5_Whispershade.webp',
-      auctionHouse: 'Christie\'s, Paris',
-      price: '€15,120',
-    },
-  ];
+  // Fetch auction data from API
+  useEffect(() => {
+    const fetchAuctionData = async () => {
+      try {
+        setIsLoadingAuction(true);
+        const response = await fetch('/API/Auction.php');
+        const data = await response.json();
+        
+        if (data.success && Array.isArray(data.data)) {
+          // Sort by order
+          const sortedWorks = data.data.sort((a: AuctionWork, b: AuctionWork) => a.order - b.order);
+          setAuctionedWorks(sortedWorks);
+        } else {
+          setAuctionError('Failed to load auction data');
+        }
+      } catch (error) {
+        console.error('Error fetching auction data:', error);
+        setAuctionError('Error loading auction data');
+      } finally {
+        setIsLoadingAuction(false);
+      }
+    };
+
+    fetchAuctionData();
+  }, []);
 
   // Load all image dimensions on mount
   useEffect(() => {
+    if (auctionedWorks.length === 0) return;
+    
     const loadAllDimensions = async () => {
       const dimensionsMap: Record<string, { width: number; height: number }> = {};
       
@@ -98,10 +92,10 @@ export default function AuctionedWorksPage() {
     };
 
     loadAllDimensions();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [auctionedWorks]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Custom component for artwork with fade transition
-  const ArtworkWithTransition = ({ work }: { work: Artwork }) => (
+  const ArtworkWithTransition = ({ work }: { work: AuctionWork }) => (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
       <FadeTransition
         firstContent={
@@ -198,6 +192,45 @@ export default function AuctionedWorksPage() {
     };
   });
 
+  // Show loading state
+  if (isLoadingAuction) {
+    return (
+      <>
+        <Helmet>
+          <title>{t('auctionedWorks')} | Claus Bertermann Digital Canvas Portfolio</title>
+        </Helmet>
+        <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-white text-lg">Loading auctioned works...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // Show error state
+  if (auctionError) {
+    return (
+      <>
+        <Helmet>
+          <title>{t('auctionedWorks')} | Claus Bertermann Digital Canvas Portfolio</title>
+        </Helmet>
+        <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-400 text-lg mb-4">{auctionError}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <Helmet>
@@ -255,7 +288,17 @@ export default function AuctionedWorksPage() {
             onItemClick={(item) => {
               const artwork = (item as any).artwork;
               if (artwork) {
-                setSelectedWork(artwork);
+                // Convert AuctionWork to Artwork for the modal
+                const artWork: Artwork = {
+                  id: artwork.id,
+                  title: artwork.title,
+                  dimensions: artwork.dimensions,
+                  medium: artwork.medium,
+                  image: artwork.image,
+                  price: artwork.price,
+                  auctionHouse: artwork.auctionHouse
+                };
+                setSelectedWork(artWork);
               }
             }}
           />

@@ -1,0 +1,54 @@
+{
+  "works": [
+    {
+      "id": "1",
+      "title": "PFKS#CB",
+      "dimensions": "130 × 130 cm",
+      "medium": "Oil on Canvas",
+      "price": "€10,160",
+      "auctionHouse": "Artcurial, Paris",
+      "image": "/auction/1_PFKS-CB.png",
+      "order": 0
+    },
+    {
+      "id": "2",
+      "title": "F5TP#CB",
+      "dimensions": "120 × 120 cm",
+      "medium": "Oil on Canvas",
+      "price": "€15,240",
+      "auctionHouse": "Sotheby's, Cologne",
+      "image": "/auction/2_F5TP-CB.webp",
+      "order": 1
+    },
+    {
+      "id": "3",
+      "title": "KR44#CB",
+      "dimensions": "130 × 130 cm",
+      "medium": "Oil on Canvas",
+      "price": "€11,200",
+      "auctionHouse": "Van Ham, Cologne",
+      "image": "/auction/3_KR44-CB.webp",
+      "order": 2
+    },
+    {
+      "id": "4",
+      "title": "Retro Zen",
+      "dimensions": "91.1 × 91.1 cm",
+      "medium": "Oil on Canvas",
+      "price": "€18,900",
+      "auctionHouse": "Christie's, Paris",
+      "image": "/auction/4_Retro_Zen.png",
+      "order": 3
+    },
+    {
+      "id": "5",
+      "title": "Whispershade",
+      "dimensions": "130 × 130 cm",
+      "medium": "Oil on Canvas",
+      "price": "€15,120",
+      "auctionHouse": "Christie's, Paris",
+      "image": "/auction/5_Whispershade.webp",
+      "order": 4
+    }
+  ]
+}
