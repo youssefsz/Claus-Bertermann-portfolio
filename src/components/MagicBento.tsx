@@ -723,6 +723,7 @@ const MagicBento: React.FC<BentoProps> = ({
                           magnifierWidth={150}
                           zoomLevel={2.5}
                           onImageClick={onImageClick}
+                          loading="lazy"
                         />
                       </div>
                     )}

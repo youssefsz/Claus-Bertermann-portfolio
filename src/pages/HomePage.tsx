@@ -159,9 +159,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       >
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
+          className="absolute inset-0 transition-transform duration-100 ease-out overflow-hidden"
           style={{
-            backgroundImage: `url('/hero.jpg')`,
             transform: `scale(${heroScale})`,
             transformOrigin: 'center center',
           }}
@@ -169,6 +168,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
+          <img
+            src="/hero.jpg"
+            alt="Claus Bertermann"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
         </motion.div>
 
@@ -428,6 +434,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
@@ -471,6 +478,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
@@ -514,6 +522,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
@@ -702,6 +711,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
@@ -745,6 +755,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
@@ -788,6 +799,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
@@ -831,6 +843,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierWidth={200}
                 zoomLevel={2.5}
                 onImageClick={handleImageClick}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>

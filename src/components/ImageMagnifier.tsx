@@ -15,6 +15,7 @@ interface ImageMagnifierProps {
   onImageClick?: (src: string, alt: string) => void;
   onError?: () => void;
   onLoad?: () => void;
+  loading?: 'lazy' | 'eager';
 }
 
 export default function ImageMagnifier({
@@ -30,7 +31,8 @@ export default function ImageMagnifier({
   magnifierStyle = {},
   onImageClick,
   onError,
-  onLoad
+  onLoad,
+  loading = 'lazy'
 }: ImageMagnifierProps) {
   const [internalShowMagnifier, setInternalShowMagnifier] = useState(false);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
@@ -141,7 +143,7 @@ export default function ImageMagnifier({
         onLoad={handleImageLoad}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        loading="eager"
+        loading={loading}
         decoding="async"
       />
       
