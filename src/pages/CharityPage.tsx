@@ -19,14 +19,14 @@ export default function CharityPage() {
         <meta property="og:url" content="https://clausbertermann.com/charity" />
         <meta property="og:title" content={`${t('charity')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="og:description" content="Learn about Claus Bertermann's charitable work with Art4kidsbyKDB, supporting children with metabolic diseases through art. Discover how art can make a difference in children's lives." />
-        <meta property="og:image" content="/charity/kdb-3-hd.jpeg" />
+        <meta property="og:image" content="/charityy/kdb-3-hd.jpeg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://clausbertermann.com/charity" />
         <meta property="twitter:title" content={`${t('charity')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="twitter:description" content="Learn about Claus Bertermann's charitable work with Art4kidsbyKDB, supporting children with metabolic diseases through art. Discover how art can make a difference in children's lives." />
-        <meta property="twitter:image" content="/charity/kdb-3-hd.jpeg" />
+        <meta property="twitter:image" content="/charityy/kdb-3-hd.jpeg" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://clausbertermann.com/charity" />
@@ -65,7 +65,7 @@ export default function CharityPage() {
             transition={{ duration: 0.8 }}
           >
             <img
-              src="/charity/kdb-3-hd.jpeg"
+              src="/charityy/kdb-3-hd.jpeg"
               alt="Kevin De Bruyne - Art4kidsbyKDB project"
               className="w-full h-full object-cover"
             />

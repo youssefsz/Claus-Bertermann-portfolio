@@ -94,8 +94,8 @@ export default function GalleryPage() {
       title: "23EB#CB – 2023",
       dimensions: "160 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/23EB-CB.jpg",
-      popupImg: "/gallery/high-res/23EB-CB.jpg",
+      img: "/galleryy/low-res/23EB-CB.jpg",
+      popupImg: "/galleryy/high-res/23EB-CB.jpg",
       url: "#",
     },
     {
@@ -103,8 +103,8 @@ export default function GalleryPage() {
       title: "24GD#CB – 2023",
       dimensions: "240 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/24GD-CB.jpg",
-      popupImg: "/gallery/high-res/24GD-CB.jpg",
+      img: "/galleryy/low-res/24GD-CB.jpg",
+      popupImg: "/galleryy/high-res/24GD-CB.jpg",
       url: "#",
     },
     {
@@ -112,8 +112,8 @@ export default function GalleryPage() {
       title: "34NH#CB – 2025",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/34NH-CB.jpg",
-      popupImg: "/gallery/high-res/34NH-CB.jpg",
+      img: "/galleryy/low-res/34NH-CB.jpg",
+      popupImg: "/galleryy/high-res/34NH-CB.jpg",
       url: "#",
     },
     {
@@ -121,8 +121,8 @@ export default function GalleryPage() {
       title: "7Z2Q#CB – 2024",
       dimensions: "210 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/7Z2Q-CB.jpg",
-      popupImg: "/gallery/high-res/7Z2Q-CB.jpg",
+      img: "/galleryy/low-res/7Z2Q-CB.jpg",
+      popupImg: "/galleryy/high-res/7Z2Q-CB.jpg",
       url: "#",
     },
     {
@@ -130,8 +130,8 @@ export default function GalleryPage() {
       title: "7Z87#CB – 2025",
       dimensions: "300 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/7Z87-CB.jpg",
-      popupImg: "/gallery/high-res/7Z87-CB.jpg",
+      img: "/galleryy/low-res/7Z87-CB.jpg",
+      popupImg: "/galleryy/high-res/7Z87-CB.jpg",
       url: "#",
     },
     {
@@ -139,8 +139,8 @@ export default function GalleryPage() {
       title: "91UI#CB – 2023",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/91UI-CB.jpg",
-      popupImg: "/gallery/high-res/91UI-CB.jpg",
+      img: "/galleryy/low-res/91UI-CB.jpg",
+      popupImg: "/galleryy/high-res/91UI-CB.jpg",
       url: "#",
     },
     {
@@ -148,8 +148,8 @@ export default function GalleryPage() {
       title: "9BE4#CB – 2025",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/9BE4-CB.jpg",
-      popupImg: "/gallery/high-res/9BE4-CB.jpg",
+      img: "/galleryy/low-res/9BE4-CB.jpg",
+      popupImg: "/galleryy/high-res/9BE4-CB.jpg",
       url: "#",
     },
     {
@@ -157,8 +157,8 @@ export default function GalleryPage() {
       title: "9DNL#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/9DNL-CB.jpg",
-      popupImg: "/gallery/high-res/9DNL-CB.jpg",
+      img: "/galleryy/low-res/9DNL-CB.jpg",
+      popupImg: "/galleryy/high-res/9DNL-CB.jpg",
       url: "#",
     },
     {
@@ -166,8 +166,8 @@ export default function GalleryPage() {
       title: "9ENL#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/9ENL-CB.jpg",
-      popupImg: "/gallery/high-res/9ENL-CB.jpg",
+      img: "/galleryy/low-res/9ENL-CB.jpg",
+      popupImg: "/galleryy/high-res/9ENL-CB.jpg",
       url: "#",
     },
     {
@@ -175,8 +175,8 @@ export default function GalleryPage() {
       title: "GCOW#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/GCOW-CB.jpg",
-      popupImg: "/gallery/high-res/GCOW-CB.jpg",
+      img: "/galleryy/low-res/GCOW-CB.jpg",
+      popupImg: "/galleryy/high-res/GCOW-CB.jpg",
       url: "#",
     },
     {
@@ -184,8 +184,8 @@ export default function GalleryPage() {
       title: "IS33#CB – 2021",
       dimensions: "250 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/IS33-CB.jpg",
-      popupImg: "/gallery/high-res/IS33-CB.jpg",
+      img: "/galleryy/low-res/IS33-CB.jpg",
+      popupImg: "/galleryy/high-res/IS33-CB.jpg",
       url: "#",
     },
     {
@@ -193,8 +193,8 @@ export default function GalleryPage() {
       title: "J20F#CB – 2023",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/J20F-CB.jpg",
-      popupImg: "/gallery/high-res/J20F-CB.jpg",
+      img: "/galleryy/low-res/J20F-CB.jpg",
+      popupImg: "/galleryy/high-res/J20F-CB.jpg",
       url: "#",
     },
     {
@@ -202,8 +202,8 @@ export default function GalleryPage() {
       title: "MQQ1#CB – 2022",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/MQQ1-CB.jpg",
-      popupImg: "/gallery/high-res/MQQ1-CB.jpg",
+      img: "/galleryy/low-res/MQQ1-CB.jpg",
+      popupImg: "/galleryy/high-res/MQQ1-CB.jpg",
       url: "#",
     },
     {
@@ -211,8 +211,8 @@ export default function GalleryPage() {
       title: "TGB2#CB – 2024",
       dimensions: "150 × 140 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/TGB2-CB.jpg",
-      popupImg: "/gallery/high-res/TGB2-CB.jpg",
+      img: "/galleryy/low-res/TGB2-CB.jpg",
+      popupImg: "/galleryy/high-res/TGB2-CB.jpg",
       url: "#",
     },
     {
@@ -220,8 +220,8 @@ export default function GalleryPage() {
       title: "U322#CB – 2025",
       dimensions: "200 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/U322-CB.jpg",
-      popupImg: "/gallery/high-res/U322-CB.jpg",
+      img: "/galleryy/low-res/U322-CB.jpg",
+      popupImg: "/galleryy/high-res/U322-CB.jpg",
       url: "#",
     },
 
@@ -231,8 +231,8 @@ export default function GalleryPage() {
       title: "033F#CB – 2024",
       dimensions: "240 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/033F-CB.jpg",
-      popupImg: "/gallery/high-res/033F-CB.jpg",
+      img: "/galleryy/low-res/033F-CB.jpg",
+      popupImg: "/galleryy/high-res/033F-CB.jpg",
       url: "#",
     },
     {
@@ -240,8 +240,8 @@ export default function GalleryPage() {
       title: "03NR#CB – 2024",
       dimensions: "170 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/03NR-CB.jpg",
-      popupImg: "/gallery/high-res/03NR-CB.jpg",
+      img: "/galleryy/low-res/03NR-CB.jpg",
+      popupImg: "/galleryy/high-res/03NR-CB.jpg",
       url: "#",
     },
     {
@@ -249,8 +249,8 @@ export default function GalleryPage() {
       title: "129G#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/129G-CB.jpg",
-      popupImg: "/gallery/high-res/129G-CB.jpg",
+      img: "/galleryy/low-res/129G-CB.jpg",
+      popupImg: "/galleryy/high-res/129G-CB.jpg",
       url: "#",
     },
     {
@@ -258,8 +258,8 @@ export default function GalleryPage() {
       title: "35NH#CB – 2025",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/35NH-CB.jpg",
-      popupImg: "/gallery/high-res/35NH-CB.jpg",
+      img: "/galleryy/low-res/35NH-CB.jpg",
+      popupImg: "/galleryy/high-res/35NH-CB.jpg",
       url: "#",
     },
     {
@@ -267,8 +267,8 @@ export default function GalleryPage() {
       title: "392C#CB – 2023",
       dimensions: "170 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/392C-CB.jpg",
-      popupImg: "/gallery/high-res/392C-CB.jpg",
+      img: "/galleryy/low-res/392C-CB.jpg",
+      popupImg: "/galleryy/high-res/392C-CB.jpg",
       url: "#",
     },
     {
@@ -276,8 +276,8 @@ export default function GalleryPage() {
       title: "44B9#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/44B9-CB.jpg",
-      popupImg: "/gallery/high-res/44B9-CB.jpg",
+      img: "/galleryy/low-res/44B9-CB.jpg",
+      popupImg: "/galleryy/high-res/44B9-CB.jpg",
       url: "#",
     },
     {
@@ -285,8 +285,8 @@ export default function GalleryPage() {
       title: "7CBB#CB – 2024",
       dimensions: "220 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/7CBB-CB.jpg",
-      popupImg: "/gallery/high-res/7CBB-CB.jpg",
+      img: "/galleryy/low-res/7CBB-CB.jpg",
+      popupImg: "/galleryy/high-res/7CBB-CB.jpg",
       url: "#",
     },
     {
@@ -294,8 +294,8 @@ export default function GalleryPage() {
       title: "7Z89#CB – 2025",
       dimensions: "340 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/7Z89-CB.jpg",
-      popupImg: "/gallery/high-res/7Z89-CB.jpg",
+      img: "/galleryy/low-res/7Z89-CB.jpg",
+      popupImg: "/galleryy/high-res/7Z89-CB.jpg",
       url: "#",
     },
     {
@@ -303,8 +303,8 @@ export default function GalleryPage() {
       title: "8FJ3#CB – 2025",
       dimensions: "200 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/8FJ3-CB.jpg",
-      popupImg: "/gallery/high-res/8FJ3-CB.jpg",
+      img: "/galleryy/low-res/8FJ3-CB.jpg",
+      popupImg: "/galleryy/high-res/8FJ3-CB.jpg",
       url: "#",
     },
     {
@@ -312,8 +312,8 @@ export default function GalleryPage() {
       title: "9BE3#CB – 2025",
       dimensions: "130 × 80 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/9BE3-CB.jpg",
-      popupImg: "/gallery/high-res/9BE3-CB.jpg",
+      img: "/galleryy/low-res/9BE3-CB.jpg",
+      popupImg: "/galleryy/high-res/9BE3-CB.jpg",
       url: "#",
     },
     {
@@ -321,8 +321,8 @@ export default function GalleryPage() {
       title: "B330#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/B330-CB.jpg",
-      popupImg: "/gallery/high-res/B330-CB.jpg",
+      img: "/galleryy/low-res/B330-CB.jpg",
+      popupImg: "/galleryy/high-res/B330-CB.jpg",
       url: "#",
     },
     {
@@ -330,8 +330,8 @@ export default function GalleryPage() {
       title: "BBQD#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/BBQD-CB.jpg",
-      popupImg: "/gallery/high-res/BBQD-CB.jpg",
+      img: "/galleryy/low-res/BBQD-CB.jpg",
+      popupImg: "/galleryy/high-res/BBQD-CB.jpg",
       url: "#",
     },
     {
@@ -339,8 +339,8 @@ export default function GalleryPage() {
       title: "BCZ6#CB – 2023",
       dimensions: "150 × 110 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/BCZ6-CB.jpg",
-      popupImg: "/gallery/high-res/BCZ6-CB.jpg",
+      img: "/galleryy/low-res/BCZ6-CB.jpg",
+      popupImg: "/galleryy/high-res/BCZ6-CB.jpg",
       url: "#",
     },
     {
@@ -348,8 +348,8 @@ export default function GalleryPage() {
       title: "FJ34#CB – 2024",
       dimensions: "200 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/FJ34-CB.jpg",
-      popupImg: "/gallery/high-res/FJ34-CB.jpg",
+      img: "/galleryy/low-res/FJ34-CB.jpg",
+      popupImg: "/galleryy/high-res/FJ34-CB.jpg",
       url: "#",
     },
     {
@@ -357,8 +357,8 @@ export default function GalleryPage() {
       title: "H232#CB – 2024",
       dimensions: "150 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/H232-CB.jpg",
-      popupImg: "/gallery/high-res/H232-CB.jpg",
+      img: "/galleryy/low-res/H232-CB.jpg",
+      popupImg: "/galleryy/high-res/H232-CB.jpg",
       url: "#",
     },
     {
@@ -366,8 +366,8 @@ export default function GalleryPage() {
       title: "HE88#CB – 2024",
       dimensions: "150 × 120 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/HE88-CB.jpg",
-      popupImg: "/gallery/high-res/HE88-CB.jpg",
+      img: "/galleryy/low-res/HE88-CB.jpg",
+      popupImg: "/galleryy/high-res/HE88-CB.jpg",
       url: "#",
     },
     {
@@ -375,8 +375,8 @@ export default function GalleryPage() {
       title: "MQQ2#CB – 2022",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/MQQ2-CB.jpg",
-      popupImg: "/gallery/high-res/MQQ2-CB.jpg",
+      img: "/galleryy/low-res/MQQ2-CB.jpg",
+      popupImg: "/galleryy/high-res/MQQ2-CB.jpg",
       url: "#",
     },
     {
@@ -384,8 +384,8 @@ export default function GalleryPage() {
       title: "N339#CB – 2023",
       dimensions: "170 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/N339-CB.jpg",
-      popupImg: "/gallery/high-res/N339-CB.jpg",
+      img: "/galleryy/low-res/N339-CB.jpg",
+      popupImg: "/galleryy/high-res/N339-CB.jpg",
       url: "#",
     },
     {
@@ -393,8 +393,8 @@ export default function GalleryPage() {
       title: "N93B#CB – 2024",
       dimensions: "170 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/N93B-CB.jpg",
-      popupImg: "/gallery/high-res/N93B-CB.jpg",
+      img: "/galleryy/low-res/N93B-CB.jpg",
+      popupImg: "/galleryy/high-res/N93B-CB.jpg",
       url: "#",
     },
     {
@@ -402,8 +402,8 @@ export default function GalleryPage() {
       title: "QW2W#CB – 2021",
       dimensions: "200 × 200 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/QW2W-CB.jpg",
-      popupImg: "/gallery/high-res/QW2W-CB.jpg",
+      img: "/galleryy/low-res/QW2W-CB.jpg",
+      popupImg: "/galleryy/high-res/QW2W-CB.jpg",
       url: "#",
     },
     {
@@ -411,8 +411,8 @@ export default function GalleryPage() {
       title: "S882#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/S882-CB.jpg",
-      popupImg: "/gallery/high-res/S882-CB.jpg",
+      img: "/galleryy/low-res/S882-CB.jpg",
+      popupImg: "/galleryy/high-res/S882-CB.jpg",
       url: "#",
     },
     {
@@ -420,8 +420,8 @@ export default function GalleryPage() {
       title: "S883#CB – 2024",
       dimensions: "180 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/S883-CB.jpg",
-      popupImg: "/gallery/high-res/S883-CB.jpg",
+      img: "/galleryy/low-res/S883-CB.jpg",
+      popupImg: "/galleryy/high-res/S883-CB.jpg",
       url: "#",
     },
     {
@@ -429,8 +429,8 @@ export default function GalleryPage() {
       title: "T5Z3#CB – 2023",
       dimensions: "170 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/T5Z3-CB.jpg",
-      popupImg: "/gallery/high-res/T5Z3-CB.jpg",
+      img: "/galleryy/low-res/T5Z3-CB.jpg",
+      popupImg: "/galleryy/high-res/T5Z3-CB.jpg",
       url: "#",
     },
     {
@@ -438,8 +438,8 @@ export default function GalleryPage() {
       title: "TGB1#CB – 2024",
       dimensions: "150 × 140 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/TGB1-CB.jpg",
-      popupImg: "/gallery/high-res/TGB1-CB.jpg",
+      img: "/galleryy/low-res/TGB1-CB.jpg",
+      popupImg: "/galleryy/high-res/TGB1-CB.jpg",
       url: "#",
     },
     {
@@ -447,8 +447,8 @@ export default function GalleryPage() {
       title: "VQ3N#CB – 2024",
       dimensions: "240 × 150 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/VQ3N-CB.jpg",
-      popupImg: "/gallery/high-res/VQ3N-CB.jpg",
+      img: "/galleryy/low-res/VQ3N-CB.jpg",
+      popupImg: "/galleryy/high-res/VQ3N-CB.jpg",
       url: "#",
     },
     {
@@ -456,8 +456,8 @@ export default function GalleryPage() {
       title: "Z2MF#CB – 2023",
       dimensions: "180 × 130 cm",
       medium: t('oilOnCanvas'),
-      img: "/gallery/low-res/Z2MF-CB.jpg",
-      popupImg: "/gallery/high-res/Z2MF-CB.jpg",
+      img: "/galleryy/low-res/Z2MF-CB.jpg",
+      popupImg: "/galleryy/high-res/Z2MF-CB.jpg",
       url: "#",
     },
   ];
@@ -652,14 +652,14 @@ export default function GalleryPage() {
         <meta property="og:url" content="https://clausbertermann.com/gallery" />
         <meta property="og:title" content={`${t('gallery')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="og:description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
-        <meta property="og:image" content="/gallery/low-res/033F-CB.jpg" />
+        <meta property="og:image" content="/galleryy/low-res/033F-CB.jpg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://clausbertermann.com/gallery" />
         <meta property="twitter:title" content={`${t('gallery')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="twitter:description" content="Explore Claus Bertermann's digital art gallery featuring contemporary abstract paintings, oil on canvas works, and creative digital art pieces from 2018-2025." />
-        <meta property="twitter:image" content="/gallery/low-res/033F-CB.jpg" />
+        <meta property="twitter:image" content="/galleryy/low-res/033F-CB.jpg" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://clausbertermann.com/gallery" />
@@ -694,34 +694,32 @@ export default function GalleryPage() {
             blurToFocus={true}
             colorShiftOnHover={false}
             delayAnimation={700}
-            onItemClick={async (item) => {
-              setImageLoadError(false); // Reset error state
-              setIsImageLoading(true); // Start loading state
-              
+            onItemClick={(item) => {
+              setImageLoadError(false);
+              setIsImageLoading(true);
+
               const popupImg = item.popupImg || item.img;
-              const isPreloaded = preloadedImages.has(popupImg);
-              
-              // If image is not preloaded, try to preload it quickly
-              if (!isPreloaded && item.popupImg) {
-                try {
-                  await preloadImage(popupImg);
-                  setPreloadedImages(prev => new Set([...prev, popupImg]));
-                } catch (error) {
-                  console.warn(`Failed to preload popup image: ${popupImg}`, error);
-                }
-              }
-              
+
+              // Open the modal instantly; let the image load asynchronously
               setSelectedImage({
-                img: popupImg, // Use popupImg if available, fallback to regular img
-                fallbackImg: item.img, // Store original img as fallback
+                img: popupImg,
+                fallbackImg: item.img,
                 title: item.title || '',
                 medium: item.medium || '',
                 dimensions: item.dimensions || ''
               });
-              
-              // Reset loading state after a short delay to allow for smooth transition
-              // This will be overridden by the onLoad callback if the image loads quickly
-              setTimeout(() => setIsImageLoading(false), 500);
+
+              // Kick off a non-blocking preload to speed up first paint next time
+              if (!preloadedImages.has(popupImg) && item.popupImg) {
+                preloadImage(popupImg)
+                  .then(() => {
+                    setPreloadedImages(prev => new Set([...prev, popupImg]));
+                    console.log(`Preloaded HQ image: ${popupImg}`);
+                  })
+                  .catch((error) => {
+                    console.warn(`Failed to preload HQ image: ${popupImg}`, error);
+                  });
+              }
             }}
           />
           

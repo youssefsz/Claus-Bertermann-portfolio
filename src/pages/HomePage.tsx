@@ -138,14 +138,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <meta property="og:url" content="https://clausbertermann.com/" />
         <meta property="og:title" content={`${t('home')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="og:description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
-        <meta property="og:image" content="/gallery/low-res/IS33-CB.jpg" />
+        <meta property="og:image" content="/galleryy/low-res/IS33-CB.jpg" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://clausbertermann.com/" />
         <meta property="twitter:title" content={`${t('home')} | Claus Bertermann Digital Canvas Portfolio`} />
         <meta property="twitter:description" content="Claus Bertermann's digital canvas portfolio showcasing contemporary abstract art, oil paintings, and creative works. Explore the artist's unique techniques and artistic journey." />
-        <meta property="twitter:image" content="/gallery/low-res/IS33-CB.jpg" />
+        <meta property="twitter:image" content="/galleryy/low-res/IS33-CB.jpg" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://clausbertermann.com/" />
@@ -695,7 +695,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/low-res/34NH-CB.jpg"
+                src="/galleryy/low-res/34NH-CB.jpg"
                 alt="Foreground and background technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
@@ -738,7 +738,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/not-used/5TJ3-CB.jpg"
+                src="/galleryy/not-used/5TJ3-CB.jpg"
                 alt="Third dimension illusion technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
@@ -781,7 +781,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/not-used/81BJ-CB.jpg"
+                src="/galleryy/not-used/81BJ-CB.jpg"
                 alt="Paint scratching technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}
@@ -824,7 +824,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               whileHover={{ scale: 1.02 }}
             >
               <ImageMagnifier
-                src="/gallery/not-used/IZOP-CB.jpg"
+                src="/galleryy/not-used/IZOP-CB.jpg"
                 alt="Multiple layers superposition technique"
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 magnifierHeight={200}

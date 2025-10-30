@@ -12,6 +12,7 @@ import CharityPage from './pages/CharityPage';
 import ContactPage from './pages/ContactPage';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import NotFoundPage from './pages/NotFoundPage';
 import PageTransition from './components/PageTransition';
 import BrushTransitionOverlay from './components/BrushTransitionOverlay';
 
@@ -109,6 +110,7 @@ function AppContent() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/charity" element={<CharityPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </PageTransition>
       
