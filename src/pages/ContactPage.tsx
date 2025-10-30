@@ -224,7 +224,7 @@ export default function ContactPage() {
             <div 
               className="w-full bg-cover bg-center bg-no-repeat min-h-[600px]"
               style={{
-                backgroundImage: 'url(/galleryy/not-used/1_LPSS-CB_-_2018.jpg)'
+                backgroundImage: 'url(/galleryy/not-used/LPSS-CB.jpg)'
               }}
             >
             </div>
