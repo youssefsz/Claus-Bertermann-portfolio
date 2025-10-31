@@ -530,9 +530,9 @@ export default function AdminDashboard() {
 
                       {/* Details */}
                       <div className="p-4">
-                        <h3 className="text-white font-medium mb-2 truncate">{image.title}</h3>
-                        <p className="text-gray-400 text-sm mb-1">{image.dimensions}</p>
-                        <p className="text-gray-400 text-sm mb-4">{image.medium}</p>
+                        <h3 className="text-white font-medium mb-2 break-words line-clamp-2">{image.title}</h3>
+                        <p className="text-gray-400 text-sm mb-1 break-words">{image.dimensions}</p>
+                        <p className="text-gray-400 text-sm mb-4 break-words">{image.medium}</p>
 
                         {/* Actions */}
                         <div className="flex gap-2">
@@ -635,11 +635,11 @@ export default function AdminDashboard() {
 
                       {/* Details */}
                       <div className="p-4">
-                        <h3 className="text-white font-medium mb-2 truncate">{work.title}</h3>
-                        <p className="text-gray-400 text-sm mb-1">{work.dimensions}</p>
-                        <p className="text-gray-400 text-sm mb-1">{work.medium}</p>
-                        <p className="text-white text-sm font-medium mb-1">{work.price}</p>
-                        <p className="text-gray-400 text-sm mb-4">{work.auctionHouse}</p>
+                        <h3 className="text-white font-medium mb-2 break-words line-clamp-2">{work.title}</h3>
+                        <p className="text-gray-400 text-sm mb-1 break-words">{work.dimensions}</p>
+                        <p className="text-gray-400 text-sm mb-1 break-words">{work.medium}</p>
+                        <p className="text-white text-sm font-medium mb-1 break-words">{work.price}</p>
+                        <p className="text-gray-400 text-sm mb-4 break-words line-clamp-2">{work.auctionHouse}</p>
 
                         {/* Actions */}
                         <div className="flex gap-2">
@@ -748,10 +748,10 @@ export default function AdminDashboard() {
 
                       {/* Details */}
                       <div className="p-4">
-                        <h3 className="text-white font-medium mb-2 truncate">{article.title}</h3>
-                        <div className="flex items-center justify-between mb-2">
-                          <p className="text-gray-400 text-sm">{article.source}</p>
-                          <p className="text-gray-500 text-xs">
+                        <h3 className="text-white font-medium mb-2 break-words line-clamp-2">{article.title}</h3>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <p className="text-gray-400 text-sm truncate flex-1 min-w-0">{article.source}</p>
+                          <p className="text-gray-500 text-xs whitespace-nowrap flex-shrink-0">
                             {new Date(article.date).toLocaleDateString('en-US', { 
                               year: 'numeric', 
                               month: 'short', 
@@ -759,9 +759,9 @@ export default function AdminDashboard() {
                             })}
                           </p>
                         </div>
-                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">{article.description}</p>
+                        <p className="text-gray-400 text-sm mb-4 break-words line-clamp-3">{article.description}</p>
                         {article.url && (
-                          <p className="text-gray-500 text-xs mb-4 truncate">{article.url}</p>
+                          <p className="text-gray-500 text-xs mb-4 truncate break-all">{article.url}</p>
                         )}
 
                         {/* Actions */}

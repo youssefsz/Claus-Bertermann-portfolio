@@ -230,10 +230,10 @@ export default function CharityPage() {
                       <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
                     </div>
                   )}
-                  <h3 className="text-xl font-bold text-white mb-3">{article.title}</h3>
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-white/60 text-sm">{article.source}</p>
-                    <p className="text-white/40 text-xs">
+                  <h3 className="text-xl font-bold text-white mb-3 break-words line-clamp-3">{article.title}</h3>
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <p className="text-white/60 text-sm truncate flex-1 min-w-0">{article.source}</p>
+                    <p className="text-white/40 text-xs whitespace-nowrap flex-shrink-0">
                       {new Date(article.date).toLocaleDateString('en-US', { 
                         year: 'numeric', 
                         month: 'short', 
@@ -241,7 +241,7 @@ export default function CharityPage() {
                       })}
                     </p>
                   </div>
-                  <p className="text-white/80 font-light">
+                  <p className="text-white/80 font-light break-words line-clamp-4">
                     {article.description}
                   </p>
                   {article.url && (
