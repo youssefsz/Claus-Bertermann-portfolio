@@ -3,7 +3,6 @@ import { X } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import { Artwork } from '../types';
-import Masonry from '../components/Masonry';
 import FadeTransition from '../components/FadeTransition';
 import SplitText from '../components/SplitText';
 
@@ -18,26 +17,10 @@ interface AuctionWork {
   order: number;
 }
 
-/**
- * Loads an image and returns its natural dimensions
- * @param src - Image source URL
- * @returns Promise that resolves with the image dimensions
- */
-const loadImageDimensions = (src: string): Promise<{ width: number; height: number }> => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => {
-      resolve({ width: img.naturalWidth, height: img.naturalHeight });
-    };
-    img.onerror = reject;
-    img.src = src;
-  });
-};
 
 export default function AuctionedWorksPage() {
   const { t, remountKey } = useLanguage();
   const [selectedWork, setSelectedWork] = useState<Artwork | null>(null);
-  const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
   const [auctionedWorks, setAuctionedWorks] = useState<AuctionWork[]>([]);
   const [isLoadingAuction, setIsLoadingAuction] = useState(true);
   const [auctionError, setAuctionError] = useState<string | null>(null);
@@ -68,53 +51,36 @@ export default function AuctionedWorksPage() {
     fetchAuctionData();
   }, []);
 
-  // Load all image dimensions on mount
-  useEffect(() => {
-    if (auctionedWorks.length === 0) return;
-    
-    const loadAllDimensions = async () => {
-      const dimensionsMap: Record<string, { width: number; height: number }> = {};
-      
-      await Promise.all(
-        auctionedWorks.map(async (work) => {
-          try {
-            const dimensions = await loadImageDimensions(work.image);
-            dimensionsMap[work.id] = dimensions;
-          } catch (error) {
-            console.error(`Failed to load dimensions for ${work.title}:`, error);
-            // Fallback to default aspect ratio if image fails to load
-            dimensionsMap[work.id] = { width: 600, height: 600 };
-          }
-        })
-      );
-      
-      setImageDimensions(dimensionsMap);
-    };
-
-    loadAllDimensions();
-  }, [auctionedWorks]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Custom component for artwork with fade transition
   const ArtworkWithTransition = ({ work }: { work: AuctionWork }) => (
-    <div style={{ width: "100%", height: "100%", position: "relative" }}>
-      <FadeTransition
-        firstContent={
+    <FadeTransition
+      firstContent={
+        <img
+          src={work.image}
+          alt={work.title}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        />
+      }
+      secondContent={
+        <div style={{ width: "100%", height: "100%", position: "relative" }}>
           <img
             src={work.image}
             alt={work.title}
-            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
-        }
-        secondContent={
           <div
             style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
               height: "100%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
               padding: "20px",
               textAlign: "center"
             }}
@@ -162,35 +128,14 @@ export default function AuctionedWorksPage() {
               {work.price}
             </p>
           </div>
-        }
-        fadeDuration={0.3}
-        className="artwork-fade-transition"
-        style={{ width: "100%", height: "100%" }}
-      />
-    </div>
+        </div>
+      }
+      fadeDuration={0.3}
+      className="artwork-fade-transition"
+      style={{ width: "100%", height: "100%" }}
+    />
   );
 
-  // Transform auction works to match Masonry component interface
-  // Calculate height based on actual image aspect ratio for a standard base width of 400px
-  const masonryItems = auctionedWorks.map(work => {
-    const dimensions = imageDimensions[work.id];
-    let height = 400; // Default height
-    
-    if (dimensions) {
-      // Calculate height to maintain aspect ratio at base width of 400px
-      const aspectRatio = dimensions.height / dimensions.width;
-      height = 400 * aspectRatio;
-    }
-    
-    return {
-      id: work.id,
-      img: work.image,
-      url: '#',
-      height: height,
-      artwork: work, // Store the full artwork data for modal display
-      customComponent: <ArtworkWithTransition work={work} />
-    };
-  });
 
   // Show loading state
   if (isLoadingAuction) {
@@ -273,35 +218,29 @@ export default function AuctionedWorksPage() {
           textAlign="center"
         />
 
-        <div className="relative">
-          <Masonry
-            items={masonryItems}
-            ease="power3.out"
-            duration={0.6}
-            stagger={0.05}
-            animateFrom="bottom"
-            scaleOnHover={true}
-            hoverScale={0.95}
-            blurToFocus={true}
-            colorShiftOnHover={false}
-            delayAnimation={700}
-            onItemClick={(item) => {
-              const artwork = (item as any).artwork;
-              if (artwork) {
-                // Convert AuctionWork to Artwork for the modal
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {auctionedWorks.map((work) => (
+            <div
+              key={work.id}
+              className="cursor-pointer transition-transform duration-300 hover:scale-95"
+              onClick={() => {
                 const artWork: Artwork = {
-                  id: artwork.id,
-                  title: artwork.title,
-                  dimensions: artwork.dimensions,
-                  medium: artwork.medium,
-                  image: artwork.image,
-                  price: artwork.price,
-                  auctionHouse: artwork.auctionHouse
+                  id: work.id,
+                  title: work.title,
+                  dimensions: work.dimensions,
+                  medium: work.medium,
+                  image: work.image,
+                  price: work.price,
+                  auctionHouse: work.auctionHouse
                 };
                 setSelectedWork(artWork);
-              }
-            }}
-          />
+              }}
+            >
+              <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: '1' }}>
+                <ArtworkWithTransition work={work} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

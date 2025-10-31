@@ -722,6 +722,7 @@ const MagicBento: React.FC<BentoProps> = ({
                           magnifierHeight={150}
                           magnifierWidth={150}
                           zoomLevel={2.5}
+                          disableMagnifier={true}
                           onImageClick={onImageClick}
                           loading="lazy"
                         />
@@ -860,6 +861,7 @@ const MagicBento: React.FC<BentoProps> = ({
                         magnifierHeight={150}
                         magnifierWidth={150}
                         zoomLevel={2.5}
+                        disableMagnifier={true}
                         onImageClick={onImageClick}
                       />
                     </div>

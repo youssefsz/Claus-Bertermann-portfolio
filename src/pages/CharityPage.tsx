@@ -51,26 +51,21 @@ export default function CharityPage() {
 
         {/* Art4kidsbyKDB section */}
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, staggerChildren: 0.2 }}
         >
-          <motion.div 
-            className="relative aspect-square overflow-hidden rounded-3xl"
+          <motion.img
+            src="/charityy/art4kids-art.jpg"
+            alt="Featured artwork supporting Art4kidsbyKDB"
+            className="w-full h-auto rounded-3xl max-w-md mx-auto lg:ml-32"
             initial={{ opacity: 0, scale: 1.1 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}
-          >
-            <img
-              src="/charityy/kdb-3-hd.jpeg"
-              alt="Kevin De Bruyne - Art4kidsbyKDB project"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          </motion.div>
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -111,13 +106,13 @@ export default function CharityPage() {
                 </motion.p>
               ))}
               
-              {/* Learn More Button */}
+              {/* Learn More Button with small KDB image */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="pt-4"
+                className="pt-4 flex items-center gap-6"
               >
                 <InteractiveHoverButton
                   onClick={() => window.open('https://art4kidsbykdb.com', '_blank', 'noopener,noreferrer')}
@@ -125,6 +120,11 @@ export default function CharityPage() {
                 >
                   {t('learnMoreAboutProject')}
                 </InteractiveHoverButton>
+                <img
+                  src="/charityy/kdb-3-hd.jpeg"
+                  alt="Kevin De Bruyne"
+                  className="w-16 h-16 rounded-full object-cover border-2 border-white/20"
+                />
               </motion.div>
             </motion.div>
           </motion.div>
@@ -239,11 +239,11 @@ export default function CharityPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
               <SplitText
                 key={`interestedInArt-${remountKey}`}
                 text={t('interestedInArt')}
-                className="text-3xl md:text-4xl font-bold text-white"
+                className="text-2xl md:text-3xl lg:text-4xl font-bold text-white"
                 delay={100}
                 duration={0.6}
                 ease="power3.out"
@@ -267,7 +267,7 @@ export default function CharityPage() {
                       contactElement.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="px-8 py-4 text-lg whitespace-nowrap"
+                  className="px-6 md:px-8 py-3 md:py-4 text-base md:text-lg whitespace-nowrap"
                 >
                   {t('contact')}
                 </InteractiveHoverButton>

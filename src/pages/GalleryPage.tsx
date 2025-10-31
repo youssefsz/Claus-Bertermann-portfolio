@@ -51,7 +51,7 @@ export default function GalleryPage() {
   const { t, remountKey } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<{img: string, title: string, medium: string, dimensions: string, fallbackImg?: string} | null>(null);
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
-  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [showMagnifier, setShowMagnifier] = useState(true);
   const [imageLoadError, setImageLoadError] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
   const [preloadedImages, setPreloadedImages] = useState<Set<string>>(new Set());
@@ -753,7 +753,7 @@ export default function GalleryPage() {
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-6"
           onClick={() => {
             setSelectedImage(null);
-            setShowMagnifier(false);
+            setShowMagnifier(true);
           }}
         >
           {/* Close Button */}
@@ -761,7 +761,7 @@ export default function GalleryPage() {
             className="absolute top-6 right-6 text-white hover:scale-110 transition-transform p-2 z-10"
             onClick={() => {
               setSelectedImage(null);
-              setShowMagnifier(false);
+              setShowMagnifier(true);
             }}
             title="Close image"
             aria-label="Close image"

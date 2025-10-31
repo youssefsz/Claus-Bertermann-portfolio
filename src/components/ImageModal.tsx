@@ -10,7 +10,7 @@ interface ImageModalProps {
 }
 
 export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }: ImageModalProps) {
-  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [showMagnifier, setShowMagnifier] = useState(true);
 
   // Close modal on Escape key
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }: Imag
       document.body.style.overflow = 'hidden';
     } else {
       // Reset magnifier state when modal is closed
-      setShowMagnifier(false);
+      setShowMagnifier(true);
     }
 
     return () => {
@@ -51,7 +51,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }: Imag
           className="absolute inset-0 bg-black/90 backdrop-blur-sm" 
           onClick={() => {
             onClose();
-            setShowMagnifier(false);
+            setShowMagnifier(true);
           }}
         />
         
@@ -67,7 +67,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, imageAlt }: Imag
           <button
             onClick={() => {
               onClose();
-              setShowMagnifier(false);
+              setShowMagnifier(true);
             }}
             className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300 pointer-events-auto"
             aria-label="Close image"

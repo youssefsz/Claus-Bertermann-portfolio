@@ -221,7 +221,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Parallax Split-Curtain Animation Section */}
-      <div className="parallax-section-container -mt-40" ref={parallaxSectionRef}>
+      <div className="parallax-section-container -mt-40" ref={parallaxSectionRef} style={{ overflow: 'visible' }}>
         {isMobile ? (
           // Mobile: Current implementation with separated content
           <>
@@ -263,16 +263,17 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         ) : (
           // Desktop: Revealed content as layer beneath curtains
           <>
-            <div className="parallax-animation-only-desktop">
+            <div className="parallax-animation-only-desktop" style={{ overflow: 'visible' }}>
               {/* Revealed content layer beneath curtains */}
               <div 
                 className="parallax-revealed-content-desktop"
                 style={{ 
                   transform: `translateY(${parallaxOffset * 0.5}px)`,
-                  zIndex: 10
+                  zIndex: 10,
+                  overflow: 'visible'
                 }}
               >
-                <div className="parallax-wrapper">
+                <div className="parallax-wrapper" style={{ overflow: 'visible' }}>
                   <MagicBento
                     enableStars={true}
                     enableSpotlight={true}
@@ -332,6 +333,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           style={{ 
             transform: `translateY(${parallaxOffset * 0.5}px)`,
             marginTop: '-160vh',
+            marginBottom: '6rem',
             position: 'relative',
             zIndex: curtainTranslate >= 50 ? 15 : 5
           }}
@@ -353,10 +355,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       )}
 
-      <section className="relative z-20 py-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
+      {/* Fixed spacing after Bento grid */}
+      <div className={isMobile ? "h-0" : "h-0"} />
+
+      <section className="relative z-20 py-0 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
         {/* Gallery navigation button - at top of Biography section */}
         <motion.div 
-          className="flex justify-center mb-16"
+          className="flex justify-center mb-8 mt-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -433,6 +438,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />
@@ -477,6 +483,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />
@@ -521,6 +528,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />
@@ -710,6 +718,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />
@@ -754,6 +763,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />
@@ -798,6 +808,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />
@@ -842,6 +853,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 magnifierHeight={200}
                 magnifierWidth={200}
                 zoomLevel={2.5}
+                disableMagnifier={true}
                 onImageClick={handleImageClick}
                 loading="lazy"
               />

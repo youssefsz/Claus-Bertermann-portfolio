@@ -11,6 +11,7 @@ interface ImageMagnifierProps {
   magnifierWidth?: number;
   zoomLevel?: number;
   showMagnifier?: boolean;
+  disableMagnifier?: boolean;
   magnifierStyle?: React.CSSProperties;
   onImageClick?: (src: string, alt: string) => void;
   onError?: () => void;
@@ -28,6 +29,7 @@ export default function ImageMagnifier({
   magnifierWidth = 150,
   zoomLevel = 2.5,
   showMagnifier: controlledShowMagnifier,
+  disableMagnifier = false,
   magnifierStyle = {},
   onImageClick,
   onError,
@@ -35,6 +37,7 @@ export default function ImageMagnifier({
   loading = 'lazy'
 }: ImageMagnifierProps) {
   const [internalShowMagnifier, setInternalShowMagnifier] = useState(false);
+  const [isHoveringImage, setIsHoveringImage] = useState(false);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [[x, y], setXY] = useState([0, 0]);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -42,15 +45,18 @@ export default function ImageMagnifier({
   const imageRef = useRef<HTMLImageElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
-  // Use controlled or internal state, but disable during scrolling
-  const isMagnifierVisible = (controlledShowMagnifier !== undefined 
-    ? controlledShowMagnifier 
-    : internalShowMagnifier) && !isScrolling;
+  // Use controlled or internal state, but also require hovering over image
+  // Disable during scrolling or if explicitly disabled
+  const isMagnifierVisible = !disableMagnifier && 
+    isHoveringImage && 
+    (controlledShowMagnifier !== undefined ? controlledShowMagnifier : internalShowMagnifier) && 
+    !isScrolling;
 
   const mouseEnter = (e: React.MouseEvent<HTMLImageElement>) => {
     const el = e.currentTarget;
     const { width, height } = el.getBoundingClientRect();
     setSize([width, height]);
+    setIsHoveringImage(true);
     if (controlledShowMagnifier === undefined) {
       setInternalShowMagnifier(true);
     }
@@ -58,6 +64,7 @@ export default function ImageMagnifier({
 
   const mouseLeave = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
+    setIsHoveringImage(false);
     if (controlledShowMagnifier === undefined) {
       setInternalShowMagnifier(false);
     }
@@ -67,8 +74,9 @@ export default function ImageMagnifier({
     const el = e.currentTarget;
     const { top, left } = el.getBoundingClientRect();
 
-    const x = e.pageX - left - window.scrollX;
-    const y = e.pageY - top - window.scrollY;
+    // Use clientX/clientY instead of pageX/pageY for better scroll handling
+    const x = e.clientX - left;
+    const y = e.clientY - top;
 
     setXY([x, y]);
   };
@@ -81,10 +89,23 @@ export default function ImageMagnifier({
 
   const handleImageLoad = () => {
     setIsImageLoaded(true);
+    // Set image dimensions for controlled magnifier mode
+    if (imageRef.current && controlledShowMagnifier !== undefined) {
+      const { width, height } = imageRef.current.getBoundingClientRect();
+      setSize([width, height]);
+    }
     if (onLoad) {
       onLoad();
     }
   };
+
+  // Set dimensions when controlled magnifier becomes active
+  useEffect(() => {
+    if (imageRef.current && controlledShowMagnifier && isImageLoaded) {
+      const { width, height } = imageRef.current.getBoundingClientRect();
+      setSize([width, height]);
+    }
+  }, [controlledShowMagnifier, isImageLoaded]);
 
   // Handle scroll detection
   useEffect(() => {
@@ -99,7 +120,7 @@ export default function ImageMagnifier({
       // Set timeout to detect when scrolling stops
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
-      }, 150); // 150ms delay after scroll stops
+      }, 100); // 100ms delay after scroll stops for faster response
     };
 
     // Add scroll event listener
@@ -114,14 +135,19 @@ export default function ImageMagnifier({
     };
   }, []);
 
-  // Calculate magnifier position to keep it within bounds
-  const magnifierX = Math.max(
-    magnifierWidth / 2,
-    Math.min(x, imgWidth - magnifierWidth / 2)
+  // Magnifier follows cursor freely (no constraints)
+  const magnifierX = x;
+  const magnifierY = y;
+
+  // Calculate background position with proper bounds to prevent showing white areas
+  // We clamp the background position, not the magnifier position
+  const bgPosX = Math.max(
+    -imgWidth * zoomLevel + magnifierWidth,
+    Math.min(-x * zoomLevel + magnifierWidth / 2, 0)
   );
-  const magnifierY = Math.max(
-    magnifierHeight / 2,
-    Math.min(y, imgHeight - magnifierHeight / 2)
+  const bgPosY = Math.max(
+    -imgHeight * zoomLevel + magnifierHeight,
+    Math.min(-y * zoomLevel + magnifierHeight / 2, 0)
   );
 
   return (
@@ -157,17 +183,18 @@ export default function ImageMagnifier({
           width: `${magnifierWidth}px`,
           opacity: isMagnifierVisible ? 1 : 0,
           border: '3px solid rgba(255, 255, 255, 0.8)',
-          backgroundColor: 'white',
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
           borderRadius: '50%',
           backgroundImage: `url('${src}')`,
           backgroundRepeat: 'no-repeat',
           top: `${magnifierY - magnifierHeight / 2}px`,
           left: `${magnifierX - magnifierWidth / 2}px`,
           backgroundSize: `${imgWidth * zoomLevel}px ${imgHeight * zoomLevel}px`,
-          backgroundPositionX: `${-x * zoomLevel + magnifierWidth / 2}px`,
-          backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`,
+          backgroundPositionX: `${bgPosX}px`,
+          backgroundPositionY: `${bgPosY}px`,
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)',
           backdropFilter: 'blur(1px)',
+          overflow: 'hidden',
           zIndex: 10,
           ...magnifierStyle
         }}
