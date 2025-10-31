@@ -11,7 +11,8 @@ import {
   Save,
   X,
   Upload,
-  FileImage
+  FileImage,
+  FileText
 } from 'lucide-react';
 
 interface GalleryImage {
@@ -36,7 +37,18 @@ interface AuctionWork {
   order: number;
 }
 
-type ActiveTab = 'gallery' | 'auctions' | 'press';
+interface Article {
+  id: string;
+  title: string;
+  source: string;
+  description: string;
+  date: string;
+  url?: string;
+  image?: string;
+  order: number;
+}
+
+type ActiveTab = 'gallery' | 'auctions' | 'articles';
 
 /**
  * AdminDashboard Component
@@ -47,6 +59,7 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('gallery');
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [auctionWorks, setAuctionWorks] = useState<AuctionWork[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
@@ -56,6 +69,7 @@ export default function AdminDashboard() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedAuctionWork, setSelectedAuctionWork] = useState<AuctionWork | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   
   // Drag and drop state
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
@@ -72,6 +86,8 @@ export default function AdminDashboard() {
       fetchGalleryData();
     } else if (activeTab === 'auctions') {
       fetchAuctionData();
+    } else if (activeTab === 'articles') {
+      fetchArticlesData();
     }
   }, [activeTab]);
 
@@ -129,6 +145,26 @@ export default function AdminDashboard() {
     }
   };
 
+  const fetchArticlesData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/API/Articles.php');
+      const data = await response.json();
+      
+      if (data.success && Array.isArray(data.data)) {
+        const sortedArticles = data.data.sort((a: Article, b: Article) => a.order - b.order);
+        setArticles(sortedArticles);
+      } else {
+        setError('Failed to load articles data');
+      }
+    } catch (err) {
+      console.error('Error fetching articles:', err);
+      setError('Error loading articles');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleLogout = async () => {
     try {
       await fetch('/API/auth.php', {
@@ -167,6 +203,20 @@ export default function AdminDashboard() {
 
   const handleDeleteAuctionWork = (work: AuctionWork) => {
     setSelectedAuctionWork(work);
+    setShowDeleteModal(true);
+  };
+
+  const handleAddArticle = () => {
+    setShowAddModal(true);
+  };
+
+  const handleEditArticle = (article: Article) => {
+    setSelectedArticle(article);
+    setShowEditModal(true);
+  };
+
+  const handleDeleteArticle = (article: Article) => {
+    setSelectedArticle(article);
     setShowDeleteModal(true);
   };
 
@@ -213,6 +263,27 @@ export default function AdminDashboard() {
         console.error('Delete error:', err);
         alert('Error deleting auction work');
       }
+    } else if (activeTab === 'articles' && selectedArticle) {
+      try {
+        const response = await fetch('/API/Articles.php', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: selectedArticle.id }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          setArticles(articles.filter(article => article.id !== selectedArticle.id));
+          setShowDeleteModal(false);
+          setSelectedArticle(null);
+        } else {
+          alert('Failed to delete article: ' + data.message);
+        }
+      } catch (err) {
+        console.error('Delete error:', err);
+        alert('Error deleting article');
+      }
     }
   };
 
@@ -242,6 +313,14 @@ export default function AdminDashboard() {
       newWorks.splice(index, 0, draggedWork);
       
       setAuctionWorks(newWorks);
+    } else if (activeTab === 'articles') {
+      const newArticles = [...articles];
+      const draggedArticle = newArticles[draggedIndex];
+      
+      newArticles.splice(draggedIndex, 1);
+      newArticles.splice(index, 0, draggedArticle);
+      
+      setArticles(newArticles);
     }
     
     setDraggedIndex(index);
@@ -291,6 +370,25 @@ export default function AdminDashboard() {
           alert('Failed to save order: ' + data.message);
           fetchAuctionData(); // Reload on error
         }
+      } else if (activeTab === 'articles') {
+        const response = await fetch('/API/Articles.php', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'reorder',
+            articles: articles.map((article, index) => ({
+              id: article.id,
+              order: index
+            }))
+          }),
+        });
+
+        const data = await response.json();
+        
+        if (!data.success) {
+          alert('Failed to save order: ' + data.message);
+          fetchArticlesData(); // Reload on error
+        }
       }
     } catch (err) {
       console.error('Reorder error:', err);
@@ -299,6 +397,8 @@ export default function AdminDashboard() {
         fetchGalleryData(); // Reload on error
       } else if (activeTab === 'auctions') {
         fetchAuctionData(); // Reload on error
+      } else if (activeTab === 'articles') {
+        fetchArticlesData(); // Reload on error
       }
     } finally {
       setReordering(false);
@@ -355,14 +455,17 @@ export default function AdminDashboard() {
               </div>
             </button>
             <button
-              onClick={() => setActiveTab('press')}
+              onClick={() => setActiveTab('articles')}
               className={`px-6 py-3 font-medium transition-colors border-b-2 ${
-                activeTab === 'press'
+                activeTab === 'articles'
                   ? 'text-white border-white'
                   : 'text-gray-400 border-transparent hover:text-white'
               }`}
             >
-              Press (Coming Soon)
+              <div className="flex items-center gap-2">
+                <FileText size={20} />
+                <span>Articles</span>
+              </div>
             </button>
           </div>
 
@@ -578,9 +681,126 @@ export default function AdminDashboard() {
             </div>
           )}
 
-          {activeTab === 'press' && (
-            <div className="text-center py-12">
-              <p className="text-gray-400 text-lg">Press management coming soon...</p>
+          {/* Articles Content */}
+          {activeTab === 'articles' && (
+            <div>
+              {/* Action Bar */}
+              <div className="flex items-center justify-between mb-6">
+                <p className="text-gray-400">
+                  {articles.length} {articles.length === 1 ? 'article' : 'articles'} total
+                  {reordering && <span className="ml-2 text-white">Saving order...</span>}
+                </p>
+                <button
+                  onClick={handleAddArticle}
+                  className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-white/90 text-black font-medium rounded-full transition-all transform hover:scale-105 border border-white/20"
+                >
+                  <Plus size={20} />
+                  <span>Add Article</span>
+                </button>
+              </div>
+
+              {/* Loading State */}
+              {isLoading && (
+                <div className="text-center py-12">
+                  <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+                  <p className="text-gray-400">Loading articles...</p>
+                </div>
+              )}
+
+              {/* Error State */}
+              {error && (
+                <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 text-red-400 text-center">
+                  {error}
+                </div>
+              )}
+
+              {/* Articles Grid */}
+              {!isLoading && !error && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {articles.map((article, index) => (
+                    <div
+                      key={article.id}
+                      draggable
+                      onDragStart={() => handleDragStart(index)}
+                      onDragOver={(e) => handleDragOver(e, index)}
+                      onDragEnd={handleDragEnd}
+                      className={`bg-white/5 border border-white/20 rounded-lg overflow-hidden transition-all hover:border-white/50 cursor-move ${
+                        draggedIndex === index ? 'opacity-50' : ''
+                      }`}
+                    >
+                      {/* Image or Placeholder */}
+                      <div className="aspect-video bg-black/50 relative group">
+                        {article.image ? (
+                          <img
+                            src={article.image}
+                            alt={article.title}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <FileText size={48} className="text-white/20" />
+                          </div>
+                        )}
+                        <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-lg p-2">
+                          <GripVertical size={20} className="text-white" />
+                        </div>
+                      </div>
+
+                      {/* Details */}
+                      <div className="p-4">
+                        <h3 className="text-white font-medium mb-2 truncate">{article.title}</h3>
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-gray-400 text-sm">{article.source}</p>
+                          <p className="text-gray-500 text-xs">
+                            {new Date(article.date).toLocaleDateString('en-US', { 
+                              year: 'numeric', 
+                              month: 'short', 
+                              day: 'numeric' 
+                            })}
+                          </p>
+                        </div>
+                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">{article.description}</p>
+                        {article.url && (
+                          <p className="text-gray-500 text-xs mb-4 truncate">{article.url}</p>
+                        )}
+
+                        {/* Actions */}
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleEditArticle(article)}
+                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors border border-white/20"
+                          >
+                            <Edit2 size={16} />
+                            <span className="text-sm">Edit</span>
+                          </button>
+                          <button
+                            onClick={() => handleDeleteArticle(article)}
+                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors border border-white/20"
+                          >
+                            <Trash2 size={16} />
+                            <span className="text-sm">Delete</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Empty State */}
+              {!isLoading && !error && articles.length === 0 && (
+                <div className="text-center py-12">
+                  <FileText size={64} className="mx-auto text-gray-600 mb-4" />
+                  <p className="text-gray-400 mb-4">No articles yet</p>
+                  <button
+                    onClick={handleAddArticle}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-white/90 text-black font-medium rounded-full transition-all border border-white/20"
+                  >
+                    <Plus size={20} />
+                    <span>Add Your First Article</span>
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -598,45 +818,52 @@ export default function AdminDashboard() {
               fetchGalleryData();
             } else if (activeTab === 'auctions') {
               fetchAuctionData();
+            } else if (activeTab === 'articles') {
+              fetchArticlesData();
             }
           }}
         />
       )}
 
       {/* Edit Modal */}
-      {showEditModal && ((activeTab === 'gallery' && selectedImage) || (activeTab === 'auctions' && selectedAuctionWork)) && (
+      {showEditModal && ((activeTab === 'gallery' && selectedImage) || (activeTab === 'auctions' && selectedAuctionWork) || (activeTab === 'articles' && selectedArticle)) && (
         <ImageFormModal
           mode="edit"
           type={activeTab}
-          image={activeTab === 'gallery' ? selectedImage : undefined}
-          auctionWork={activeTab === 'auctions' ? selectedAuctionWork : undefined}
+          image={activeTab === 'gallery' ? selectedImage ?? undefined : undefined}
+          auctionWork={activeTab === 'auctions' ? selectedAuctionWork ?? undefined : undefined}
+          article={activeTab === 'articles' ? selectedArticle ?? undefined : undefined}
           onClose={() => {
             setShowEditModal(false);
             setSelectedImage(null);
             setSelectedAuctionWork(null);
+            setSelectedArticle(null);
           }}
           onSuccess={() => {
             setShowEditModal(false);
             setSelectedImage(null);
             setSelectedAuctionWork(null);
+            setSelectedArticle(null);
             if (activeTab === 'gallery') {
               fetchGalleryData();
             } else if (activeTab === 'auctions') {
               fetchAuctionData();
+            } else if (activeTab === 'articles') {
+              fetchArticlesData();
             }
           }}
         />
       )}
 
       {/* Delete Confirmation Modal */}
-      {showDeleteModal && ((activeTab === 'gallery' && selectedImage) || (activeTab === 'auctions' && selectedAuctionWork)) && (
+      {showDeleteModal && ((activeTab === 'gallery' && selectedImage) || (activeTab === 'auctions' && selectedAuctionWork) || (activeTab === 'articles' && selectedArticle)) && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm">
             <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6 max-w-md w-full">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Delete {activeTab === 'gallery' ? 'Image' : 'Work'}?
+              Delete {activeTab === 'gallery' ? 'Image' : activeTab === 'auctions' ? 'Work' : 'Article'}?
             </h3>
             <p className="text-gray-400 mb-6">
-              Are you sure you want to delete "{activeTab === 'gallery' ? selectedImage?.title : selectedAuctionWork?.title}"? This action cannot be undone.
+              Are you sure you want to delete "{activeTab === 'gallery' ? selectedImage?.title : activeTab === 'auctions' ? selectedAuctionWork?.title : selectedArticle?.title}"? This action cannot be undone.
             </p>
             <div className="flex gap-3">
                 <button
@@ -644,6 +871,7 @@ export default function AdminDashboard() {
                     setShowDeleteModal(false);
                     setSelectedImage(null);
                     setSelectedAuctionWork(null);
+                    setSelectedArticle(null);
                   }}
                   className="flex-1 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/20 text-white rounded-lg transition-colors"
                 >
@@ -665,26 +893,31 @@ export default function AdminDashboard() {
 
 /**
  * ImageFormModal Component
- * Modal for adding or editing images and auction works
+ * Modal for adding or editing images, auction works, and articles
  */
 interface ImageFormModalProps {
   mode: 'add' | 'edit';
-  type: 'gallery' | 'auctions';
+  type: 'gallery' | 'auctions' | 'articles';
   image?: GalleryImage;
   auctionWork?: AuctionWork;
+  article?: Article;
   onClose: () => void;
   onSuccess: () => void;
 }
 
-function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: ImageFormModalProps) {
-  const [title, setTitle] = useState(image?.title || auctionWork?.title || '');
+function ImageFormModal({ mode, type, image, auctionWork, article, onClose, onSuccess }: ImageFormModalProps) {
+  const [title, setTitle] = useState(image?.title || auctionWork?.title || article?.title || '');
   const [dimensions, setDimensions] = useState(image?.dimensions || auctionWork?.dimensions || '');
   const [medium, setMedium] = useState(image?.medium || auctionWork?.medium || 'Oil on Canvas');
   const [year, setYear] = useState(image?.year || new Date().getFullYear().toString());
   const [price, setPrice] = useState(auctionWork?.price || '');
   const [auctionHouse, setAuctionHouse] = useState(auctionWork?.auctionHouse || '');
+  const [source, setSource] = useState(article?.source || '');
+  const [description, setDescription] = useState(article?.description || '');
+  const [date, setDate] = useState(article?.date || new Date().toISOString().split('T')[0]);
+  const [url, setUrl] = useState(article?.url || '');
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(image?.thumbnailPath || auctionWork?.image || null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(image?.thumbnailPath || auctionWork?.image || article?.image || null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -705,26 +938,35 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
     try {
       if (mode === 'add') {
         // Add new item
-        if (!imageFile) {
+        if (type !== 'articles' && !imageFile) {
           setError('Please select an image file');
           setIsSubmitting(false);
           return;
         }
 
         const formData = new FormData();
-        formData.append('image', imageFile);
+        if (imageFile) {
+          formData.append('image', imageFile);
+        }
         formData.append('title', title);
-        formData.append('dimensions', dimensions);
-        formData.append('medium', medium);
         
         if (type === 'gallery') {
+          formData.append('dimensions', dimensions);
+          formData.append('medium', medium);
           formData.append('year', year);
         } else if (type === 'auctions') {
+          formData.append('dimensions', dimensions);
+          formData.append('medium', medium);
           formData.append('price', price);
           formData.append('auctionHouse', auctionHouse);
+        } else if (type === 'articles') {
+          formData.append('source', source);
+          formData.append('description', description);
+          formData.append('date', date);
+          formData.append('url', url);
         }
 
-        const apiEndpoint = type === 'gallery' ? '/API/Gallery.php' : '/API/Auction.php';
+        const apiEndpoint = type === 'gallery' ? '/API/Gallery.php' : type === 'auctions' ? '/API/Auction.php' : '/API/Articles.php';
         const response = await fetch(apiEndpoint, {
           method: 'POST',
           body: formData,
@@ -735,24 +977,31 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
         if (data.success) {
           onSuccess();
         } else {
-          setError(data.message || `Failed to add ${type === 'gallery' ? 'image' : 'work'}`);
+          setError(data.message || `Failed to add ${type === 'gallery' ? 'image' : type === 'auctions' ? 'work' : 'article'}`);
         }
       } else {
         // Edit existing item
-        const apiEndpoint = type === 'gallery' ? '/API/Gallery.php' : '/API/Auction.php';
+        const apiEndpoint = type === 'gallery' ? '/API/Gallery.php' : type === 'auctions' ? '/API/Auction.php' : '/API/Articles.php';
         const requestBody: any = {
           action: 'update',
-          id: type === 'gallery' ? image?.id : auctionWork?.id,
+          id: type === 'gallery' ? image?.id : type === 'auctions' ? auctionWork?.id : article?.id,
           title,
-          dimensions,
-          medium,
         };
 
         if (type === 'gallery') {
+          requestBody.dimensions = dimensions;
+          requestBody.medium = medium;
           requestBody.year = year;
         } else if (type === 'auctions') {
+          requestBody.dimensions = dimensions;
+          requestBody.medium = medium;
           requestBody.price = price;
           requestBody.auctionHouse = auctionHouse;
+        } else if (type === 'articles') {
+          requestBody.source = source;
+          requestBody.description = description;
+          requestBody.date = date;
+          requestBody.url = url;
         }
 
         const response = await fetch(apiEndpoint, {
@@ -766,7 +1015,7 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
         if (data.success) {
           onSuccess();
         } else {
-          setError(data.message || `Failed to update ${type === 'gallery' ? 'image' : 'work'}`);
+          setError(data.message || `Failed to update ${type === 'gallery' ? 'image' : type === 'auctions' ? 'work' : 'article'}`);
         }
       }
     } catch (err) {
@@ -778,14 +1027,14 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6 max-w-2xl w-full my-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/80 backdrop-blur-sm">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto my-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl font-bold text-white">
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h3 className="text-xl md:text-2xl font-bold text-white">
             {mode === 'add' 
-              ? `Add New ${type === 'gallery' ? 'Image' : 'Auction Work'}` 
-              : `Edit ${type === 'gallery' ? 'Image' : 'Auction Work'}`}
+              ? `Add New ${type === 'gallery' ? 'Image' : type === 'auctions' ? 'Auction Work' : 'Article'}` 
+              : `Edit ${type === 'gallery' ? 'Image' : type === 'auctions' ? 'Auction Work' : 'Article'}`}
           </h3>
           <button
             onClick={onClose}
@@ -796,12 +1045,12 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className={type === 'articles' ? 'space-y-4' : 'space-y-6'}>
           {/* Image Upload (Add mode only) */}
           {mode === 'add' && (
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Image File *
+                Image File {type === 'articles' ? '(Optional)' : '*'}
               </label>
               <div className="relative">
                 <input
@@ -810,11 +1059,11 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
                   onChange={handleFileChange}
                   className="hidden"
                   id="image-upload"
-                  required
+                  required={type !== 'articles'}
                 />
                 <label
                   htmlFor="image-upload"
-                  className="flex items-center justify-center gap-3 w-full px-4 py-8 bg-white/5 border-2 border-dashed border-white/20 hover:border-white/50 rounded-lg cursor-pointer transition-colors"
+                  className={`flex items-center justify-center gap-3 w-full px-4 bg-white/5 border-2 border-dashed border-white/20 hover:border-white/50 rounded-lg cursor-pointer transition-colors ${type === 'articles' ? 'py-4' : 'py-8'}`}
                 >
                   <Upload size={24} className="text-gray-400" />
                   <span className="text-gray-400">
@@ -827,7 +1076,7 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
                   <img
                     src={previewUrl}
                     alt="Preview"
-                    className="w-full h-64 object-contain bg-black/50 rounded-lg"
+                    className={`w-full object-contain bg-black/50 rounded-lg ${type === 'articles' ? 'h-40' : 'h-64'}`}
                   />
                 </div>
               )}
@@ -845,40 +1094,44 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
               value={title}
               onChange={(e) => setTitle(e.target.value)}
                   className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
-              placeholder="e.g., 23EB#CB – 2023"
+              placeholder={type === 'articles' ? 'e.g., Contemporary Artist Making Waves' : 'e.g., 23EB#CB – 2023'}
               required
             />
           </div>
 
-          {/* Dimensions */}
-          <div>
-            <label htmlFor="dimensions" className="block text-sm font-medium text-gray-300 mb-2">
-              Dimensions
-            </label>
-            <input
-              type="text"
-              id="dimensions"
-              value={dimensions}
-              onChange={(e) => setDimensions(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
-              placeholder="e.g., 160 × 150 cm"
-            />
-          </div>
+          {/* Dimensions (Gallery and Auctions only) */}
+          {type !== 'articles' && (
+            <div>
+              <label htmlFor="dimensions" className="block text-sm font-medium text-gray-300 mb-2">
+                Dimensions
+              </label>
+              <input
+                type="text"
+                id="dimensions"
+                value={dimensions}
+                onChange={(e) => setDimensions(e.target.value)}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
+                placeholder="e.g., 160 × 150 cm"
+              />
+            </div>
+          )}
 
-          {/* Medium */}
-          <div>
-            <label htmlFor="medium" className="block text-sm font-medium text-gray-300 mb-2">
-              Medium
-            </label>
-            <input
-              type="text"
-              id="medium"
-              value={medium}
-              onChange={(e) => setMedium(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
-              placeholder="e.g., Oil on Canvas"
-            />
-          </div>
+          {/* Medium (Gallery and Auctions only) */}
+          {type !== 'articles' && (
+            <div>
+              <label htmlFor="medium" className="block text-sm font-medium text-gray-300 mb-2">
+                Medium
+              </label>
+              <input
+                type="text"
+                id="medium"
+                value={medium}
+                onChange={(e) => setMedium(e.target.value)}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
+                placeholder="e.g., Oil on Canvas"
+              />
+            </div>
+          )}
 
           {/* Year (Gallery only) */}
           {type === 'gallery' && (
@@ -933,6 +1186,76 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
             </div>
           )}
 
+          {/* Source (Articles only) */}
+          {type === 'articles' && (
+            <div>
+              <label htmlFor="source" className="block text-sm font-medium text-gray-300 mb-2">
+                Source *
+              </label>
+              <input
+                type="text"
+                id="source"
+                value={source}
+                onChange={(e) => setSource(e.target.value)}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
+                placeholder="e.g., The Guardian"
+                required
+              />
+            </div>
+          )}
+
+          {/* Description (Articles only) */}
+          {type === 'articles' && (
+            <div>
+              <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
+                Description *
+              </label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 min-h-[80px] resize-y"
+                placeholder="Article description..."
+                required
+                rows={3}
+              />
+            </div>
+          )}
+
+          {/* Date (Articles only) */}
+          {type === 'articles' && (
+            <div>
+              <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
+                Publication Date *
+              </label>
+              <input
+                type="date"
+                id="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
+                required
+              />
+            </div>
+          )}
+
+          {/* URL (Articles only) */}
+          {type === 'articles' && (
+            <div>
+              <label htmlFor="url" className="block text-sm font-medium text-gray-300 mb-2">
+                Article URL (Optional)
+              </label>
+              <input
+                type="url"
+                id="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
+                placeholder="https://example.com/article"
+              />
+            </div>
+          )}
+
           {/* Error Message */}
           {error && (
             <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-red-400 text-sm">
@@ -941,11 +1264,11 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
           )}
 
           {/* Actions */}
-          <div className="flex gap-3 pt-4">
+          <div className="flex gap-3 pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/20 text-white rounded-lg transition-colors"
+              className="flex-1 px-3 md:px-4 py-2 md:py-3 bg-white/5 hover:bg-white/10 border border-white/20 text-white rounded-lg transition-colors text-sm md:text-base"
               disabled={isSubmitting}
             >
               Cancel
@@ -953,7 +1276,7 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-white/90 text-black font-medium rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
+              className="flex-1 flex items-center justify-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-white hover:bg-white/90 text-black font-medium rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed border border-white/20 text-sm md:text-base"
             >
               {isSubmitting ? (
                 <>
@@ -964,7 +1287,7 @@ function ImageFormModal({ mode, type, image, auctionWork, onClose, onSuccess }: 
                 <>
                   <Save size={20} />
                   <span>{mode === 'add' 
-                    ? `Add ${type === 'gallery' ? 'Image' : 'Work'}` 
+                    ? `Add ${type === 'gallery' ? 'Image' : type === 'auctions' ? 'Work' : 'Article'}` 
                     : 'Save Changes'}</span>
                 </>
               )}

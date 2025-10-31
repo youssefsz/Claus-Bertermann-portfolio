@@ -3,9 +3,44 @@ import { useLanguage } from '../context/LanguageContext';
 import SplitText from '../components/SplitText';
 import { InteractiveHoverButton } from '../components/InteractiveHoverButton';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
+interface Article {
+  id: string;
+  title: string;
+  source: string;
+  description: string;
+  date: string;
+  url?: string;
+  image?: string;
+  order: number;
+}
 
 export default function CharityPage() {
   const { t, remountKey } = useLanguage();
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      const response = await fetch('/API/Articles.php');
+      const result = await response.json();
+      
+      if (result.success && result.data) {
+        // Sort by order
+        const sortedArticles = result.data.sort((a: Article, b: Article) => a.order - b.order);
+        setArticles(sortedArticles);
+      }
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -155,64 +190,72 @@ export default function CharityPage() {
         </motion.div>
 
         {/* Press Items Grid */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, staggerChildren: 0.1 }}
-        >
+        {loading ? (
+          <div className="text-center text-white/60 mb-24">Loading articles...</div>
+        ) : articles.length > 0 ? (
           <motion.div 
-            className="group p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, staggerChildren: 0.1 }}
           >
-            <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
-              <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">{t('pressItem1Title')}</h3>
-            <p className="text-white/60 text-sm mb-4">{t('pressItem1Source')}</p>
-            <p className="text-white/80 font-light">
-              {t('pressItem1Description')}
-            </p>
-          </motion.div>
+            {articles.map((article, index) => {
+              const handleArticleClick = () => {
+                if (article.url) {
+                  window.open(article.url, '_blank', 'noopener,noreferrer');
+                }
+              };
 
-          <motion.div 
-            className="group p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
-              <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">{t('pressItem2Title')}</h3>
-            <p className="text-white/60 text-sm mb-4">{t('pressItem2Source')}</p>
-            <p className="text-white/80 font-light">
-              {t('pressItem2Description')}
-            </p>
+              return (
+                <motion.div 
+                  key={article.id}
+                  className={`group p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 ${article.url ? 'cursor-pointer' : ''}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  onClick={handleArticleClick}
+                >
+                  {article.image ? (
+                    <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 overflow-hidden">
+                      <img 
+                        src={article.image} 
+                        alt={article.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
+                      <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
+                    </div>
+                  )}
+                  <h3 className="text-xl font-bold text-white mb-3">{article.title}</h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-white/60 text-sm">{article.source}</p>
+                    <p className="text-white/40 text-xs">
+                      {new Date(article.date).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                      })}
+                    </p>
+                  </div>
+                  <p className="text-white/80 font-light">
+                    {article.description}
+                  </p>
+                  {article.url && (
+                    <div className="mt-4 text-white/60 text-sm group-hover:text-white/80 transition-colors">
+                      Read more →
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </motion.div>
-
-          <motion.div 
-            className="group p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="w-full aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center">
-              <span className="text-white/40 text-sm tracking-wider">PRESS ITEM</span>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">{t('pressItem3Title')}</h3>
-            <p className="text-white/60 text-sm mb-4">{t('pressItem3Source')}</p>
-            <p className="text-white/80 font-light">
-              {t('pressItem3Description')}
-            </p>
-          </motion.div>
-        </motion.div>
+        ) : (
+          <div className="text-center text-white/60 mb-24">No articles available yet.</div>
+        )}
 
         {/* Contact section */}
         <motion.div 

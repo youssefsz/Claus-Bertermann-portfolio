@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Artwork } from '../types';
 import FadeTransition from '../components/FadeTransition';
@@ -25,7 +26,7 @@ export default function AuctionedWorksPage() {
   const [isLoadingAuction, setIsLoadingAuction] = useState(true);
   const [auctionError, setAuctionError] = useState<string | null>(null);
 
-  // Fetch auction data from API
+  // Fetch auction data from API - delayed to wait for page transition animation
   useEffect(() => {
     const fetchAuctionData = async () => {
       try {
@@ -48,7 +49,12 @@ export default function AuctionedWorksPage() {
       }
     };
 
-    fetchAuctionData();
+    // Delay data fetching until after page transition completes (~1000ms)
+    const timer = setTimeout(() => {
+      fetchAuctionData();
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
 
@@ -219,9 +225,16 @@ export default function AuctionedWorksPage() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {auctionedWorks.map((work) => (
-            <div
+          {auctionedWorks.map((work, index) => (
+            <motion.div
               key={work.id}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
               className="cursor-pointer transition-transform duration-300 hover:scale-95"
               onClick={() => {
                 const artWork: Artwork = {
@@ -239,7 +252,7 @@ export default function AuctionedWorksPage() {
               <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: '1' }}>
                 <ArtworkWithTransition work={work} />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

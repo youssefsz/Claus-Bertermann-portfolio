@@ -1,0 +1,35 @@
+{
+  "articles": [
+    {
+      "id": "ART1",
+      "title": "Contemporary Artist Making Waves in Digital Canvas",
+      "source": "Art Magazine",
+      "description": "Claus Bertermann's unique approach to digital art is transforming the contemporary art scene.",
+      "date": "2024-03-15",
+      "url": "",
+      "image": "",
+      "order": 0
+    },
+    {
+      "id": "ART2",
+      "title": "Charity Meets Art: A New Approach",
+      "source": "The Guardian",
+      "description": "How one artist is using their platform to support children with metabolic diseases.",
+      "date": "2024-02-10",
+      "url": "",
+      "image": "",
+      "order": 1
+    },
+    {
+      "id": "ART3",
+      "title": "Digital Revolution in Fine Arts",
+      "source": "Forbes Arts",
+      "description": "The intersection of technology and traditional painting techniques in modern art.",
+      "date": "2024-01-20",
+      "url": "",
+      "image": "",
+      "order": 2
+    }
+  ]
+}
+
